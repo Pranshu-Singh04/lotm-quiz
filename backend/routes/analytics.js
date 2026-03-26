@@ -20,14 +20,3 @@ router.get('/total', async (req, res) => {
 });
 
 export default router;
-```
-
-This gives you a **live analytics endpoint** — you can display "X people have taken this quiz, Y% got Reader" on the result screen. That's what makes it feel like a real product.
-
----
-
-## Step 4 — Connect Frontend to Backend
-
-In `frontend/.env`:
-```
-VITE_API_URL=http://localhost:3001
