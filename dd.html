@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequence Alignment Engine — LOTM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0a0806;--parchment:#f5ede0;--gold:#c9973a;--gold-pale:#e8c97a;--gold-dim:#7a5a1e;
+  --smoke:#2a2520;--fog:#1a1510;--ash:#6b6358;--ember:#c45c1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--fog);color:var(--parchment);font-family:'EB Garamond',serif;font-size:18px;line-height:1.7;min-height:100vh;overflow-x:hidden;}
+#fog-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.45;}
+.candle-container{position:fixed;bottom:0;width:100%;display:flex;justify-content:space-between;padding:0 4vw;pointer-events:none;z-index:3;}
+.candle{display:flex;flex-direction:column;align-items:center;opacity:0.55;}
+.candle-flame{width:8px;height:16px;background:radial-gradient(ellipse at 50% 80%,#fff5c0 0%,#ffb347 40%,#ff6600 70%,transparent 100%);border-radius:50% 50% 30% 30%;animation:flicker 2s ease-in-out infinite alternate;filter:blur(0.5px);box-shadow:0 0 8px 4px rgba(255,180,60,0.4),0 0 20px 8px rgba(255,120,20,0.2);}
+.candle-body{width:12px;background:linear-gradient(to right,#d4c5a0,#e8dfc0,#c8b890);border-radius:2px;}
+@keyframes flicker{0%{transform:scaleX(1) scaleY(1);opacity:1;}25%{transform:scaleX(0.88) scaleY(1.12) translateX(-0.5px);opacity:.93;}50%{transform:scaleX(1.1) scaleY(.94) translateX(.5px);opacity:1;}75%{transform:scaleX(.93) scaleY(1.07) translateX(-.3px);opacity:.91;}100%{transform:scaleX(1) scaleY(1.02);opacity:1;}}
+#app{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+.screen{width:100%;max-width:780px;padding:60px 40px;display:none;flex-direction:column;align-items:center;animation:fadeIn .8s ease;}
+.screen.active{display:flex;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+/* INTRO hero */
+#intro-screen{position:relative;overflow:hidden;}
+#particle-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;}
+/* TAROT */
+.tarot-row{display:flex;gap:14px;justify-content:center;margin:28px 0;flex-wrap:wrap;}
+.tarot-card{width:88px;cursor:default;transition:transform .4s ease,filter .4s ease;filter:drop-shadow(0 4px 16px rgba(201,151,58,0.3));}
+.tarot-card svg{width:100%;height:auto;border-radius:5px;}
+/* DIVIDERS */
+.divider{width:100%;display:flex;align-items:center;gap:16px;margin:24px 0;color:var(--gold-dim);font-size:14px;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent);}
+/* SIGIL */
+.sigil{width:120px;height:120px;margin:0 auto 32px;animation:sigil-rotate 20s linear infinite;}
+@keyframes sigil-rotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.sigil svg{width:100%;height:100%;}
+/* TYPOGRAPHY */
+.title-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.4em;color:var(--gold-dim);text-transform:uppercase;text-align:center;margin-bottom:20px;}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,5vw,42px);font-weight:700;color:var(--gold);text-align:center;line-height:1.2;letter-spacing:.05em;text-shadow:0 0 40px rgba(201,151,58,.4),0 2px 4px rgba(0,0,0,.8);margin-bottom:12px;}
+h2{font-family:'Cinzel',serif;font-size:clamp(16px,3vw,24px);color:var(--gold-pale);text-align:center;font-weight:400;letter-spacing:.1em;}
+.lore-box{background:rgba(201,151,58,.05);border:1px solid rgba(201,151,58,.15);border-radius:2px;padding:24px 32px;margin:32px 0;font-style:italic;color:var(--ash);font-size:15px;line-height:1.8;text-align:center;position:relative;}
+.lore-box::before,.lore-box::after{content:'✦';color:var(--gold-dim);position:absolute;font-size:10px;font-style:normal;}
+.lore-box::before{top:10px;left:14px;}.lore-box::after{bottom:10px;right:14px;}
+/* WARNING SCREEN */
+.warning-screen-box{background:rgba(196,92,26,.06);border:1px solid rgba(196,92,26,.35);border-top:3px solid var(--ember);padding:32px;width:100%;margin:24px 0;}
+.warning-screen-box .w-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--ember);margin-bottom:20px;text-align:center;}
+.warning-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.warning-item .w-icon{color:var(--ember);font-size:18px;min-width:24px;margin-top:2px;}
+.warning-item p{font-size:15px;color:var(--ash);line-height:1.6;}
+.warning-item p strong{color:var(--parchment);font-style:normal;}
+.ack-row{display:flex;align-items:flex-start;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(196,92,26,.2);}
+.ack-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--ember);cursor:pointer;flex-shrink:0;margin-top:3px;}
+.ack-row label{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.08em;color:var(--ash);cursor:pointer;line-height:1.6;}
+/* BUTTONS */
+.btn-primary{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--fog);background:linear-gradient(135deg,var(--gold) 0%,var(--gold-pale) 50%,var(--gold) 100%);border:none;padding:16px 48px;cursor:pointer;clip-path:polygon(8px 0%,calc(100% - 8px) 0%,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0% calc(100% - 8px),0% 8px);transition:all .3s ease;box-shadow:0 0 20px rgba(201,151,58,.3);}
+.btn-primary:hover:not(:disabled){box-shadow:0 0 40px rgba(201,151,58,.6);transform:translateY(-1px);}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;}
+.btn-secondary{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--ash);background:transparent;border:1px solid rgba(201,151,58,.2);padding:12px 32px;cursor:pointer;transition:all .3s ease;margin-top:16px;}
+.btn-secondary:hover{color:var(--gold-pale);border-color:rgba(201,151,58,.5);}
+/* PROGRESS */
+.progress-bar-container{width:100%;margin-bottom:40px;}
+.progress-meta{display:flex;justify-content:space-between;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;color:var(--gold-dim);margin-bottom:10px;text-transform:uppercase;}
+.progress-track{width:100%;height:2px;background:rgba(201,151,58,.1);}
+.progress-fill{height:100%;background:linear-gradient(to right,var(--gold-dim),var(--gold));transition:width .6s ease;box-shadow:0 0 6px rgba(201,151,58,.5);}
+/* WEIGHT PIPS */
+.weight-badge{display:inline-flex;align-items:center;gap:6px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:20px;}
+.weight-pip{width:6px;height:6px;border-radius:50%;background:rgba(201,151,58,.2);}
+.weight-pip.lit{background:var(--gold);box-shadow:0 0 4px var(--gold);}
+/* QUESTION */
+.section-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.35em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:16px;text-align:center;}
+.question-text{font-family:'Cinzel',serif;font-size:clamp(15px,2.5vw,21px);color:var(--parchment);text-align:center;margin-bottom:8px;font-weight:400;line-height:1.4;}
+.question-subtext{font-style:italic;color:var(--ash);font-size:14px;text-align:center;margin-bottom:36px;}
+.options-grid{display:flex;flex-direction:column;gap:12px;width:100%;}
+.option-card{background:rgba(255,255,255,.02);border:1px solid rgba(201,151,58,.12);padding:18px 24px;cursor:pointer;transition:all .3s ease;position:relative;display:flex;align-items:flex-start;gap:16px;text-align:left;}
+.option-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .3s ease;}
+.option-card:hover{background:rgba(201,151,58,.06);border-color:rgba(201,151,58,.3);}
+.option-card:hover::before,.option-card.selected::before{transform:scaleY(1);}
+.option-card.selected{background:rgba(201,151,58,.1);border-color:rgba(201,151,58,.5);}
+.option-glyph{font-family:'Cinzel',serif;font-size:12px;color:var(--gold-dim);min-width:24px;margin-top:2px;}
+.option-card.selected .option-glyph{color:var(--gold);}
+.option-text{font-size:16px;color:var(--parchment);line-height:1.5;}
+.option-subtext{font-style:italic;font-size:13px;color:var(--ash);margin-top:4px;}
+.question-nav{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:40px;}
+.nav-hint{font-style:italic;font-size:13px;color:var(--ash);text-align:center;margin-top:16px;}
+/* LOADING */
+#loading-screen{min-height:100vh;justify-content:center;}
+.ritual-circle{width:200px;height:200px;position:relative;margin:0 auto 40px;}
+.ritual-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,151,58,.3);}
+.r1{inset:0;animation:spin-slow 8s linear infinite;}
+.r2{inset:20px;animation:spin-slow 12s linear infinite reverse;border-color:rgba(201,151,58,.2);}
+.r3{inset:40px;animation:spin-slow 5s linear infinite;border-color:rgba(201,151,58,.15);}
+.ritual-center{position:absolute;inset:70px;background:radial-gradient(circle,rgba(201,151,58,.2) 0%,transparent 70%);border-radius:50%;animation:pulse-glow 2s ease-in-out infinite;}
+@keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes pulse-glow{0%,100%{opacity:.4;transform:scale(.9);}50%{opacity:1;transform:scale(1.1);}}
+.loading-text{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.3em;color:var(--gold-dim);text-transform:uppercase;text-align:center;animation:fade-pulse 1.5s ease-in-out infinite;}
+@keyframes fade-pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+/* RESULT */
+.pathway-banner{width:100%;padding:40px 32px;text-align:center;margin-bottom:40px;border-radius:2px;}
+.result-tarot{margin:0 auto 24px;width:140px;animation:float 4s ease-in-out infinite;}
+.result-tarot svg{width:100%;height:auto;border-radius:6px;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.result-eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--ash);margin-bottom:12px;}
+.result-pathway-name{font-family:'Cinzel Decorative',serif;font-size:clamp(26px,6vw,50px);font-weight:700;letter-spacing:.05em;margin-bottom:4px;}
+.result-sequence{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.3em;opacity:.7;margin-bottom:24px;text-transform:uppercase;}
+.meters-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;margin:32px 0;}
+.meter-card{background:rgba(255,255,255,.02);border:1px solid rgba(201,151,58,.1);padding:20px;}
+.meter-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ash);margin-bottom:10px;display:flex;justify-content:space-between;}
+.meter-value{font-size:13px;color:var(--gold);font-weight:500;}
+.meter-track{height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-bottom:6px;}
+.meter-bar{height:100%;border-radius:2px;transition:width 1.5s ease;}
+.mb-stab{background:linear-gradient(to right,#1a4a3a,#2a8a6a);box-shadow:0 0 6px rgba(42,138,106,.5);}
+.mb-corr{background:linear-gradient(to right,#4a1a6b,#8a2aaa);box-shadow:0 0 6px rgba(138,42,170,.5);}
+.mb-surv{background:linear-gradient(to right,#6b3a1a,#c9973a);box-shadow:0 0 6px rgba(201,151,58,.5);}
+.mb-adv{background:linear-gradient(to right,#1a2a4a,#2a6a9a);box-shadow:0 0 6px rgba(42,106,154,.5);}
+.meter-sublabel{font-size:12px;color:var(--ash);font-style:italic;}
+.traits-section{width:100%;margin:8px 0 24px;}
+.traits-section h3{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:16px;text-align:center;}
+.trait-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+.trait-icon{font-size:14px;min-width:20px;margin-top:3px;}
+.trait-name{font-family:'Cinzel',serif;font-size:12px;color:var(--parchment);min-width:150px;}
+.trait-desc{font-size:13px;color:var(--ash);font-style:italic;line-height:1.4;}
+.warn-box{background:rgba(196,92,26,.06);border:1px solid rgba(196,92,26,.25);border-left:3px solid var(--ember);padding:20px 24px;margin:24px 0;width:100%;}
+.warn-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--ember);margin-bottom:10px;}
+.warn-box p{font-size:15px;color:var(--ash);font-style:italic;line-height:1.7;}
+.alignment-grid{width:100%;margin:24px 0;}
+.alignment-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.align-name{font-family:'Cinzel',serif;font-size:11px;color:var(--parchment);min-width:120px;}
+.align-track{flex:1;height:6px;background:rgba(255,255,255,.04);border-radius:3px;overflow:hidden;}
+.align-fill{height:100%;border-radius:3px;transition:width 1.8s ease;}
+.align-pct{font-size:12px;color:var(--ash);min-width:40px;text-align:right;}
+.share-section{text-align:center;margin-top:32px;width:100%;}
+.share-section p{font-style:italic;color:var(--ash);font-size:14px;margin-bottom:20px;}
+.ornament{text-align:center;color:var(--gold-dim);letter-spacing:.5em;font-size:12px;margin:32px 0;opacity:.6;}
+.footer-note{font-size:12px;color:var(--ash);text-align:center;font-style:italic;opacity:.5;margin-top:60px;padding-bottom:120px;}
+@media(max-width:600px){.screen{padding:40px 20px;}.meters-grid{grid-template-columns:1fr;}.lore-box{padding:20px;}.tarot-card{width:66px;}}
+</style>
+</head>
+<body>
+<canvas id="fog-canvas"></canvas>
+<div class="candle-container" id="candles"></div>
+<div id="app">
+ 
+<!-- ══ INTRO ══ -->
+<div class="screen active" id="intro-screen">
+  <canvas id="particle-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;">
+    <div class="sigil" style="margin-top:20px;">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="55" fill="none" stroke="#7a5a1e" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#c9973a" stroke-width="0.3" stroke-dasharray="4 3"/>
+        <circle cx="60" cy="60" r="35" fill="none" stroke="#7a5a1e" stroke-width="0.5"/>
+        <polygon points="60,10 105,87 15,87" fill="none" stroke="#c9973a" stroke-width="0.6" opacity="0.6"/>
+        <polygon points="60,110 15,33 105,33" fill="none" stroke="#7a5a1e" stroke-width="0.4" opacity="0.4"/>
+        <circle cx="60" cy="60" r="5" fill="#c9973a" opacity="0.6"/>
+        <circle cx="60" cy="60" r="2" fill="#e8c97a"/>
+        <circle cx="60" cy="5" r="1.5" fill="#7a5a1e"/>
+        <circle cx="60" cy="115" r="1.5" fill="#7a5a1e"/>
+        <circle cx="5" cy="60" r="1.5" fill="#7a5a1e"/>
+        <circle cx="115" cy="60" r="1.5" fill="#7a5a1e"/>
+      </svg>
+    </div>
+    <p class="title-eyebrow">Beyondgod Street · Occult Evaluation Bureau</p>
+    <h1>Sequence Alignment Engine</h1>
+    <h2>Which Pathway Would Accept You?</h2>
+    <div class="tarot-row" id="tarot-preview"></div>
+    <div class="lore-box">
+      "To ascend is to risk. Every Sequence is a cage — and the door only opens inward.<br>
+      The true question is not what power you desire, but what darkness you can contain."
+    </div>
+    <div class="divider">✦ ✦ ✦</div>
+    <p style="text-align:center;color:var(--ash);font-style:italic;font-size:16px;max-width:480px;">A psychologically weighted Pathway alignment engine. 20 questions drawn from a pool of 40, scored across 8 Pathways.</p>
+    <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;">
+      <button class="btn-primary" onclick="showScreen('warning-screen')">BEGIN EVALUATION</button>
+      <p style="font-size:13px;color:var(--ash);font-style:italic;margin-top:12px;">20 questions · randomized from 40 · results are irreversible</p>
+    </div>
+    <div class="ornament">· · · ✦ · · ·</div>
+    <p style="font-size:13px;color:var(--ash);text-align:center;max-width:400px;margin-bottom:80px;">Inspired by <em>Lord of the Mysteries</em> by Cuttlefish That Loves Diving. Fan-made project.</p>
+  </div>
+</div>
+ 
+<!-- ══ WARNING ══ -->
+<div class="screen" id="warning-screen">
+  <div style="text-align:center;margin-bottom:28px;">
+    <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="32,6 58,54 6,54" fill="none" stroke="#c45c1a" stroke-width="1.5" stroke-linejoin="round"/>
+      <line x1="32" y1="24" x2="32" y2="38" stroke="#c45c1a" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="32" cy="46" r="2.5" fill="#c45c1a"/>
+    </svg>
+  </div>
+  <p class="title-eyebrow">Mandatory Pre-Evaluation Disclosure</p>
+  <h1 style="font-size:clamp(18px,4vw,32px);">Read Before You Proceed</h1>
+  <p style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.2em;color:var(--gold-dim);text-align:center;margin-top:8px;margin-bottom:4px;">Waiver of Occult Liability · Year 1350, Backlund</p>
+  <div class="warning-screen-box">
+    <p class="w-title">⚠ Official Bureau Notice</p>
+    <div class="warning-item"><span class="w-icon">☠</span><p><strong>This is a fictional psychological exercise.</strong> The Beyondgod Street Occult Evaluation Bureau does not exist. Klein Moretti is not available for consultation. Any resemblance to actual Pathway rituals is purely coincidental and deeply suspicious.</p></div>
+    <div class="warning-item"><span class="w-icon">🕯</span><p><strong>The author bears zero responsibility for your survival in Backlund.</strong> If you are subsequently hunted by a Sequence 4 Beyonder, contaminated by a characteristic, or accidentally summoned by the Fool — this evaluation form is legally inadmissible in all known jurisdictions including the Feysac Empire.</p></div>
+    <div class="warning-item"><span class="w-icon">📖</span><p><strong>This is a fan-made project</strong> based on <em>Lord of the Mysteries</em> by Cuttlefish That Loves Diving. All Pathway lore and Sequence names belong to the original author. No canonical accuracy is guaranteed. Do not use this to inform actual ritual decisions.</p></div>
+    <div class="warning-item"><span class="w-icon">🧠</span><p><strong>Psychological questions may be uncomfortably accurate.</strong> The Bureau does not apologize for this. Self-knowledge is the first prerequisite for Pathway ascension — and the last line of defense against contamination.</p></div>
+    <div class="warning-item"><span class="w-icon">🌀</span><p><strong>Corruption risk scores are fictional.</strong> If your result shows 90% corruption risk, you are not contaminated. You answered like someone who absolutely would be. Please reflect on this.</p></div>
+    <div class="warning-item"><span class="w-icon">⚖</span><p><strong>Eight Pathways are evaluated.</strong> Not all ends are good. The Seer Pathway, in particular, was warned about repeatedly across three volumes. The Bureau accepts no liability for distressing results.</p></div>
+    <div class="ack-row">
+      <input type="checkbox" id="ack-check" onchange="document.getElementById('proceed-btn').disabled=!this.checked">
+      <label for="ack-check">I understand this is a fictional psychological exercise. I accept full responsibility for my results. I acknowledge the Tarot Club has not been notified of this evaluation and I will not blame the Bureau if I end up as a Beyonder ingredient.</label>
+    </div>
+  </div>
+  <button class="btn-primary" id="proceed-btn" onclick="startQuiz()" disabled>I ACCEPT THE TERMS · PROCEED</button>
+  <button class="btn-secondary" onclick="showScreen('intro-screen')">← Return to Safety</button>
+</div>
+ 
+<!-- ══ QUIZ ══ -->
+<div class="screen" id="quiz-screen">
+  <div class="progress-bar-container">
+    <div class="progress-meta"><span id="section-label">Section I</span><span id="q-counter">1 / 20</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:5%"></div></div>
+  </div>
+  <div id="weight-indicator" class="weight-badge"></div>
+  <p class="section-label" id="q-section-label"></p>
+  <h2 class="question-text" id="q-text"></h2>
+  <p class="question-subtext" id="q-subtext"></p>
+  <div class="options-grid" id="options-container"></div>
+  <div class="question-nav">
+    <button class="btn-secondary" id="prev-btn" onclick="prevQuestion()" style="opacity:0;pointer-events:none;">← Previous</button>
+    <button class="btn-primary" id="next-btn" onclick="nextQuestion()" style="opacity:0.3;pointer-events:none;">Next →</button>
+  </div>
+  <p class="nav-hint">Select an answer to continue</p>
+</div>
+ 
+<!-- ══ LOADING ══ -->
+<div class="screen" id="loading-screen">
+  <div class="ritual-circle">
+    <div class="ritual-ring r1"></div><div class="ritual-ring r2"></div><div class="ritual-ring r3"></div>
+    <div class="ritual-center"></div>
+  </div>
+  <p class="loading-text" id="loading-msg">Consulting the Fool's Pathway Matrix...</p>
+</div>
+ 
+<!-- ══ RESULT ══ -->
+<div class="screen" id="result-screen">
+  <p class="title-eyebrow">Evaluation Complete · Pathway Determined</p>
+  <div class="pathway-banner" id="pathway-banner">
+    <div class="result-tarot" id="result-tarot-card"></div>
+    <p class="result-eyebrow">Pathway Most Likely to Accept You</p>
+    <h1 class="result-pathway-name" id="result-name">Reader</h1>
+    <p class="result-sequence" id="result-seq">Sequence 9 Candidate</p>
+    <div style="height:1px;background:currentColor;opacity:.2;width:60%;margin:0 auto;"></div>
+  </div>
+  <div class="lore-box" id="result-description"></div>
+  <div class="divider">✦ Core Psychological Profile ✦</div>
+  <div class="traits-section"><h3>Primary Strengths</h3><div id="strengths-list"></div></div>
+  <div class="traits-section"><h3>Corruption Vulnerabilities</h3><div id="risks-list"></div></div>
+  <div class="meters-grid">
+    <div class="meter-card"><div class="meter-label">Stability Index<span class="meter-value" id="stab-val">—</span></div><div class="meter-track"><div class="meter-bar mb-stab" id="stab-bar" style="width:0"></div></div><p class="meter-sublabel">Resistance to contamination drift</p></div>
+    <div class="meter-card"><div class="meter-label">Corruption Risk<span class="meter-value" id="corr-val">—</span></div><div class="meter-track"><div class="meter-bar mb-corr" id="corr-bar" style="width:0"></div></div><p class="meter-sublabel">Likelihood of pathway deviation</p></div>
+    <div class="meter-card"><div class="meter-label">Survival Rating<span class="meter-value" id="surv-val">—</span></div><div class="meter-track"><div class="meter-bar mb-surv" id="surv-bar" style="width:0"></div></div><p class="meter-sublabel">In Backlund, Year 1350</p></div>
+    <div class="meter-card"><div class="meter-label">Advancement Prob.<span class="meter-value" id="adv-val">—</span></div><div class="meter-track"><div class="meter-bar mb-adv" id="adv-bar" style="width:0"></div></div><p class="meter-sublabel">Likelihood of ascending to Seq. 8</p></div>
+  </div>
+  <div class="warn-box"><div class="warn-label">⚠ Behavioral Warning</div><p id="warning-text"></p></div>
+  <div class="divider">✦ Full Pathway Alignment Breakdown ✦</div>
+  <div class="alignment-grid">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--ash);text-transform:uppercase;margin-bottom:16px;text-align:center;">All 8 Pathway Compatibility Scores</p>
+    <div id="alignment-bars"></div>
+  </div>
+  <div class="share-section">
+    <p>Your evaluation is complete. The Bureau has recorded your alignment.</p>
+    <button class="btn-primary" onclick="retakeQuiz()">RETAKE EVALUATION</button><br>
+    <button class="btn-secondary" onclick="copyResult()">Copy Result to Clipboard</button>
+  </div>
+  <div class="footer-note">This alignment is non-binding. The Pathways do not discriminate based on results — only outcomes.</div>
+</div>
+ 
+</div><!-- #app -->
+<script>
+// ══════════════════ PATHWAYS ══════════════════
+const PATHWAYS = {
+  fool:{name:"Fool",color:"#c9973a",sequence:"Sequence 9 · The Clown",tarot:"fool",
+    description:"The Fool Pathway selects the extraordinarily rare — those who hold chaos and order in equal tension, who can play any role without losing themselves. You are adaptable to a degree that frightens others, and your greatest strength is that no one can fully predict you — including yourself.",
+    strengths:[{icon:"◎",name:"Radical Adaptability",desc:"You shift personas without losing core identity"},{icon:"◎",name:"Chaos Tolerance",desc:"Unpredictability is your natural habitat"},{icon:"◎",name:"Meta-Awareness",desc:"You understand the game while playing it"}],
+    risks:[{icon:"◈",name:"Identity Diffusion",desc:"Too many roles erode the self underneath"},{icon:"◈",name:"Overconfidence",desc:"Adaptability breeds recklessness at higher Sequences"},{icon:"◈",name:"Divine Entanglement",desc:"The Fool watches back"}],
+    stability:68,corruption:42,survival:80,advancement:85,
+    warning:"Do not invoke the Fool's name carelessly. The connection between Clown and patron is bidirectional. Humor as a coping mechanism accelerates this Pathway's contamination rate."
+  },
+  reader:{name:"Reader",color:"#4a8ac9",sequence:"Sequence 9 · The Spectator",tarot:"reader",
+    description:"The Reader Pathway accepts minds of quiet perception — those who accumulate knowledge patiently, process it deeply, and act only when certainty is achieved. Your contamination risk lies not in impulsivity, but in the slow gravity of forbidden texts.",
+    strengths:[{icon:"◎",name:"Controlled Curiosity",desc:"You pursue knowledge without being consumed"},{icon:"◎",name:"Strategic Patience",desc:"You resist premature action — and are usually right to"},{icon:"◎",name:"Analytical Clarity",desc:"You identify patterns others miss entirely"}],
+    risks:[{icon:"◈",name:"Analysis Paralysis",desc:"Over-thinking costs you windows of opportunity"},{icon:"◈",name:"Forbidden Knowledge Drift",desc:"Slow accumulation without purging"},{icon:"◈",name:"Underestimating Contamination",desc:"You assume your mind is a fortress — it is not"}],
+    stability:82,corruption:28,survival:81,advancement:62,
+    warning:"If subtle cognitive anomalies persist after cessation of Sequence usage — intrusive symbolic interpretations, compulsive pattern-seeking — withdraw from all occult contact for no fewer than 6 months."
+  },
+  seer:{name:"Seer",color:"#d4a030",sequence:"Sequence 9 · The Seer",tarot:"seer",
+    description:"The Seer Pathway selects those who lean into fate rather than away from it. You trust instinct as much as evidence, and you are willing to touch uncertain truths. Your gift is foresight — your curse is that foresight invites interference from forces larger than yourself.",
+    strengths:[{icon:"◎",name:"Fate Interaction Tolerance",desc:"You navigate probability without losing footing"},{icon:"◎",name:"Intuitive Foresight",desc:"You read outcomes before they manifest"},{icon:"◎",name:"High Risk Threshold",desc:"You act when others freeze — often correctly"}],
+    risks:[{icon:"◈",name:"Stability Erosion",desc:"Frequent fate-touching degrades baseline reality"},{icon:"◈",name:"Vision Overconfidence",desc:"Not every premonition is accurate"},{icon:"◈",name:"Fate Entanglement",desc:"The more you see, the more the unseen sees you"}],
+    stability:58,corruption:52,survival:74,advancement:78,
+    warning:"Avoid seeking confirmation of premonitions through consecutive divination. Feedback loops between Seer abilities and personal stakes accelerate contamination by a factor of 3–4x. The Hanged Man pathway died this way."
+  },
+  spectator:{name:"Spectator",color:"#9a6ac9",sequence:"Sequence 9 · The Spectator",tarot:"spectator",
+    description:"The Spectator Pathway attracts those who understand people as systems — who observe social dynamics the way an engineer reads a schematic. You prefer influence over force, invisibility over presence. You are most dangerous when least visible.",
+    strengths:[{icon:"◎",name:"Emotional Regulation",desc:"You do not react; you respond with surgical precision"},{icon:"◎",name:"Social System Analysis",desc:"You read rooms, alliances, and hidden motivations"},{icon:"◎",name:"Strategic Invisibility",desc:"You understand the power of being underestimated"}],
+    risks:[{icon:"◈",name:"Detachment Creep",desc:"Extended observation erodes genuine connection"},{icon:"◈",name:"Manipulation Normalization",desc:"The tools become instincts without notice"},{icon:"◈",name:"Isolation Feedback Loop",desc:"The unseen observer eventually loses their own reflection"}],
+    stability:70,corruption:44,survival:77,advancement:70,
+    warning:"Maintain at least one genuine relationship outside your strategic framework. If you cannot identify one, this indicates mid-stage contamination. Seek evaluation immediately."
+  },
+  sheriff:{name:"Sheriff",color:"#6a9a4a",sequence:"Sequence 9 · The Sheriff",tarot:"sheriff",
+    description:"The Sheriff Pathway accepts those with deep structural cognition — minds that seek order not as comfort, but as architecture. You believe systems can be corrected, hierarchies can be just, and that authority wielded with discipline is a form of protection.",
+    strengths:[{icon:"◎",name:"Structural Thinking",desc:"You see the bones of institutions and how to fix them"},{icon:"◎",name:"Direct Action Bias",desc:"You do not wait when the correct move is clear"},{icon:"◎",name:"Responsibility Tolerance",desc:"You carry burden without distributing it recklessly"}],
+    risks:[{icon:"◈",name:"Moral Rigidity",desc:"Rules become absolutes; exceptions become threats"},{icon:"◈",name:"Authority Drift",desc:"Protection of order becomes enforcement for its own sake"},{icon:"◈",name:"Isolation from Humanity",desc:"Judges are always above the judged — distance accumulates"}],
+    stability:88,corruption:22,survival:85,advancement:56,
+    warning:"If you find yourself justifying collateral harm through systemic necessity more than twice in a single month, submit to peer review. This is a recognized precursor to Sequence contamination in Order-aligned Pathways."
+  },
+  mystery:{name:"Mystery Pryer",color:"#c94a4a",sequence:"Sequence 9 · The Secrets Suppliant",tarot:"mystery",
+    description:"The Mystery Pryer Pathway selects those who cannot leave a question unanswered — not out of curiosity, but compulsion. You suspect that everything has a hidden layer, and you are usually right. The Pathway feeds on this instinct. So does everything that hunts it.",
+    strengths:[{icon:"◎",name:"Extreme Curiosity Drive",desc:"You will find the answer; the only variable is cost"},{icon:"◎",name:"Anomaly Detection",desc:"You notice what should not exist and cannot ignore it"},{icon:"◎",name:"High Moral Flexibility",desc:"Survival and truth outrank ideological comfort"}],
+    risks:[{icon:"◈",name:"Compulsive Inquiry",desc:"You cannot leave a mystery alone even when you should"},{icon:"◈",name:"Extreme Contamination Velocity",desc:"This pathway decays fastest; the ceiling is high, the floor is lethal"},{icon:"◈",name:"Truth as Justification",desc:"'Needing to know' rationalizes dangerous escalation"}],
+    stability:40,corruption:72,survival:63,advancement:88,
+    warning:"Do not investigate phenomena you have not been contracted to investigate. Curiosity without mandate is the primary cause of Sequence collapse in Mystery Pryers below Sequence 6."
+  },
+  hunter:{name:"Hunter",color:"#8a6a3a",sequence:"Sequence 9 · The Provoker",tarot:"hunter",
+    description:"The Hunter Pathway selects those who are most alive in the pursuit — minds that read terrain, predict behavior, and commit fully once the target is acquired. You do not lose people. You do not lose trails. What you sometimes lose is the line between hunter and prey.",
+    strengths:[{icon:"◎",name:"Predatory Focus",desc:"Single-target concentration is absolute"},{icon:"◎",name:"Environmental Awareness",desc:"You read spaces and people as terrain"},{icon:"◎",name:"Commitment Under Pressure",desc:"Fear sharpens rather than paralyzes you"}],
+    risks:[{icon:"◈",name:"Obsessive Lock-On",desc:"The hunt becomes the meaning, not the outcome"},{icon:"◈",name:"Instinct Contamination",desc:"Animal Sequences accelerate behavioral drift"},{icon:"◈",name:"Isolation by Design",desc:"The lone hunter eventually becomes the prey"}],
+    stability:62,corruption:58,survival:78,advancement:72,
+    warning:"Do not pursue the same target for more than 72 consecutive hours without mandatory withdrawal. Tunnel vision is the first sign of instinct contamination in Hunters below Sequence 5."
+  },
+  marauder:{name:"Marauder",color:"#aa3a3a",sequence:"Sequence 9 · The Bystander",tarot:"marauder",
+    description:"The Marauder Pathway selects those with profound spatial intelligence and territorial instinct — those who understand space as power and who convert environment into advantage. You do not just occupy rooms. You own them the moment you enter.",
+    strengths:[{icon:"◎",name:"Spatial Dominance",desc:"You convert environment into tactical advantage"},{icon:"◎",name:"Territorial Instinct",desc:"You know when a space is yours and when it is not"},{icon:"◎",name:"Raw Power Tolerance",desc:"You do not flinch at force — yours or others'"}],
+    risks:[{icon:"◈",name:"Escalation Reflex",desc:"Every conflict tends toward maximum force"},{icon:"◈",name:"Subtlety Blindness",desc:"Influence without power reads as weakness to you"},{icon:"◈",name:"Pride Contamination",desc:"Dominance as identity is a Sequence trap with no floor"}],
+    stability:55,corruption:64,survival:82,advancement:68,
+    warning:"Avoid confrontation with higher-Sequence beings when territorial instinct is activated. The Marauder Pathway's contamination accelerates dramatically when pride overrides threat assessment."
+  }
+};
+ 
+// ══════════════════ TAROT SVG ══════════════════
+function makeTarot(key, w, h) {
+  const C = {
+    fool:    {bg:"#1a140a",ac:"#c9973a",em:"🃏",lb:"THE FOOL",     ro:"0"},
+    reader:  {bg:"#0a1520",ac:"#4a8ac9",em:"📖",lb:"THE READER",   ro:"I"},
+    seer:    {bg:"#1a0f05",ac:"#d4a030",em:"🔮",lb:"THE SEER",     ro:"II"},
+    spectator:{bg:"#140a1a",ac:"#9a6ac9",em:"🎭",lb:"SPECTATOR",   ro:"III"},
+    sheriff: {bg:"#0a150a",ac:"#6a9a4a",em:"⚖️",lb:"THE SHERIFF",  ro:"IV"},
+    mystery: {bg:"#1a0a0a",ac:"#c94a4a",em:"🌀",lb:"MYSTERY PRYER",ro:"V"},
+    hunter:  {bg:"#120e05",ac:"#8a6a3a",em:"🏹",lb:"THE HUNTER",   ro:"VI"},
+    marauder:{bg:"#150808",ac:"#aa3a3a",em:"⚔️",lb:"MARAUDER",     ro:"VII"},
+  }[key]||{bg:"#111",ac:"#c9973a",em:"✦",lb:"UNKNOWN",ro:"?"};
+  const fs = w > 110 ? 32 : 20;
+  return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="tg${key}${w}" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="${C.ac}" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="${C.bg}" stop-opacity="1"/>
+    </radialGradient></defs>
+    <rect width="${w}" height="${h}" rx="5" fill="url(#tg${key}${w})"/>
+    <rect x="3" y="3" width="${w-6}" height="${h-6}" rx="4" fill="none" stroke="${C.ac}" stroke-width="0.7" opacity="0.7"/>
+    <rect x="7" y="7" width="${w-14}" height="${h-14}" rx="2" fill="none" stroke="${C.ac}" stroke-width="0.3" opacity="0.3"/>
+    <text x="9" y="16" font-size="6.5" fill="${C.ac}" opacity="0.85" font-family="serif">${C.ro}</text>
+    <text x="${w-9}" y="16" font-size="6.5" fill="${C.ac}" opacity="0.85" font-family="serif" text-anchor="end">${C.ro}</text>
+    <text x="${w/2}" y="${h/2+fs*.38}" font-size="${fs}" text-anchor="middle">${C.em}</text>
+    <circle cx="${w/2}" cy="${h/2}" r="${w*.27}" fill="none" stroke="${C.ac}" stroke-width="0.4" opacity="0.35" stroke-dasharray="3 2"/>
+    <line x1="${w*.18}" y1="20" x2="${w*.82}" y2="20" stroke="${C.ac}" stroke-width="0.5" opacity="0.5"/>
+    <line x1="${w*.18}" y1="${h-20}" x2="${w*.82}" y2="${h-20}" stroke="${C.ac}" stroke-width="0.5" opacity="0.5"/>
+    <circle cx="${w/2}" cy="24" r="1.2" fill="${C.ac}" opacity="0.7"/>
+    <circle cx="${w/2}" cy="${h-24}" r="1.2" fill="${C.ac}" opacity="0.7"/>
+    <text x="${w/2}" y="${h-12}" font-size="4" text-anchor="middle" fill="${C.ac}" opacity="0.9" font-family="serif" letter-spacing="0.4">${C.lb}</text>
+  </svg>`;
+}
+ 
+// ══════════════════ QUESTION BANK (40 questions) ══════════════════
+// weight 1=minor, 2=moderate, 3=major
+// each question contributes weight × raw_score to each pathway
+// Per question: 4 options, scores sum naturally — normalized at result
+const QBank = [
+  // RISK APPETITE (10)
+  {w:3,s:"Risk Appetite",q:"You discover a sealed document labelled: 'Do not read. Irreversible consequences.'",sub:"What is your first impulse?",opts:[
+    {t:"Read it immediately.",s:{mystery:3,seer:2,fool:1}},
+    {t:"Study the seal and context first.",sub:"The document tells you something before you open it.",s:{reader:3,spectator:2,sheriff:1}},
+    {t:"Secure it before anyone else can access it.",sub:"Control the variable.",s:{sheriff:3,marauder:2,spectator:1}},
+    {t:"Leave it. Irreversible is irreversible.",s:{sheriff:2,reader:2,hunter:2}},
+  ]},
+  {w:2,s:"Risk Appetite",q:"An opportunity appears — window is 48 hours, information is incomplete.",sub:"How long do you actually wait before deciding?",opts:[
+    {t:"Act within hours. Delay is its own decision.",s:{seer:3,marauder:2,fool:1}},
+    {t:"Spend 40 of the 48 hours gathering data, then decide.",s:{reader:3,spectator:2,mystery:1}},
+    {t:"Make a probabilistic decision at hour 24.",s:{seer:2,reader:2,hunter:2}},
+    {t:"Enter at hour 47 with a full contingency plan.",s:{spectator:3,sheriff:2,reader:1}},
+  ]},
+  {w:3,s:"Risk Appetite",q:"Strange symbols appear in your peripheral vision — not hallucinations, but patterns in ordinary objects.",sub:"What do you do?",opts:[
+    {t:"Document them obsessively. Patterns have meaning.",s:{mystery:3,reader:2,seer:1}},
+    {t:"Investigate cautiously — gather 3 instances before theorizing.",s:{reader:3,seer:1,sheriff:1,spectator:1}},
+    {t:"Stop. Cease all occult activity immediately.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Wait and observe. Do nothing that would influence the pattern.",s:{spectator:3,reader:2,fool:1}},
+  ]},
+  {w:1,s:"Risk Appetite",q:"You are offered Beyonder characteristics from an unverified source at a surprisingly low price.",sub:"Your response?",opts:[
+    {t:"Take them immediately. Power is power.",s:{mystery:3,marauder:2,fool:1}},
+    {t:"Research the source exhaustively before deciding.",s:{reader:3,sheriff:2,seer:1}},
+    {t:"Negotiate for verification — accept only with witnesses.",s:{sheriff:3,spectator:2,reader:1}},
+    {t:"Decline. Unverified characteristics are contamination vectors.",s:{sheriff:3,reader:2,hunter:1}},
+  ]},
+  {w:2,s:"Risk Appetite",q:"You have the opportunity to perform a ritual. Success is estimated at 70%. Failure is fatal.",sub:"Do you proceed?",opts:[
+    {t:"Yes. 70% is a good number.",s:{seer:3,fool:2,marauder:1}},
+    {t:"Only if I can improve the odds first.",s:{reader:3,mystery:2,spectator:1}},
+    {t:"No. 30% fatality is unacceptable for one ritual.",s:{sheriff:3,reader:2,spectator:1}},
+    {t:"Depends entirely on what success achieves.",s:{mystery:2,seer:2,spectator:2}},
+  ]},
+  {w:1,s:"Risk Appetite",q:"You witness a Beyonder phenomenon you've never encountered. It's not threatening you — yet.",sub:"First action?",opts:[
+    {t:"Get closer. Observation requires proximity.",s:{mystery:3,seer:2,fool:1}},
+    {t:"Observe from a safe distance and document everything.",s:{reader:3,spectator:2,mystery:1}},
+    {t:"Maintain distance and prepare a defensive response.",s:{sheriff:3,hunter:2,reader:1}},
+    {t:"Leave. Uninvited encounters with the unknown are traps.",s:{hunter:3,sheriff:2,marauder:1}},
+  ]},
+  {w:2,s:"Risk Appetite",q:"A colleague proposes a shortcut to Sequence ascension — risky, but significantly faster.",sub:"Your honest reaction?",opts:[
+    {t:"Interested. Speed matters in this world.",s:{seer:3,mystery:2,fool:1}},
+    {t:"I want to see the full methodology before forming an opinion.",s:{reader:3,spectator:2,sheriff:1}},
+    {t:"No. Rushed ascension is the number one cause of contamination.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"I'd take the shortcut if the risk could be partially hedged.",s:{spectator:2,fool:2,seer:2}},
+  ]},
+  {w:3,s:"Risk Appetite",q:"You discover that someone you trust has been lying to you about something significant — but the lie protected you.",sub:"How do you respond?",opts:[
+    {t:"Anger. I needed the truth regardless of the cost.",s:{sheriff:3,mystery:2,seer:1}},
+    {t:"Understand the reasoning before deciding how to feel.",s:{reader:3,spectator:2,fool:1}},
+    {t:"Respect the decision but establish new boundaries going forward.",s:{spectator:3,reader:2,sheriff:1}},
+    {t:"It doesn't matter. Outcomes are what count.",s:{mystery:2,marauder:2,hunter:2}},
+  ]},
+  {w:1,s:"Risk Appetite",q:"Facing certain defeat, a mysterious entity offers you a deal — power now, terms unclear.",sub:"Your answer?",opts:[
+    {t:"Accept. Survival is a prerequisite for everything else.",s:{mystery:3,fool:2,marauder:1}},
+    {t:"Request to see the full terms before agreeing to anything.",s:{reader:3,sheriff:2,spectator:1}},
+    {t:"Refuse. Unclear terms from mysterious entities are never neutral.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Stall for time while looking for a third option.",s:{spectator:3,fool:2,mystery:1}},
+  ]},
+  {w:2,s:"Risk Appetite",q:"You can reveal your Beyonder status to stop an injustice — but this exposes you to significant danger.",sub:"What do you do?",opts:[
+    {t:"Intervene. The risk to myself is irrelevant.",s:{sheriff:3,seer:2,fool:1}},
+    {t:"Intervene anonymously if possible.",s:{spectator:3,mystery:2,fool:1}},
+    {t:"Do not intervene. Self-preservation is not cowardice.",s:{reader:2,hunter:2,marauder:2}},
+    {t:"Intervene, then carefully manage the exposure afterwards.",s:{sheriff:2,reader:2,spectator:2}},
+  ]},
+  // CONTROL VS INFLUENCE (8)
+  {w:2,s:"Control vs. Influence",q:"You have two tools: one controls a system directly, one subtly shifts how others within it behave.",sub:"Which do you reach for first?",opts:[
+    {t:"The direct control. Clean, certain, mine.",s:{sheriff:3,marauder:2,hunter:1}},
+    {t:"The influence tool. Subtlety is the sharper instrument.",s:{spectator:3,fool:2,reader:1}},
+    {t:"Both sequentially — control first, then influence to sustain.",s:{reader:3,sheriff:2,spectator:1}},
+    {t:"Neither. Map the system fully before touching it.",s:{mystery:2,reader:2,spectator:2}},
+  ]},
+  {w:2,s:"Control vs. Influence",q:"Are you comfortable being the person whose name is never mentioned — even when you are responsible for the outcome?",sub:"Invisibility as a permanent operating condition.",opts:[
+    {t:"Yes. Visibility is a liability.",s:{spectator:3,mystery:2,fool:1}},
+    {t:"Mostly — but some record must exist somewhere.",s:{reader:2,spectator:2,sheriff:2}},
+    {t:"No. Accountability requires identity.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"Indifferent. I care about the outcome, not the attribution.",s:{seer:2,hunter:2,marauder:2}},
+  ]},
+  {w:1,s:"Control vs. Influence",q:"You have information that would change how someone makes a major decision — but they didn't ask you.",sub:"What do you do?",opts:[
+    {t:"Share it. They deserve accurate information.",s:{sheriff:3,seer:2,reader:1}},
+    {t:"Consider whether giving it serves their interest or mine.",s:{spectator:3,mystery:2,fool:1}},
+    {t:"Plant it where they'll discover it themselves.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"Archive it. Give it only if directly asked.",s:{reader:3,sheriff:2,spectator:1}},
+  ]},
+  {w:3,s:"Control vs. Influence",q:"In a dangerous situation: you can control the outcome through force, or manipulate events so the threat neutralizes itself.",sub:"Which do you prefer?",opts:[
+    {t:"Force. Reliable. Clean.",s:{marauder:3,sheriff:2,hunter:1}},
+    {t:"Manipulation. The threat doesn't even know it lost.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"Depends on the threat — I choose by efficiency.",s:{reader:2,hunter:2,seer:2}},
+    {t:"Withdraw. Neither force nor manipulation if avoidance is viable.",s:{reader:3,spectator:2,sheriff:1}},
+  ]},
+  {w:2,s:"Control vs. Influence",q:"A group is making a decision you know is wrong. You are not the leader.",sub:"What do you do?",opts:[
+    {t:"State my position clearly once, then let them decide.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"Gradually reframe the discussion until they reach the right conclusion themselves.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"Override the process if the stakes are high enough.",s:{marauder:3,sheriff:1,seer:2}},
+    {t:"Do nothing. Groups learn from consequences.",s:{mystery:2,hunter:2,reader:2}},
+  ]},
+  {w:1,s:"Control vs. Influence",q:"You are most comfortable when:",opts:[
+    {t:"I have direct authority over outcomes.",s:{sheriff:3,marauder:2,hunter:1}},
+    {t:"I have invisible influence over outcomes.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"I have complete information about outcomes.",s:{reader:3,mystery:2,seer:1}},
+    {t:"I can predict outcomes before they occur.",s:{seer:3,reader:2,spectator:1}},
+  ]},
+  {w:2,s:"Control vs. Influence",q:"An ally has committed a serious moral transgression in pursuit of a goal you share.",sub:"Your response?",opts:[
+    {t:"Condemn and cut ties. The goal does not justify this.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"Condemn privately. Publicly maintain the alliance.",s:{spectator:3,mystery:2,fool:1}},
+    {t:"Accept it. In this world, clean hands are a luxury.",s:{marauder:3,mystery:2,hunter:1}},
+    {t:"Evaluate whether the goal still justifies the continued relationship.",s:{reader:3,spectator:2,sheriff:1}},
+  ]},
+  {w:3,s:"Control vs. Influence",q:"You discover you are being watched and evaluated by an unknown party.",sub:"Your response?",opts:[
+    {t:"Perform. Let them see exactly what I want them to see.",s:{spectator:3,fool:3}},
+    {t:"Identify who it is before responding to the surveillance.",s:{reader:2,mystery:2,hunter:2}},
+    {t:"Continue as normal. I have nothing to curate.",s:{sheriff:3,hunter:2,reader:1}},
+    {t:"Use it. Being observed means there's leverage.",s:{mystery:2,spectator:2,fool:2}},
+  ]},
+  // CURIOSITY VS STABILITY (8)
+  {w:3,s:"Curiosity vs. Stability",q:"Would you rather know a dangerous truth — or remain in comfortable, functional uncertainty?",sub:"The truth will cost you something. The uncertainty costs you nothing — yet.",opts:[
+    {t:"The truth, always. Comfortable ignorance is a slow poison.",s:{mystery:3,seer:2,fool:1}},
+    {t:"The truth — but I want to control when and how I receive it.",s:{reader:3,spectator:2,mystery:1}},
+    {t:"Uncertainty, if the truth serves no actionable purpose.",s:{sheriff:2,reader:2,hunter:2}},
+    {t:"I'd construct a model that approaches truth asymptotically.",s:{spectator:2,reader:2,mystery:2}},
+  ]},
+  {w:2,s:"Curiosity vs. Stability",q:"You encounter an anomalous event. Investigation reveals another anomaly. Then another.",sub:"At what point do you stop?",opts:[
+    {t:"I don't stop. The pattern is the point.",s:{mystery:3,seer:2,fool:1}},
+    {t:"When the anomalies begin interfering with my baseline function.",s:{reader:3,spectator:2,sheriff:1}},
+    {t:"After the third. Three is a pattern. A pattern is a threat.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"When I can no longer distinguish coincidence from significance.",s:{spectator:3,reader:2,seer:1}},
+  ]},
+  {w:1,s:"Curiosity vs. Stability",q:"How long can you tolerate an unanswered question before it affects your behavior?",sub:"Be honest.",opts:[
+    {t:"Cannot tolerate it at all — unanswered questions are a kind of pain.",s:{mystery:3,seer:2,fool:1}},
+    {t:"Indefinitely — if I've exhausted available information.",s:{reader:3,spectator:2,sheriff:1}},
+    {t:"Weeks to months. Eventually the itch wins.",s:{seer:2,mystery:2,hunter:2}},
+    {t:"Depends entirely on the stakes involved.",s:{spectator:2,sheriff:2,marauder:2}},
+  ]},
+  {w:2,s:"Curiosity vs. Stability",q:"You find a book rumored to drive readers mad by Sequence 5.",sub:"What is your honest response?",opts:[
+    {t:"Read it immediately. I'll manage the consequences.",s:{mystery:3,fool:2,seer:1}},
+    {t:"Research the book thoroughly before touching it.",s:{reader:3,mystery:2,sheriff:1}},
+    {t:"Secure it. No one should read this.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Test small fragments. Controlled exposure.",s:{spectator:2,reader:2,mystery:2}},
+  ]},
+  {w:3,s:"Curiosity vs. Stability",q:"You have discovered a truth about the nature of the Pathways that directly contradicts what you believed.",sub:"How do you integrate this?",opts:[
+    {t:"Rebuild my entire model. If this is wrong, what else is?",s:{mystery:3,reader:2,seer:1}},
+    {t:"Update cautiously — verify against multiple sources.",s:{reader:3,sheriff:2,spectator:1}},
+    {t:"Hold both models simultaneously until one can be falsified.",s:{spectator:3,reader:2,mystery:1}},
+    {t:"Act on the new truth immediately. Hesitation is contamination.",s:{seer:3,fool:2,marauder:1}},
+  ]},
+  {w:1,s:"Curiosity vs. Stability",q:"You are given the option to forget a traumatic but informative experience.",sub:"Do you take it?",opts:[
+    {t:"Never. Every experience is data.",s:{mystery:3,reader:2,seer:1}},
+    {t:"Only if the trauma is interfering with function.",s:{reader:2,sheriff:2,spectator:2}},
+    {t:"Yes. Psychological stability is a strategic asset.",s:{spectator:3,fool:2,sheriff:1}},
+    {t:"The question itself is a trap. I'd investigate who's offering.",s:{mystery:3,reader:2,spectator:1}},
+  ]},
+  {w:2,s:"Curiosity vs. Stability",q:"A respected mentor tells you: 'Stop asking questions you're not ready for the answers to.'",sub:"Your response?",opts:[
+    {t:"Ask the question immediately.",s:{mystery:3,seer:2,fool:1}},
+    {t:"Determine what 'ready' means and meet that threshold first.",s:{reader:3,sheriff:2,spectator:1}},
+    {t:"Respect the warning. They know more than I do.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Ask a different question that approaches the same answer obliquely.",s:{spectator:3,mystery:2,fool:1}},
+  ]},
+  {w:3,s:"Curiosity vs. Stability",q:"You can gain significant power — but the ritual requires consuming the memories of another person.",sub:"Do you proceed?",opts:[
+    {t:"Yes. In this world, this is simply the cost.",s:{mystery:3,marauder:2,seer:1}},
+    {t:"No. Some costs are non-negotiable.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"Only if the person is already gone — memory without a mind.",s:{reader:2,spectator:2,fool:2}},
+    {t:"I'd find an alternative method that achieves the same outcome.",s:{reader:3,mystery:2,spectator:1}},
+  ]},
+  // MORAL ARCHITECTURE (8)
+  {w:3,s:"Moral Architecture",q:"Is survival more important than ideological consistency?",sub:"Under genuine existential pressure.",opts:[
+    {t:"Yes. Dead idealists affect nothing.",s:{mystery:3,spectator:2,fool:1}},
+    {t:"Conditionally. Some principles are non-negotiable.",s:{reader:2,sheriff:2,seer:2}},
+    {t:"No. Ideological compromise is the beginning of corruption.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Depends on whose survival — mine, or those I'm responsible for.",s:{sheriff:2,spectator:2,marauder:2}},
+  ]},
+  {w:2,s:"Moral Architecture",q:"You acquire dangerous knowledge that gives you significant personal advantage — using it harms no one directly.",sub:"Do you use it?",opts:[
+    {t:"Yes. Advantage is the point of acquiring knowledge.",s:{mystery:3,marauder:2,fool:1}},
+    {t:"Yes — after verifying there is truly no indirect harm.",s:{reader:3,seer:2,sheriff:1}},
+    {t:"No. 'Harms no one directly' is almost always wrong upon examination.",s:{sheriff:3,reader:2,spectator:1}},
+    {t:"I use it selectively — when leverage is worth the exposure.",s:{spectator:3,mystery:2,fool:1}},
+  ]},
+  {w:3,s:"Moral Architecture",q:"You can maintain your sanity or your social influence. Not both. Long term.",sub:"Which do you sacrifice?",opts:[
+    {t:"Influence. Sanity is the prerequisite for everything else.",s:{reader:3,sheriff:2,hunter:1}},
+    {t:"Some sanity — managed, not total. Influence can fund the stabilization.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"Neither. This is a false dilemma — I find a third path.",s:{mystery:2,seer:2,fool:2}},
+    {t:"Influence. Sanity is a social construct. Stability is what matters.",s:{mystery:3,marauder:2,seer:1}},
+  ]},
+  {w:2,s:"Moral Architecture",q:"A fellow Beyonder asks you to lie on their behalf. The lie is harmless but significant.",sub:"Do you do it?",opts:[
+    {t:"Yes. Loyalty is above bureaucratic honesty.",s:{fool:3,spectator:2,mystery:1}},
+    {t:"Yes — but I note the debt owed to me.",s:{spectator:3,mystery:2,marauder:1}},
+    {t:"No. I don't lie for others.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"It depends on who's asking and what it costs me.",s:{reader:2,spectator:2,fool:2}},
+  ]},
+  {w:1,s:"Moral Architecture",q:"Your personal code of ethics, if you're honest:",sub:"Not what you aspire to — what you actually operate on.",opts:[
+    {t:"Principled. I have firm rules I rarely bend.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Contextual. The right action depends on the specific situation.",s:{reader:2,spectator:2,seer:2}},
+    {t:"Pragmatic. What works is what's right.",s:{mystery:3,marauder:2,fool:1}},
+    {t:"Relational. My ethics are defined by who I'm accountable to.",s:{spectator:3,fool:2,sheriff:1}},
+  ]},
+  {w:2,s:"Moral Architecture",q:"You can prevent a catastrophe — but only by doing something you consider deeply wrong.",sub:"Your actual decision (not your ideal decision).",opts:[
+    {t:"Do it. The catastrophe is worse.",s:{seer:3,mystery:2,fool:1}},
+    {t:"Find an alternative. There is always an alternative.",s:{reader:3,sheriff:2,spectator:1}},
+    {t:"Do it — but carry the weight. No rationalizing.",s:{sheriff:2,reader:2,spectator:2}},
+    {t:"Let the catastrophe happen. I don't compromise on this.",s:{sheriff:3,hunter:2,marauder:1}},
+  ]},
+  {w:3,s:"Moral Architecture",q:"What do you believe about power?",sub:"The honest answer.",opts:[
+    {t:"Power is neutral — it's the wielder that determines its nature.",s:{reader:3,spectator:2,mystery:1}},
+    {t:"Power corrupts. The question is how slowly.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"Power is the point. Purpose is a story we tell around it.",s:{mystery:3,marauder:2,fool:1}},
+    {t:"Power is a tool. I want enough to protect what matters.",s:{sheriff:2,hunter:2,reader:2}},
+  ]},
+  {w:1,s:"Moral Architecture",q:"What is the most dangerous kind of person?",opts:[
+    {t:"Someone with certainty and authority.",s:{mystery:3,spectator:2,seer:1}},
+    {t:"Someone with intelligence and no conscience.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Someone who believes they're doing good.",s:{spectator:3,mystery:2,fool:1}},
+    {t:"Someone with nothing left to lose.",s:{seer:2,mystery:2,marauder:2}},
+  ]},
+  // FATE & PATHWAYS (6)
+  {w:3,s:"Fate & the Pathways",q:"What do you believe about extraordinary events — occult, anomalous, inexplicable?",sub:"Your actual epistemic position.",opts:[
+    {t:"They exist, and most people are simply not paying attention.",s:{mystery:3,seer:2,fool:1}},
+    {t:"They exist, and the question is how to interact without being consumed.",s:{reader:3,seer:2,sheriff:1}},
+    {t:"Possible — but involvement without institutional framework is reckless.",s:{sheriff:3,reader:2,spectator:1}},
+    {t:"They exist, and are more useful understood than feared.",s:{spectator:3,reader:2,mystery:1}},
+  ]},
+  {w:2,s:"Fate & the Pathways",q:"If you were told that pursuing power would reduce your humanity — gradually, irreversibly —",sub:"Would you continue?",opts:[
+    {t:"Yes. Humanity is not the goal; capability is.",s:{mystery:3,marauder:2,seer:1}},
+    {t:"Yes — but I'd find ways to slow the erosion.",s:{spectator:2,reader:2,fool:2}},
+    {t:"No. Without humanity, power has no target worth aiming at.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"I'd first question whether the premise is accurate.",s:{mystery:2,seer:2,fool:2}},
+  ]},
+  {w:3,s:"Fate & the Pathways",q:"What is the most dangerous thing in the world?",sub:"Your genuine answer.",opts:[
+    {t:"A mind with no limits on what it's willing to know.",s:{reader:3,mystery:2,sheriff:1}},
+    {t:"A person who has decided their ideology justifies the cost.",s:{spectator:3,mystery:2,seer:1}},
+    {t:"Power with no accountability and no structure.",s:{sheriff:3,reader:2,spectator:1}},
+    {t:"An anomaly that has learned to disguise itself as ordinary.",s:{mystery:3,seer:2,hunter:1}},
+  ]},
+  {w:1,s:"Fate & the Pathways",q:"Which failure concerns you most?",sub:"The one that would haunt you.",opts:[
+    {t:"Being wrong about something you were completely certain of.",s:{reader:3,mystery:2,seer:1}},
+    {t:"Being used by someone who understood you better than you understood yourself.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"Causing harm to someone who trusted your judgment.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"Getting close to an answer — and stopping.",s:{mystery:3,seer:2,fool:1}},
+  ]},
+  {w:2,s:"Fate & the Pathways",q:"You are given a premonition — clear, specific, terrifying. It will happen to someone you care about.",sub:"Do you intervene?",opts:[
+    {t:"Yes. Premonitions are warnings, not verdicts.",s:{seer:3,sheriff:2,fool:1}},
+    {t:"Yes — but without telling them, to avoid altering the timeline unpredictably.",s:{spectator:3,mystery:2,reader:1}},
+    {t:"I research the premonition first before acting.",s:{reader:3,seer:2,mystery:1}},
+    {t:"No. Interference with fate is how you cause the very thing you fear.",s:{reader:2,spectator:2,mystery:2}},
+  ]},
+  {w:2,s:"Fate & the Pathways",q:"At the end of your life, what do you want to have been?",sub:"The honest answer.",opts:[
+    {t:"Someone who understood things others never could.",s:{reader:3,mystery:2,seer:1}},
+    {t:"Someone who shaped events without ever being seen doing so.",s:{spectator:3,fool:2,mystery:1}},
+    {t:"Someone who protected people from what they couldn't protect themselves from.",s:{sheriff:3,hunter:2,reader:1}},
+    {t:"Someone who went further than anyone else — and came back.",s:{seer:3,fool:2,marauder:1}},
+  ]},
+  // PATHWAY RESONANCE (8)
+  {w:2,s:"Pathway Resonance",q:"In a dream, a figure in grey places an item before you. It is yours to take.",sub:"What do you see?",opts:[
+    {t:"A book — sealed with wax bearing no crest.",s:{reader:3,mystery:2,seer:1}},
+    {t:"A mask — carved from pale wood, utterly featureless.",s:{fool:3,spectator:2,mystery:1}},
+    {t:"A compass — whose needle does not point north.",s:{seer:3,hunter:2,mystery:1}},
+    {t:"A key — that opens no lock you have ever seen.",s:{mystery:3,sheriff:2,fool:1}},
+  ]},
+  {w:1,s:"Pathway Resonance",q:"Which of these descriptions of power resonates most deeply with you?",sub:"The one that feels true — not aspirational.",opts:[
+    {t:"The power to know things others cannot.",s:{reader:3,mystery:2,seer:1}},
+    {t:"The power to be anyone, anywhere, without being caught.",s:{fool:3,spectator:2,mystery:1}},
+    {t:"The power to end a threat with absolute finality.",s:{marauder:3,sheriff:2,hunter:1}},
+    {t:"The power to see what is coming before it arrives.",s:{seer:3,mystery:2,reader:1}},
+  ]},
+  {w:3,s:"Pathway Resonance",q:"The Tarot Club needs someone for a mission in enemy territory. No backup. No extraction plan.",sub:"What role do you take?",opts:[
+    {t:"Intelligence gathering. I go in, learn everything, leave nothing.",s:{spectator:3,reader:2,mystery:1}},
+    {t:"Divination support. I predict their movements from a distance.",s:{seer:3,reader:2,mystery:1}},
+    {t:"Enforcement. I remove the threat directly.",s:{marauder:3,hunter:2,sheriff:1}},
+    {t:"Disruption. I compromise their structure from within.",s:{fool:3,spectator:2,mystery:1}},
+  ]},
+  {w:2,s:"Pathway Resonance",q:"A Sequence 5 Beyonder offers to mentor you — but their methods are ethically questionable.",sub:"Do you accept?",opts:[
+    {t:"Yes. Power requires proximity to power, whatever its source.",s:{mystery:3,marauder:2,seer:1}},
+    {t:"Yes — but I plan my exit strategy from day one.",s:{spectator:3,fool:2,reader:1}},
+    {t:"No. Ethically compromised teachers produce ethically compromised students.",s:{sheriff:3,reader:2,seer:1}},
+    {t:"I negotiate terms first. Mentorship is an exchange, not a gift.",s:{reader:3,spectator:2,mystery:1}},
+  ]},
+  {w:1,s:"Pathway Resonance",q:"Which of these Beyonder traits sounds most like a natural extension of who you already are?",sub:"Not who you want to be. Who you are.",opts:[
+    {t:"Extreme perceptiveness — reading rooms, people, and hidden meanings instinctively.",s:{spectator:3,reader:2,mystery:1}},
+    {t:"Precognition — small flashes of what's about to happen.",s:{seer:3,mystery:2,fool:1}},
+    {t:"Enhanced tracking and environmental awareness.",s:{hunter:3,sheriff:2,marauder:1}},
+    {t:"The ability to become exactly who the situation requires.",s:{fool:3,spectator:2,mystery:1}},
+  ]},
+  {w:2,s:"Pathway Resonance",q:"You are being hunted by someone more powerful than you. You cannot outfight them.",sub:"Your strategy?",opts:[
+    {t:"Disappear completely. Become someone they cannot find.",s:{fool:3,spectator:2,mystery:1}},
+    {t:"Learn everything about them until their weakness is clear.",s:{reader:3,mystery:2,spectator:1}},
+    {t:"Set a trap. Use the hunt itself as the weapon.",s:{hunter:3,seer:2,spectator:1}},
+    {t:"Negotiate or find a third party to mediate.",s:{sheriff:3,reader:2,fool:1}},
+  ]},
+  {w:3,s:"Pathway Resonance",q:"Your Beyonder characteristic is showing signs of contamination. You are beginning to lose yourself.",sub:"What do you do?",opts:[
+    {t:"Accelerate. If I'm losing myself anyway, I might as well gain something first.",s:{mystery:3,marauder:2,seer:1}},
+    {t:"Stop all Sequence activity immediately and seek purification.",s:{sheriff:3,reader:2,hunter:1}},
+    {t:"Continue cautiously, monitoring the drift and correcting where possible.",s:{spectator:3,reader:2,mystery:1}},
+    {t:"Consult someone who has been through this. I don't handle this alone.",s:{fool:2,reader:2,sheriff:2}},
+  ]},
+  {w:1,s:"Pathway Resonance",q:"If you could whisper one sentence to yourself at the beginning of your Beyonder journey:",sub:"What would it be?",opts:[
+    {t:"'Trust the evidence over the instinct.'",s:{reader:3,sheriff:2,mystery:1}},
+    {t:"'You will become what you practice; choose carefully.'",s:{sheriff:3,spectator:2,reader:1}},
+    {t:"'The answer you're looking for will cost more than you think.'",s:{mystery:3,seer:2,fool:1}},
+    {t:"'The role you play long enough becomes the person you are.'",s:{fool:3,spectator:2,mystery:1}},
+  ]},
+];
+ 
+// ══════════════════ STATE ══════════════════
+let selQ = [], curQ = 0, answers = [], scores = {};
+const QUIZ_LEN = 20;
+ 
+function pickQuestions() {
+  const sh = a => [...a].sort(()=>Math.random()-.5);
+  const w1 = sh(QBank.filter(q=>q.w===1));
+  const w2 = sh(QBank.filter(q=>q.w===2));
+  const w3 = sh(QBank.filter(q=>q.w===3));
+  return sh([...w1.slice(0,5),...w2.slice(0,8),...w3.slice(0,7)]);
+}
+ 
+// ══════════════════ CANDLES & FOG ══════════════════
+function buildCandles() {
+  const c = document.getElementById('candles');
+  [55,40,70,45,60,38,65,48,75,42].forEach((h,i)=>{
+    const d = document.createElement('div'); d.className='candle';
+    d.innerHTML=`<div class="candle-flame" style="animation-delay:${(i*.37).toFixed(2)}s"></div><div class="candle-body" style="height:${h}px"></div>`;
+    c.appendChild(d);
+  });
+}
+ 
+function initFog() {
+  const cv = document.getElementById('fog-canvas');
+  const ctx = cv.getContext('2d');
+  cv.width=window.innerWidth; cv.height=window.innerHeight;
+  const ps=[];
+  for(let i=0;i<80;i++) ps.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*90+40,vx:(Math.random()-.5)*.12,vy:(Math.random()-.5)*.07,o:Math.random()*.05+.01});
+  (function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ps.forEach(p=>{
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+      g.addColorStop(0,`rgba(201,151,58,${p.o})`); g.addColorStop(1,'transparent');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-p.r)p.x=cv.width+p.r; if(p.x>cv.width+p.r)p.x=-p.r;
+      if(p.y<-p.r)p.y=cv.height+p.r; if(p.y>cv.height+p.r)p.y=-p.r;
+    }); requestAnimationFrame(draw);
+  })();
+  window.addEventListener('resize',()=>{cv.width=window.innerWidth;cv.height=window.innerHeight;});
+}
+ 
+function initHeroParticles() {
+  const intro = document.getElementById('intro-screen');
+  const cv = document.getElementById('particle-canvas');
+  if(!cv) return;
+  cv.width = intro.offsetWidth || window.innerWidth;
+  cv.height = intro.scrollHeight || window.innerHeight*2;
+  const ctx = cv.getContext('2d');
+  const runes = ['✦','⊕','◈','◎','△','◇','⊗','✧','⋆','✵','⊞'];
+  const sparks=[], floats=[];
+  for(let i=0;i<150;i++) sparks.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.4+.3,vx:(Math.random()-.5)*.25,vy:-(Math.random()*.35+.04),life:Math.random(),spd:Math.random()*.005+.002});
+  for(let i=0;i<25;i++) floats.push({x:Math.random()*cv.width,y:Math.random()*cv.height,rune:runes[i%runes.length],sz:Math.random()*10+8,vy:-(Math.random()*.12+.02),o:Math.random()*.28+.05,life:Math.random()});
+  (function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    sparks.forEach(p=>{
+      p.life+=p.spd; if(p.life>1){p.life=0;p.x=Math.random()*cv.width;p.y=cv.height+10;}
+      p.x+=p.vx; p.y+=p.vy;
+      const a=Math.sin(p.life*Math.PI)*.9;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(232,201,122,${a})`; ctx.fill();
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*5);
+      g.addColorStop(0,`rgba(201,151,58,${a*.25})`); g.addColorStop(1,'transparent');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*5,0,Math.PI*2); ctx.fill();
+    });
+    floats.forEach(f=>{
+      f.y+=f.vy; f.life+=.003; if(f.y<-30){f.y=cv.height+20;f.x=Math.random()*cv.width;f.life=0;}
+      const a=Math.max(0,Math.sin(f.life*Math.PI*.5)*f.o);
+      ctx.fillStyle=`rgba(201,151,58,${a})`; ctx.font=`${f.sz}px serif`; ctx.textAlign='center'; ctx.fillText(f.rune,f.x,f.y);
+    });
+    requestAnimationFrame(draw);
+  })();
+}
+ 
+// ══════════════════ SCREEN ══════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');s.style.display='none';});
+  const el=document.getElementById(id); el.style.display='flex'; el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+// ══════════════════ QUIZ ══════════════════
+function startQuiz() {
+  selQ = pickQuestions(); curQ=0;
+  answers=new Array(selQ.length).fill(null);
+  scores={fool:0,reader:0,seer:0,spectator:0,sheriff:0,mystery:0,hunter:0,marauder:0};
+  renderQ(); showScreen('quiz-screen');
+}
+ 
+function renderQ() {
+  const q=selQ[curQ];
+  document.getElementById('section-label').textContent=q.s;
+  document.getElementById('q-counter').textContent=`${curQ+1} / ${selQ.length}`;
+  document.getElementById('progress-fill').style.width=`${((curQ+1)/selQ.length)*100}%`;
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-subtext').textContent=q.sub||'';
+  // weight pips
+  document.getElementById('weight-indicator').innerHTML=
+    [1,2,3].map(n=>`<span class="weight-pip${n<=q.w?' lit':''}"></span>`).join('')+' <span>Question Weight</span>';
+  const glyphs=['I','II','III','IV'];
+  document.getElementById('options-container').innerHTML=q.opts.map((o,i)=>`
+    <div class="option-card${answers[curQ]===i?' selected':''}" onclick="selOpt(${i})">
+      <span class="option-glyph">${glyphs[i]}</span>
+      <div><div class="option-text">${o.t}</div>${o.sub?`<div class="option-subtext">${o.sub}</div>`:''}</div>
+    </div>`).join('');
+  const pb=document.getElementById('prev-btn');
+  if(curQ>0){pb.style.opacity='1';pb.style.pointerEvents='auto';}
+  else{pb.style.opacity='0';pb.style.pointerEvents='none';}
+  updNext();
+}
+ 
+function updNext(){
+  const b=document.getElementById('next-btn');
+  if(answers[curQ]!==null){b.style.opacity='1';b.style.pointerEvents='auto';b.textContent=curQ===selQ.length-1?'Complete Evaluation →':'Next →';}
+  else{b.style.opacity='0.3';b.style.pointerEvents='none';}
+}
+ 
+function selOpt(i){
+  answers[curQ]=i;
+  document.querySelectorAll('.option-card').forEach((c,x)=>c.classList.toggle('selected',x===i));
+  updNext();
+}
+ 
+function applyScores(qi,dir){
+  const q=selQ[qi], ai=answers[qi]; if(ai===null)return;
+  const sc=q.opts[ai].s, w=q.w;
+  Object.entries(sc).forEach(([k,v])=>scores[k]+=v*w*dir);
+}
+ 
+function nextQuestion(){
+  if(answers[curQ]===null)return;
+  applyScores(curQ,1);
+  if(curQ<selQ.length-1){curQ++;renderQ();}else showLoading();
+}
+ 
+function prevQuestion(){
+  if(curQ>0){applyScores(curQ,-1);curQ--;applyScores(curQ,-1);renderQ();}
+}
+ 
+// ══════════════════ LOADING ══════════════════
+const LMSGS=["Consulting the Fool's Pathway Matrix...","Cross-referencing trait vectors...","Evaluating contamination thresholds...","Mapping psychological signature...","The Tarot Club is deliberating...","Calibrating Sequence compatibility...","Analysing behavioral residue...","Finalizing alignment report..."];
+ 
+function showLoading(){
+  showScreen('loading-screen'); let i=0;
+  const el=document.getElementById('loading-msg');
+  const iv=setInterval(()=>{el.textContent=LMSGS[i%LMSGS.length];i++;},800);
+  setTimeout(()=>{clearInterval(iv);showResult();},5200);
+}
+ 
+// ══════════════════ RESULT ══════════════════
+const PCOLORS={fool:'#c9973a',reader:'#4a8ac9',seer:'#d4a030',spectator:'#9a6ac9',sheriff:'#6a9a4a',mystery:'#c94a4a',hunter:'#8a6a3a',marauder:'#aa3a3a'};
+const PNAMES={fool:'Fool',reader:'Reader',seer:'Seer',spectator:'Spectator',sheriff:'Sheriff',mystery:'Mystery Pryer',hunter:'Hunter',marauder:'Marauder'};
+ 
+function showResult(){
+  const total=Object.values(scores).reduce((a,b)=>a+b,0)||1;
+  const sorted=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const winner=sorted[0][0], p=PATHWAYS[winner];
+ 
+  document.getElementById('result-tarot-card').innerHTML=makeTarot(p.tarot,140,218);
+  document.getElementById('result-tarot-card').style.color=p.color;
+ 
+  const banner=document.getElementById('pathway-banner');
+  banner.style.color=p.color;
+  banner.style.border=`1px solid ${p.color}33`;
+  banner.style.background=`radial-gradient(ellipse at center,${p.color}12 0%,transparent 70%)`;
+ 
+  document.getElementById('result-name').textContent=p.name;
+  document.getElementById('result-name').style.color=p.color;
+  document.getElementById('result-seq').textContent=p.sequence;
+  document.getElementById('result-description').textContent=p.description;
+ 
+  document.getElementById('strengths-list').innerHTML=p.strengths.map(t=>`
+    <div class="trait-row"><span class="trait-icon" style="color:#2a8a6a">${t.icon}</span><span class="trait-name">${t.name}</span><span class="trait-desc">${t.desc}</span></div>`).join('');
+  document.getElementById('risks-list').innerHTML=p.risks.map(t=>`
+    <div class="trait-row"><span class="trait-icon" style="color:#8a2aaa">${t.icon}</span><span class="trait-name">${t.name}</span><span class="trait-desc">${t.desc}</span></div>`).join('');
+ 
+  document.getElementById('stab-val').textContent=p.stability+'%';
+  document.getElementById('corr-val').textContent=p.corruption+'%';
+  document.getElementById('surv-val').textContent=(p.survival/10).toFixed(1)+'/10';
+  document.getElementById('adv-val').textContent=p.advancement+'%';
+  document.getElementById('warning-text').textContent=p.warning;
+ 
+  document.getElementById('alignment-bars').innerHTML=sorted.map(([key,val])=>{
+    const pct=Math.round((val/total)*100);
+    return `<div class="alignment-row">
+      <span class="align-name">${PNAMES[key]}</span>
+      <div class="align-track"><div class="align-fill" style="width:0%;background:${PCOLORS[key]}" data-t="${pct}"></div></div>
+      <span class="align-pct">${pct}%</span></div>`;
+  }).join('');
+ 
+  showScreen('result-screen');
+  setTimeout(()=>{
+    document.getElementById('stab-bar').style.width=p.stability+'%';
+    document.getElementById('corr-bar').style.width=p.corruption+'%';
+    document.getElementById('surv-bar').style.width=p.survival+'%';
+    document.getElementById('adv-bar').style.width=p.advancement+'%';
+    document.querySelectorAll('.align-fill').forEach(b=>b.style.width=b.dataset.t+'%');
+  },100);
+}
+ 
+function retakeQuiz(){showScreen('intro-screen');}
+ 
+function copyResult(){
+  const s=Object.entries(scores).sort((a,b)=>b[1]-a[1]), w=s[0][0], p=PATHWAYS[w];
+  const txt=`Sequence Alignment Engine — Lord of the Mysteries\n\nPathway: ${p.name}\n${p.sequence}\n\nStability Index: ${p.stability}%\nCorruption Risk: ${p.corruption}%\nSurvival Rating: ${(p.survival/10).toFixed(1)}/10\nAdvancement Probability: ${p.advancement}%\n\n"${p.description.slice(0,150)}..."`;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const b=event.target; b.textContent='Copied ✓';
+    setTimeout(()=>b.textContent='Copy Result to Clipboard',2500);
+  });
+}
+ 
+// ══════════════════ INIT ══════════════════
+// Tarot preview row
+(()=>{
+  const keys=['fool','reader','seer','spectator','sheriff','mystery','hunter','marauder'];
+  const sh=a=>[...a].sort(()=>Math.random()-.5);
+  const row=document.getElementById('tarot-preview');
+  sh(keys).slice(0,6).forEach((key,i)=>{
+    const d=document.createElement('div'); d.className='tarot-card';
+    const rot=(Math.random()-.5)*7;
+    d.style.transform=`rotate(${rot}deg)`;
+    d.innerHTML=makeTarot(key,88,136);
+    d.addEventListener('mouseenter',()=>{d.style.transform=`rotate(0deg) translateY(-12px)`;d.style.filter='drop-shadow(0 12px 32px rgba(201,151,58,0.65))';});
+    d.addEventListener('mouseleave',()=>{d.style.transform=`rotate(${rot}deg) translateY(0)`;d.style.filter='drop-shadow(0 4px 16px rgba(201,151,58,0.3))';});
+    row.appendChild(d);
+  });
+})();
+ 
+buildCandles();
+initFog();
+setTimeout(initHeroParticles, 100);
+</script>
+</body>
+</html>
+ 
