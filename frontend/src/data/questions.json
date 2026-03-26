@@ -1,0 +1,578 @@
+[
+  {
+    "id": 1,
+    "section": "Risk Appetite",
+    "question": "You discover a sealed document labelled: 'Do not read. Irreversible consequences.'",
+    "subtext": "What is your first impulse?",
+    "options": [
+      "Read it immediately.",
+      "Study the seal and context first.",
+      "Secure it before anyone else can access it.",
+      "Leave it. Irreversible is irreversible."
+    ]
+  },
+  {
+    "id": 2,
+    "section": "Risk Appetite",
+    "question": "An opportunity appears — window is 48 hours, information is incomplete.",
+    "subtext": "How long do you actually wait before deciding?",
+    "options": [
+      "Act within hours. Delay is its own decision.",
+      "Spend 40 of the 48 hours gathering data, then decide.",
+      "Make a probabilistic decision at hour 24.",
+      "Enter at hour 47 with a full contingency plan."
+    ]
+  },
+  {
+    "id": 3,
+    "section": "Risk Appetite",
+    "question": "Strange symbols appear in your peripheral vision — not hallucinations, but patterns in ordinary objects.",
+    "subtext": "What do you do?",
+    "options": [
+      "Document them obsessively. Patterns have meaning.",
+      "Investigate cautiously — gather 3 instances before theorizing.",
+      "Stop. Cease all occult activity immediately.",
+      "Wait and observe. Do nothing that would influence the pattern."
+    ]
+  },
+  {
+    "id": 4,
+    "section": "Risk Appetite",
+    "question": "You are offered Beyonder characteristics from an unverified source at a surprisingly low price.",
+    "subtext": "Your response?",
+    "options": [
+      "Take them immediately. Power is power.",
+      "Research the source exhaustively before deciding.",
+      "Negotiate for verification — accept only with witnesses.",
+      "Decline. Unverified characteristics are contamination vectors."
+    ]
+  },
+  {
+    "id": 5,
+    "section": "Risk Appetite",
+    "question": "You have the opportunity to perform a ritual. Success is estimated at 70%. Failure is fatal.",
+    "subtext": "Do you proceed?",
+    "options": [
+      "Yes. 70% is a good number.",
+      "Only if I can improve the odds first.",
+      "No. 30% fatality is unacceptable for one ritual.",
+      "Depends entirely on what success achieves."
+    ]
+  },
+  {
+    "id": 6,
+    "section": "Risk Appetite",
+    "question": "You witness a Beyonder phenomenon you've never encountered. It's not threatening you — yet.",
+    "subtext": "First action?",
+    "options": [
+      "Get closer. Observation requires proximity.",
+      "Observe from a safe distance and document everything.",
+      "Maintain distance and prepare a defensive response.",
+      "Leave. Uninvited encounters with the unknown are traps."
+    ]
+  },
+  {
+    "id": 7,
+    "section": "Risk Appetite",
+    "question": "A colleague proposes a shortcut to Sequence ascension — risky, but significantly faster.",
+    "subtext": "Your honest reaction?",
+    "options": [
+      "Interested. Speed matters in this world.",
+      "I want to see the full methodology before forming an opinion.",
+      "No. Rushed ascension is the number one cause of contamination.",
+      "I'd take the shortcut if the risk could be partially hedged."
+    ]
+  },
+  {
+    "id": 8,
+    "section": "Risk Appetite",
+    "question": "You discover that someone you trust has been lying to you about something significant — but the lie protected you.",
+    "subtext": "How do you respond?",
+    "options": [
+      "Anger. I needed the truth regardless of the cost.",
+      "Understand the reasoning before deciding how to feel.",
+      "Respect the decision but establish new boundaries going forward.",
+      "It doesn't matter. Outcomes are what count."
+    ]
+  },
+  {
+    "id": 9,
+    "section": "Risk Appetite",
+    "question": "Facing certain defeat, a mysterious entity offers you a deal — power now, terms unclear.",
+    "subtext": "Your answer?",
+    "options": [
+      "Accept. Survival is a prerequisite for everything else.",
+      "Request to see the full terms before agreeing to anything.",
+      "Refuse. Unclear terms from mysterious entities are never neutral.",
+      "Stall for time while looking for a third option."
+    ]
+  },
+  {
+    "id": 10,
+    "section": "Risk Appetite",
+    "question": "You can reveal your Beyonder status to stop an injustice — but this exposes you to significant danger.",
+    "subtext": "What do you do?",
+    "options": [
+      "Intervene. The risk to myself is irrelevant.",
+      "Intervene anonymously if possible.",
+      "Do not intervene. Self-preservation is not cowardice.",
+      "Intervene, then carefully manage the exposure afterwards."
+    ]
+  },
+  {
+    "id": 11,
+    "section": "Control vs. Influence",
+    "question": "You have two tools: one controls a system directly, one subtly shifts how others within it behave.",
+    "subtext": "Which do you reach for first?",
+    "options": [
+      "The direct control. Clean, certain, mine.",
+      "The influence tool. Subtlety is the sharper instrument.",
+      "Both sequentially — control first, then influence to sustain.",
+      "Neither. Map the system fully before touching it."
+    ]
+  },
+  {
+    "id": 12,
+    "section": "Control vs. Influence",
+    "question": "Are you comfortable being the person whose name is never mentioned — even when you are responsible for the outcome?",
+    "subtext": "Invisibility as a permanent operating condition.",
+    "options": [
+      "Yes. Visibility is a liability.",
+      "Mostly — but some record must exist somewhere.",
+      "No. Accountability requires identity.",
+      "Indifferent. I care about the outcome, not the attribution."
+    ]
+  },
+  {
+    "id": 13,
+    "section": "Control vs. Influence",
+    "question": "You have information that would change how someone makes a major decision — but they didn't ask you.",
+    "subtext": "What do you do?",
+    "options": [
+      "Share it. They deserve accurate information.",
+      "Consider whether giving it serves their interest or mine.",
+      "Plant it where they'll discover it themselves.",
+      "Archive it. Give it only if directly asked."
+    ]
+  },
+  {
+    "id": 14,
+    "section": "Control vs. Influence",
+    "question": "In a dangerous situation: you can control the outcome through force, or manipulate events so the threat neutralizes itself.",
+    "subtext": "Which do you prefer?",
+    "options": [
+      "Force. Reliable. Clean.",
+      "Manipulation. The threat doesn't even know it lost.",
+      "Depends on the threat — I choose by efficiency.",
+      "Withdraw. Neither force nor manipulation if avoidance is viable."
+    ]
+  },
+  {
+    "id": 15,
+    "section": "Control vs. Influence",
+    "question": "A group is making a decision you know is wrong. You are not the leader.",
+    "subtext": "What do you do?",
+    "options": [
+      "State my position clearly once, then let them decide.",
+      "Gradually reframe the discussion until they reach the right conclusion themselves.",
+      "Override the process if the stakes are high enough.",
+      "Do nothing. Groups learn from consequences."
+    ]
+  },
+  {
+    "id": 16,
+    "section": "Control vs. Influence",
+    "question": "You are most comfortable when:",
+    "subtext": "",
+    "options": [
+      "I have direct authority over outcomes.",
+      "I have invisible influence over outcomes.",
+      "I have complete information about outcomes.",
+      "I can predict outcomes before they occur."
+    ]
+  },
+  {
+    "id": 17,
+    "section": "Control vs. Influence",
+    "question": "An ally has committed a serious moral transgression in pursuit of a goal you share.",
+    "subtext": "Your response?",
+    "options": [
+      "Condemn and cut ties. The goal does not justify this.",
+      "Condemn privately. Publicly maintain the alliance.",
+      "Accept it. In this world, clean hands are a luxury.",
+      "Evaluate whether the goal still justifies the continued relationship."
+    ]
+  },
+  {
+    "id": 18,
+    "section": "Control vs. Influence",
+    "question": "You discover you are being watched and evaluated by an unknown party.",
+    "subtext": "Your response?",
+    "options": [
+      "Perform. Let them see exactly what I want them to see.",
+      "Identify who it is before responding to the surveillance.",
+      "Continue as normal. I have nothing to curate.",
+      "Use it. Being observed means there's leverage."
+    ]
+  },
+  {
+    "id": 19,
+    "section": "Curiosity vs. Stability",
+    "question": "Would you rather know a dangerous truth — or remain in comfortable, functional uncertainty?",
+    "subtext": "The truth will cost you something. The uncertainty costs you nothing — yet.",
+    "options": [
+      "The truth, always. Comfortable ignorance is a slow poison.",
+      "The truth — but I want to control when and how I receive it.",
+      "Uncertainty, if the truth serves no actionable purpose.",
+      "I'd construct a model that approaches truth asymptotically."
+    ]
+  },
+  {
+    "id": 20,
+    "section": "Curiosity vs. Stability",
+    "question": "You encounter an anomalous event. Investigation reveals another anomaly. Then another.",
+    "subtext": "At what point do you stop?",
+    "options": [
+      "I don't stop. The pattern is the point.",
+      "When the anomalies begin interfering with my baseline function.",
+      "After the third. Three is a pattern. A pattern is a threat.",
+      "When I can no longer distinguish coincidence from significance."
+    ]
+  },
+  {
+    "id": 21,
+    "section": "Curiosity vs. Stability",
+    "question": "How long can you tolerate an unanswered question before it affects your behavior?",
+    "subtext": "Be honest.",
+    "options": [
+      "Cannot tolerate it at all — unanswered questions are a kind of pain.",
+      "Indefinitely — if I've exhausted available information.",
+      "Weeks to months. Eventually the itch wins.",
+      "Depends entirely on the stakes involved."
+    ]
+  },
+  {
+    "id": 22,
+    "section": "Curiosity vs. Stability",
+    "question": "You find a book rumored to drive readers mad by Sequence 5.",
+    "subtext": "What is your honest response?",
+    "options": [
+      "Read it immediately. I'll manage the consequences.",
+      "Research the book thoroughly before touching it.",
+      "Secure it. No one should read this.",
+      "Test small fragments. Controlled exposure."
+    ]
+  },
+  {
+    "id": 23,
+    "section": "Curiosity vs. Stability",
+    "question": "You have discovered a truth about the nature of the Pathways that directly contradicts what you believed.",
+    "subtext": "How do you integrate this?",
+    "options": [
+      "Rebuild my entire model. If this is wrong, what else is?",
+      "Update cautiously — verify against multiple sources.",
+      "Hold both models simultaneously until one can be falsified.",
+      "Act on the new truth immediately. Hesitation is contamination."
+    ]
+  },
+  {
+    "id": 24,
+    "section": "Curiosity vs. Stability",
+    "question": "You are given the option to forget a traumatic but informative experience.",
+    "subtext": "Do you take it?",
+    "options": [
+      "Never. Every experience is data.",
+      "Only if the trauma is interfering with function.",
+      "Yes. Psychological stability is a strategic asset.",
+      "The question itself is a trap. I'd investigate who's offering."
+    ]
+  },
+  {
+    "id": 25,
+    "section": "Curiosity vs. Stability",
+    "question": "A respected mentor tells you: 'Stop asking questions you're not ready for the answers to.'",
+    "subtext": "Your response?",
+    "options": [
+      "Ask the question immediately.",
+      "Determine what 'ready' means and meet that threshold first.",
+      "Respect the warning. They know more than I do.",
+      "Ask a different question that approaches the same answer obliquely."
+    ]
+  },
+  {
+    "id": 26,
+    "section": "Curiosity vs. Stability",
+    "question": "You can gain significant power — but the ritual requires consuming the memories of another person.",
+    "subtext": "Do you proceed?",
+    "options": [
+      "Yes. In this world, this is simply the cost.",
+      "No. Some costs are non-negotiable.",
+      "Only if the person is already gone — memory without a mind.",
+      "I'd find an alternative method that achieves the same outcome."
+    ]
+  },
+  {
+    "id": 27,
+    "section": "Moral Architecture",
+    "question": "Is survival more important than ideological consistency?",
+    "subtext": "Under genuine existential pressure.",
+    "options": [
+      "Yes. Dead idealists affect nothing.",
+      "Conditionally. Some principles are non-negotiable.",
+      "No. Ideological compromise is the beginning of corruption.",
+      "Depends on whose survival — mine, or those I'm responsible for."
+    ]
+  },
+  {
+    "id": 28,
+    "section": "Moral Architecture",
+    "question": "You acquire dangerous knowledge that gives you significant personal advantage — using it harms no one directly.",
+    "subtext": "Do you use it?",
+    "options": [
+      "Yes. Advantage is the point of acquiring knowledge.",
+      "Yes — after verifying there is truly no indirect harm.",
+      "No. 'Harms no one directly' is almost always wrong upon examination.",
+      "I use it selectively — when leverage is worth the exposure."
+    ]
+  },
+  {
+    "id": 29,
+    "section": "Moral Architecture",
+    "question": "You can maintain your sanity or your social influence. Not both. Long term.",
+    "subtext": "Which do you sacrifice?",
+    "options": [
+      "Influence. Sanity is the prerequisite for everything else.",
+      "Some sanity — managed, not total. Influence can fund the stabilization.",
+      "Neither. This is a false dilemma — I find a third path.",
+      "Influence. Sanity is a social construct. Stability is what matters."
+    ]
+  },
+  {
+    "id": 30,
+    "section": "Moral Architecture",
+    "question": "A fellow Beyonder asks you to lie on their behalf. The lie is harmless but significant.",
+    "subtext": "Do you do it?",
+    "options": [
+      "Yes. Loyalty is above bureaucratic honesty.",
+      "Yes — but I note the debt owed to me.",
+      "No. I don't lie for others.",
+      "It depends on who's asking and what it costs me."
+    ]
+  },
+  {
+    "id": 31,
+    "section": "Moral Architecture",
+    "question": "Your personal code of ethics, if you're honest:",
+    "subtext": "Not what you aspire to — what you actually operate on.",
+    "options": [
+      "Principled. I have firm rules I rarely bend.",
+      "Contextual. The right action depends on the specific situation.",
+      "Pragmatic. What works is what's right.",
+      "Relational. My ethics are defined by who I'm accountable to."
+    ]
+  },
+  {
+    "id": 32,
+    "section": "Moral Architecture",
+    "question": "You can prevent a catastrophe — but only by doing something you consider deeply wrong.",
+    "subtext": "Your actual decision (not your ideal decision).",
+    "options": [
+      "Do it. The catastrophe is worse.",
+      "Find an alternative. There is always an alternative.",
+      "Do it — but carry the weight. No rationalizing.",
+      "Let the catastrophe happen. I don't compromise on this."
+    ]
+  },
+  {
+    "id": 33,
+    "section": "Moral Architecture",
+    "question": "What do you believe about power?",
+    "subtext": "The honest answer.",
+    "options": [
+      "Power is neutral — it's the wielder that determines its nature.",
+      "Power corrupts. The question is how slowly.",
+      "Power is the point. Purpose is a story we tell around it.",
+      "Power is a tool. I want enough to protect what matters."
+    ]
+  },
+  {
+    "id": 34,
+    "section": "Moral Architecture",
+    "question": "What is the most dangerous kind of person?",
+    "subtext": "",
+    "options": [
+      "Someone with certainty and authority.",
+      "Someone with intelligence and no conscience.",
+      "Someone who believes they're doing good.",
+      "Someone with nothing left to lose."
+    ]
+  },
+  {
+    "id": 35,
+    "section": "Fate & the Pathways",
+    "question": "What do you believe about extraordinary events — occult, anomalous, inexplicable?",
+    "subtext": "Your actual epistemic position.",
+    "options": [
+      "They exist, and most people are simply not paying attention.",
+      "They exist, and the question is how to interact without being consumed.",
+      "Possible — but involvement without institutional framework is reckless.",
+      "They exist, and are more useful understood than feared."
+    ]
+  },
+  {
+    "id": 36,
+    "section": "Fate & the Pathways",
+    "question": "If you were told that pursuing power would reduce your humanity — gradually, irreversibly —",
+    "subtext": "Would you continue?",
+    "options": [
+      "Yes. Humanity is not the goal; capability is.",
+      "Yes — but I'd find ways to slow the erosion.",
+      "No. Without humanity, power has no target worth aiming at.",
+      "I'd first question whether the premise is accurate."
+    ]
+  },
+  {
+    "id": 37,
+    "section": "Fate & the Pathways",
+    "question": "What is the most dangerous thing in the world?",
+    "subtext": "Your genuine answer.",
+    "options": [
+      "A mind with no limits on what it's willing to know.",
+      "A person who has decided their ideology justifies the cost.",
+      "Power with no accountability and no structure.",
+      "An anomaly that has learned to disguise itself as ordinary."
+    ]
+  },
+  {
+    "id": 38,
+    "section": "Fate & the Pathways",
+    "question": "Which failure concerns you most?",
+    "subtext": "The one that would haunt you.",
+    "options": [
+      "Being wrong about something you were completely certain of.",
+      "Being used by someone who understood you better than you understood yourself.",
+      "Causing harm to someone who trusted your judgment.",
+      "Getting close to an answer — and stopping."
+    ]
+  },
+  {
+    "id": 39,
+    "section": "Fate & the Pathways",
+    "question": "You are given a premonition — clear, specific, terrifying. It will happen to someone you care about.",
+    "subtext": "Do you intervene?",
+    "options": [
+      "Yes. Premonitions are warnings, not verdicts.",
+      "Yes — but without telling them, to avoid altering the timeline unpredictably.",
+      "I research the premonition first before acting.",
+      "No. Interference with fate is how you cause the very thing you fear."
+    ]
+  },
+  {
+    "id": 40,
+    "section": "Fate & the Pathways",
+    "question": "At the end of your life, what do you want to have been?",
+    "subtext": "The honest answer.",
+    "options": [
+      "Someone who understood things others never could.",
+      "Someone who shaped events without ever being seen doing so.",
+      "Someone who protected people from what they couldn't protect themselves from.",
+      "Someone who went further than anyone else — and came back."
+    ]
+  },
+  {
+    "id": 41,
+    "section": "Pathway Resonance",
+    "question": "In a dream, a figure in grey places an item before you. It is yours to take.",
+    "subtext": "What do you see?",
+    "options": [
+      "A book — sealed with wax bearing no crest.",
+      "A mask — carved from pale wood, utterly featureless.",
+      "A compass — whose needle does not point north.",
+      "A key — that opens no lock you have ever seen."
+    ]
+  },
+  {
+    "id": 42,
+    "section": "Pathway Resonance",
+    "question": "Which of these descriptions of power resonates most deeply with you?",
+    "subtext": "The one that feels true — not aspirational.",
+    "options": [
+      "The power to know things others cannot.",
+      "The power to be anyone, anywhere, without being caught.",
+      "The power to end a threat with absolute finality.",
+      "The power to see what is coming before it arrives."
+    ]
+  },
+  {
+    "id": 43,
+    "section": "Pathway Resonance",
+    "question": "The Tarot Club needs someone for a mission in enemy territory. No backup. No extraction plan.",
+    "subtext": "What role do you take?",
+    "options": [
+      "Intelligence gathering. I go in, learn everything, leave nothing.",
+      "Divination support. I predict their movements from a distance.",
+      "Enforcement. I remove the threat directly.",
+      "Disruption. I compromise their structure from within."
+    ]
+  },
+  {
+    "id": 44,
+    "section": "Pathway Resonance",
+    "question": "A Sequence 5 Beyonder offers to mentor you — but their methods are ethically questionable.",
+    "subtext": "Do you accept?",
+    "options": [
+      "Yes. Power requires proximity to power, whatever its source.",
+      "Yes — but I plan my exit strategy from day one.",
+      "No. Ethically compromised teachers produce ethically compromised students.",
+      "I negotiate terms first. Mentorship is an exchange, not a gift."
+    ]
+  },
+  {
+    "id": 45,
+    "section": "Pathway Resonance",
+    "question": "Which of these Beyonder traits sounds most like a natural extension of who you already are?",
+    "subtext": "Not who you want to be. Who you are.",
+    "options": [
+      "Extreme perceptiveness — reading rooms, people, and hidden meanings instinctively.",
+      "Precognition — small flashes of what's about to happen.",
+      "Enhanced tracking and environmental awareness.",
+      "The ability to become exactly who the situation requires."
+    ]
+  },
+  {
+    "id": 46,
+    "section": "Pathway Resonance",
+    "question": "You are being hunted by someone more powerful than you. You cannot outfight them.",
+    "subtext": "Your strategy?",
+    "options": [
+      "Disappear completely. Become someone they cannot find.",
+      "Learn everything about them until their weakness is clear.",
+      "Set a trap. Use the hunt itself as the weapon.",
+      "Negotiate or find a third party to mediate."
+    ]
+  },
+  {
+    "id": 47,
+    "section": "Pathway Resonance",
+    "question": "Your Beyonder characteristic is showing signs of contamination. You are beginning to lose yourself.",
+    "subtext": "What do you do?",
+    "options": [
+      "Accelerate. If I'm losing myself anyway, I might as well gain something first.",
+      "Stop all Sequence activity immediately and seek purification.",
+      "Continue cautiously, monitoring the drift and correcting where possible.",
+      "Consult someone who has been through this. I don't handle this alone."
+    ]
+  },
+  {
+    "id": 48,
+    "section": "Pathway Resonance",
+    "question": "If you could whisper one sentence to yourself at the beginning of your Beyonder journey:",
+    "subtext": "What would it be?",
+    "options": [
+      "'Trust the evidence over the instinct.'",
+      "'You will become what you practice; choose carefully.'",
+      "'The answer you're looking for will cost more than you think.'",
+      "'The role you play long enough becomes the person you are.'"
+    ]
+  }
+]
