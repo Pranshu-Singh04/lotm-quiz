@@ -1,11 +1,12 @@
-import mongoose from 'mongoose';
+// backend/models/Result.js — CommonJS
+const mongoose = require('mongoose')
 
 const ResultSchema = new mongoose.Schema({
-  pathway: String,          // winning pathway
-  scores: Object,           // all 8 pathway scores
-  questionIds: [String],    // which 20 were selected
-  completedAt: { type: Date, default: Date.now },
-  sessionId: String,        // random UUID, no personal data
-});
+  pathway:     { type: String, required: true },
+  scores:      { type: Object, required: true },
+  questionIds: [String],
+  sessionId:   String,
+  completedAt: { type: Date, default: Date.now }
+})
 
-export default mongoose.model('Result', ResultSchema);
+module.exports = mongoose.model('Result', ResultSchema)

@@ -1,22 +1,27 @@
-import express from 'express';
-import Result from '../models/Result.js';
+// backend/routes/analytics.js — CommonJS
+const express = require('express')
+const Result = require('../models/Result')
+const router = express.Router()
 
-const router = express.Router();
-
-// GET /api/analytics/distribution
-// Returns: how many people got each pathway
 router.get('/distribution', async (req, res) => {
-  const data = await Result.aggregate([
-    { $group: { _id: '$pathway', count: { $sum: 1 } } },
-    { $sort: { count: -1 } }
-  ]);
-  res.json(data);
-});
+  try {
+    const data = await Result.aggregate([
+      { $group: { _id: '$pathway', count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ])
+    res.json(data)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
 
-// GET /api/analytics/total
 router.get('/total', async (req, res) => {
-  const count = await Result.countDocuments();
-  res.json({ total: count });
-});
+  try {
+    const count = await Result.countDocuments()
+    res.json({ total: count })
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
 
-export default router;
+module.exports = router
