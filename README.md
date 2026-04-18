@@ -73,3 +73,10 @@ pathway_percentage = pathway_score / total_all_scores × 100
 ```
 
 ---
+
+## About
+
+Built by Pranshu Singh · AIML Student  
+Inspired by *Lord of the Mysteries* by Cuttlefish That Loves Diving  
+All Pathway lore and Sequence names belong to the original author  
+This is a fan-made project — no canonical accuracy is claimed
