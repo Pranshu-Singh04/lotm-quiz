@@ -272,6 +272,137 @@ function ArcaneEye({ size, color, opacity, delay }) {
   )
 }
 
+// Creepy bloodied floating eye — blinks occasionally
+function BloodEye({ size, delay, blinkInterval, opacity }) {
+  const rx = size, ry = size * 0.58
+  // Blood vessels
+  const vessels = [0,1,2,3,4,5,6].map(i => {
+    const a = (i * 51.4 + i * 3) * Math.PI / 180
+    const len = size * (0.52 + (i % 3) * 0.1)
+    const qx = Math.cos(a + 0.35) * len * 0.55
+    const qy = Math.sin(a + 0.35) * len * 0.55 * 0.58
+    return `M 0 0 Q ${qx} ${qy} ${Math.cos(a)*len} ${Math.sin(a)*len*0.58}`
+  })
+  return (
+    <g opacity={opacity}>
+      {/* Eyeball group — scaleY animates to blink */}
+      <g
+        className="blood-eye-ball"
+        style={{ animationDelay: `${delay}s`, animationDuration: `${blinkInterval}s` }}
+      >
+        {/* Sclera */}
+        <ellipse cx="0" cy="0" rx={rx} ry={ry} fill="rgba(228,218,192,0.93)" />
+        {/* Blood vessels */}
+        {vessels.map((d, i) => (
+          <path key={i} d={d} fill="none"
+            stroke={`rgba(165,12,12,${0.35 + i*0.05})`} strokeWidth="0.55" />
+        ))}
+        {/* Iris */}
+        <ellipse cx="0" cy="0" rx={size*0.34} ry={size*0.34*0.58} fill="rgba(18,6,4,0.97)" />
+        {/* Pupil */}
+        <ellipse cx="0" cy="0" rx={size*0.15} ry={size*0.15*0.58} fill="rgba(2,0,0,1)" />
+        {/* Shine */}
+        <ellipse cx={size*0.08} cy={-size*0.09} rx={size*0.045} ry={size*0.032} fill="rgba(255,255,255,0.6)" />
+        {/* Blood pooling at inner corner */}
+        <path d={`M ${-rx} 0 Q ${-rx*0.75} ${ry*0.35} ${-rx*0.45} ${ry*0.18}`}
+          fill="none" stroke="rgba(140,8,8,0.55)" strokeWidth="1.4" strokeLinecap="round" />
+      </g>
+      {/* Upper eyelid — dark, always on top, closes when ball shrinks */}
+      <path
+        d={`M ${-rx-1} 0 C ${-rx*0.5} ${-ry*1.4} ${rx*0.5} ${-ry*1.4} ${rx+1} 0`}
+        fill="rgba(8,4,2,1)"
+      />
+      {/* Lower eyelid */}
+      <path
+        d={`M ${-rx-1} 0 C ${-rx*0.5} ${ry*1.15} ${rx*0.5} ${ry*1.15} ${rx+1} 0`}
+        fill="rgba(8,4,2,1)"
+      />
+      {/* Eyelashes — upper */}
+      {[-0.65,-0.3,0,0.3,0.65].map((t, i) => {
+        const lx = t * rx
+        const ly = -Math.sqrt(Math.max(0, 1-(t*t))) * ry
+        return (
+          <line key={i} x1={lx} y1={ly}
+            x2={lx + (t - 0.1) * size * 0.18} y2={ly - size * 0.17}
+            stroke="rgba(5,2,1,0.9)" strokeWidth="0.8" strokeLinecap="round" />
+        )
+      })}
+    </g>
+  )
+}
+
+// Eerie door — Mr. Door aesthetic, slightly ajar with light bleeding through
+function EerieDoor({ width, opacity, delay }) {
+  const w = width, h = width * 2.3
+  const archR = w * 0.52
+  const archCY = -h / 2 + archR
+  const inset = w * 0.11
+
+  return (
+    <g opacity={opacity}>
+      {/* Ambient glow leaking around door */}
+      <ellipse cx="0" cy="0" rx={w * 0.8} ry={h * 0.45}
+        fill="rgba(255,170,50,0.025)" />
+
+      {/* Door body */}
+      <path
+        d={`M ${-w/2} ${h/2} L ${-w/2} ${archCY} A ${archR} ${archR} 0 0 1 ${w/2} ${archCY} L ${w/2} ${h/2} Z`}
+        fill="rgba(6,3,1,0.92)"
+        stroke="rgba(65,30,8,0.65)"
+        strokeWidth="1.8"
+      />
+
+      {/* Arch detail line */}
+      <path
+        d={`M ${-w/2} ${archCY} A ${archR} ${archR} 0 0 1 ${w/2} ${archCY}`}
+        fill="none" stroke="rgba(65,30,8,0.4)" strokeWidth="0.8"
+      />
+
+      {/* Upper panel */}
+      <rect x={-w/2+inset} y={-h/2+inset*1.5} width={w-inset*2} height={h*0.3}
+        fill="none" stroke="rgba(65,30,8,0.38)" strokeWidth="0.75" rx="1" />
+
+      {/* Lower panel */}
+      <rect x={-w/2+inset} y={-h/2+h*0.42} width={w-inset*2} height={h*0.42}
+        fill="none" stroke="rgba(65,30,8,0.38)" strokeWidth="0.75" rx="1" />
+
+      {/* Light bleeding from right edge — door slightly ajar */}
+      <line x1={w/2} y1={archCY} x2={w/2} y2={h/2}
+        stroke="rgba(255,200,80,0.28)" strokeWidth="1.2"
+        className="door-light"
+        style={{ animationDelay: `${delay}s` }}
+      />
+      <line x1={w/2-1.5} y1={archCY} x2={w/2-1.5} y2={h/2}
+        stroke="rgba(255,200,80,0.1)" strokeWidth="3"
+        className="door-light"
+        style={{ animationDelay: `${delay}s` }}
+      />
+
+      {/* Door knob */}
+      <circle cx={w*0.27} cy={h*0.04}
+        r={w*0.065} fill="rgba(90,50,15,0.75)" stroke="rgba(140,80,25,0.5)" strokeWidth="0.8" />
+      <circle cx={w*0.27} cy={h*0.04} r={w*0.025} fill="rgba(170,100,30,0.6)" />
+
+      {/* Keyhole */}
+      <circle cx={w*0.27} cy={-h*0.1} r={w*0.045}
+        fill="rgba(255,175,50,0.45)"
+        className="door-light"
+        style={{ animationDelay: `${delay + 0.5}s` }}
+      />
+      <path
+        d={`M ${w*0.27-w*0.032} ${-h*0.1} L ${w*0.27} ${-h*0.1+w*0.09} L ${w*0.27+w*0.032} ${-h*0.1}`}
+        fill="rgba(255,175,50,0.45)"
+        className="door-light"
+        style={{ animationDelay: `${delay + 0.5}s` }}
+      />
+
+      {/* Faint silhouette visible through keyhole glow */}
+      <ellipse cx={w*0.27} cy={-h*0.22} rx={w*0.07} ry={w*0.09}
+        fill="rgba(3,1,0,0.5)" />
+    </g>
+  )
+}
+
 // Scattered decor layout — positions as [left%, top%], type, params
 const DECOR_ITEMS = [
   // Left side
@@ -291,6 +422,18 @@ const DECOR_ITEMS = [
   // Top corners
   { x:  1, y:  2, type: 'sigil',   size: 30,  delay: 1.6,  opacity: 0.12 },
   { x: 95, y:  3, type: 'cross',   size: 28,  delay: 0.4,  opacity: 0.12 },
+  // Bloodied eyes — scattered around
+  { x: 17, y: 20, type: 'blood-eye', size: 24, delay: 0.7,  blinkInterval: 7,  opacity: 0.62 },
+  { x: 82, y: 17, type: 'blood-eye', size: 20, delay: 2.5,  blinkInterval: 5,  opacity: 0.55 },
+  { x:  6, y: 48, type: 'blood-eye', size: 28, delay: 1.3,  blinkInterval: 9,  opacity: 0.65 },
+  { x: 91, y: 55, type: 'blood-eye', size: 22, delay: 3.8,  blinkInterval: 6,  opacity: 0.58 },
+  { x: 46, y:  4, type: 'blood-eye', size: 16, delay: 0.9,  blinkInterval: 8,  opacity: 0.45 },
+  { x: 22, y: 78, type: 'blood-eye', size: 18, delay: 4.2,  blinkInterval: 11, opacity: 0.40 },
+  { x: 76, y: 80, type: 'blood-eye', size: 20, delay: 1.9,  blinkInterval: 7,  opacity: 0.42 },
+  // Eerie doors — sides and corners
+  { x:  0, y: 44, type: 'door', size: 54, delay: 0,   opacity: 0.32 },
+  { x: 97, y: 40, type: 'door', size: 48, delay: 2.1, opacity: 0.28 },
+  { x: 18, y: 96, type: 'door', size: 38, delay: 1.0, opacity: 0.22 },
 ]
 
 const BLOOD = 'rgba(140,15,15,VAL)'
@@ -353,6 +496,21 @@ function ScatteredDecor() {
                   size={item.size}
                   color={`rgba(140,15,15,${baseOpacity + 0.08})`}
                   opacity={1}
+                  delay={item.delay}
+                />
+              )}
+              {item.type === 'blood-eye' && (
+                <BloodEye
+                  size={item.size}
+                  delay={item.delay}
+                  blinkInterval={item.blinkInterval}
+                  opacity={baseOpacity}
+                />
+              )}
+              {item.type === 'door' && (
+                <EerieDoor
+                  width={item.size}
+                  opacity={baseOpacity}
                   delay={item.delay}
                 />
               )}

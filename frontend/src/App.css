@@ -1532,7 +1532,7 @@ h2.subtitle {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
   overflow: hidden;
 }
 
@@ -1558,4 +1558,38 @@ h2.subtitle {
   0%   { opacity: 0.6; transform: scale(1); }
   50%  { opacity: 1.0; transform: scale(1.04); }
   100% { opacity: 0.7; transform: scale(0.97); }
+}
+
+/* ── Blood Eyes ───────────────────────────────────────────────── */
+
+/* Eye blink — ball scaleY goes near-0 briefly */
+.blood-eye-ball {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: eye-blink-anim 7s ease-in-out infinite;
+}
+@keyframes eye-blink-anim {
+  /* Hold open most of cycle */
+  0%,  88%          { transform: scaleY(1); }
+  /* Quick blink */
+  90%               { transform: scaleY(0.06); }
+  92%               { transform: scaleY(1); }
+  /* Occasional slow creepy half-close */
+  95%               { transform: scaleY(0.4); }
+  97%               { transform: scaleY(1); }
+  100%              { transform: scaleY(1); }
+}
+
+/* ── Eerie Doors ──────────────────────────────────────────────── */
+
+/* Keyhole + edge light pulse */
+.door-light {
+  animation: door-light-flicker 4s ease-in-out infinite alternate;
+}
+@keyframes door-light-flicker {
+  0%   { opacity: 0.6; }
+  30%  { opacity: 1.0; }
+  55%  { opacity: 0.4; }
+  80%  { opacity: 0.9; }
+  100% { opacity: 0.55; }
 }
