@@ -272,59 +272,78 @@ function ArcaneEye({ size, color, opacity, delay }) {
   )
 }
 
-// Creepy bloodied floating eye — blinks occasionally
+// Creepy bloodied floating eye — visible eyeball, blinks + iris wanders
 function BloodEye({ size, delay, blinkInterval, opacity }) {
   const rx = size, ry = size * 0.58
-  // Blood vessels
-  const vessels = [0,1,2,3,4,5,6].map(i => {
-    const a = (i * 51.4 + i * 3) * Math.PI / 180
-    const len = size * (0.52 + (i % 3) * 0.1)
-    const qx = Math.cos(a + 0.35) * len * 0.55
-    const qy = Math.sin(a + 0.35) * len * 0.55 * 0.58
+  const irisRx = size * 0.33, irisRy = size * 0.33 * 0.58
+  const uid = `eye-${size}-${String(delay).replace('.','x')}`
+  const gazeVariant = Math.round(delay * 10) % 4
+
+  // Blood vessels radiating from center, clipped to sclera
+  const vessels = Array.from({length: 6}, (_, i) => {
+    const a = (i * 60 + 12) * Math.PI / 180
+    const len = size * (0.44 + (i % 3) * 0.09)
+    const qx = Math.cos(a + 0.4) * len * 0.5
+    const qy = Math.sin(a + 0.4) * len * 0.5 * 0.58
     return `M 0 0 Q ${qx} ${qy} ${Math.cos(a)*len} ${Math.sin(a)*len*0.58}`
   })
+
+  // Almond eye-opening shape for clipPath
+  const openPath = `M ${-rx} 0 C ${-rx*0.5} ${-ry*1.05} ${rx*0.5} ${-ry*1.05} ${rx} 0 C ${rx*0.5} ${ry*0.82} ${-rx*0.5} ${ry*0.82} ${-rx} 0 Z`
+
   return (
     <g opacity={opacity}>
-      {/* Eyeball group — scaleY animates to blink */}
-      <g
-        className="blood-eye-ball"
-        style={{ animationDelay: `${delay}s`, animationDuration: `${blinkInterval}s` }}
-      >
+      <defs>
+        <clipPath id={uid}><path d={openPath} /></clipPath>
+      </defs>
+
+      {/* Eyeball contents — clipped to almond opening */}
+      <g clipPath={`url(#${uid})`}>
         {/* Sclera */}
-        <ellipse cx="0" cy="0" rx={rx} ry={ry} fill="rgba(228,218,192,0.93)" />
+        <ellipse cx="0" cy="0" rx={rx+2} ry={ry+2} fill="rgba(228,218,192,0.93)" />
         {/* Blood vessels */}
         {vessels.map((d, i) => (
           <path key={i} d={d} fill="none"
-            stroke={`rgba(165,12,12,${0.35 + i*0.05})`} strokeWidth="0.55" />
+            stroke={`rgba(165,12,12,${0.28 + i*0.06})`} strokeWidth="0.6" />
         ))}
-        {/* Iris */}
-        <ellipse cx="0" cy="0" rx={size*0.34} ry={size*0.34*0.58} fill="rgba(18,6,4,0.97)" />
-        {/* Pupil */}
-        <ellipse cx="0" cy="0" rx={size*0.15} ry={size*0.15*0.58} fill="rgba(2,0,0,1)" />
-        {/* Shine */}
-        <ellipse cx={size*0.08} cy={-size*0.09} rx={size*0.045} ry={size*0.032} fill="rgba(255,255,255,0.6)" />
+        {/* Iris + pupil + shine — wanders smoothly */}
+        <g className={`eye-gaze eye-gaze-${gazeVariant}`}
+           style={{ animationDelay: `${delay}s` }}>
+          <ellipse cx="0" cy="0" rx={irisRx} ry={irisRy} fill="rgba(22,8,5,0.97)" />
+          <ellipse cx="0" cy="0" rx={size*0.14} ry={size*0.14*0.58} fill="rgba(2,0,0,1)" />
+          <ellipse cx={size*0.09} cy={-size*0.08*0.58} rx={size*0.046} ry={size*0.033} fill="rgba(255,255,255,0.65)" />
+        </g>
         {/* Blood pooling at inner corner */}
-        <path d={`M ${-rx} 0 Q ${-rx*0.75} ${ry*0.35} ${-rx*0.45} ${ry*0.18}`}
-          fill="none" stroke="rgba(140,8,8,0.55)" strokeWidth="1.4" strokeLinecap="round" />
+        <path d={`M ${-rx} 0 Q ${-rx*0.75} ${ry*0.32} ${-rx*0.44} ${ry*0.14}`}
+          fill="none" stroke="rgba(140,8,8,0.6)" strokeWidth="1.5" strokeLinecap="round" />
       </g>
-      {/* Upper eyelid — dark, always on top, closes when ball shrinks */}
+
+      {/* Upper eyelid skin — masks above the eye opening */}
       <path
-        d={`M ${-rx-1} 0 C ${-rx*0.5} ${-ry*1.4} ${rx*0.5} ${-ry*1.4} ${rx+1} 0`}
+        d={`M ${-rx-3} 0 C ${-rx*0.5} ${-ry*1.05} ${rx*0.5} ${-ry*1.05} ${rx+3} 0 L ${rx+3} ${-(ry+size+4)} L ${-(rx+3)} ${-(ry+size+4)} Z`}
         fill="rgba(8,4,2,1)"
       />
-      {/* Lower eyelid */}
+      {/* Lower eyelid skin — masks below the eye opening */}
       <path
-        d={`M ${-rx-1} 0 C ${-rx*0.5} ${ry*1.15} ${rx*0.5} ${ry*1.15} ${rx+1} 0`}
+        d={`M ${-rx-3} 0 C ${-rx*0.5} ${ry*0.82} ${rx*0.5} ${ry*0.82} ${rx+3} 0 L ${rx+3} ${ry+size+4} L ${-(rx+3)} ${ry+size+4} Z`}
         fill="rgba(8,4,2,1)"
       />
-      {/* Eyelashes — upper */}
-      {[-0.65,-0.3,0,0.3,0.65].map((t, i) => {
+
+      {/* Blink overlay — dark ellipse animates scaleY over the open eye */}
+      <ellipse cx="0" cy="0" rx={rx+2} ry={ry+2}
+        fill="rgba(8,4,2,1)"
+        className="blood-eye-blink"
+        style={{ animationDelay: `${delay}s`, animationDuration: `${blinkInterval}s` }}
+      />
+
+      {/* Eyelashes — upper only */}
+      {[-0.62,-0.28,0,0.28,0.62].map((t, i) => {
         const lx = t * rx
-        const ly = -Math.sqrt(Math.max(0, 1-(t*t))) * ry
+        const ly = -Math.sqrt(Math.max(0, 1 - t*t)) * ry * 1.04
         return (
           <line key={i} x1={lx} y1={ly}
-            x2={lx + (t - 0.1) * size * 0.18} y2={ly - size * 0.17}
-            stroke="rgba(5,2,1,0.9)" strokeWidth="0.8" strokeLinecap="round" />
+            x2={lx + (t - 0.05) * size * 0.22} y2={ly - size * 0.2}
+            stroke="rgba(5,2,1,0.92)" strokeWidth="0.9" strokeLinecap="round" />
         )
       })}
     </g>

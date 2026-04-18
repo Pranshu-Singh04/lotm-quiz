@@ -1562,22 +1562,67 @@ h2.subtitle {
 
 /* ── Blood Eyes ───────────────────────────────────────────────── */
 
-/* Eye blink — ball scaleY goes near-0 briefly */
-.blood-eye-ball {
+/* Blink overlay — dark ellipse scaleY-expands over open eye */
+.blood-eye-blink {
   transform-box: fill-box;
   transform-origin: 50% 50%;
-  animation: eye-blink-anim 7s ease-in-out infinite;
+  transform: scaleY(0);
+  animation: eye-blink-overlay 7s ease-in-out infinite;
 }
-@keyframes eye-blink-anim {
-  /* Hold open most of cycle */
-  0%,  88%          { transform: scaleY(1); }
-  /* Quick blink */
-  90%               { transform: scaleY(0.06); }
-  92%               { transform: scaleY(1); }
-  /* Occasional slow creepy half-close */
-  95%               { transform: scaleY(0.4); }
-  97%               { transform: scaleY(1); }
-  100%              { transform: scaleY(1); }
+@keyframes eye-blink-overlay {
+  0%,  87%  { transform: scaleY(0); }
+  /* Quick snap blink */
+  89%        { transform: scaleY(1); }
+  91%        { transform: scaleY(0); }
+  /* Slow creepy half-close */
+  94%        { transform: scaleY(0.42); }
+  97%        { transform: scaleY(0); }
+  100%       { transform: scaleY(0); }
+}
+
+/* Iris gaze wander — 4 pattern variants, smooth cubic easing */
+.eye-gaze {
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  animation-iteration-count: infinite;
+}
+.eye-gaze-0 { animation-name: gaze-0; animation-duration: 9s; }
+.eye-gaze-1 { animation-name: gaze-1; animation-duration: 7s; }
+.eye-gaze-2 { animation-name: gaze-2; animation-duration: 11s; }
+.eye-gaze-3 { animation-name: gaze-3; animation-duration: 8s; }
+
+@keyframes gaze-0 {
+  0%   { transform: translate(0px,   0px); }
+  15%  { transform: translate(4px,  -1px); }
+  32%  { transform: translate(3px,   2px); }
+  50%  { transform: translate(0px,   2px); }
+  67%  { transform: translate(-4px,  1px); }
+  84%  { transform: translate(-3px, -2px); }
+  100% { transform: translate(0px,   0px); }
+}
+@keyframes gaze-1 {
+  0%   { transform: translate(-3px,  0px); }
+  22%  { transform: translate(0px,  -2px); }
+  44%  { transform: translate(5px,  -1px); }
+  66%  { transform: translate(2px,   2px); }
+  88%  { transform: translate(-4px,  1px); }
+  100% { transform: translate(-3px,  0px); }
+}
+@keyframes gaze-2 {
+  0%   { transform: translate(2px,   1px); }
+  20%  { transform: translate(-5px,  0px); }
+  42%  { transform: translate(-2px, -2px); }
+  62%  { transform: translate(0px,   2px); }
+  80%  { transform: translate(4px,  -1px); }
+  100% { transform: translate(2px,   1px); }
+}
+@keyframes gaze-3 {
+  0%   { transform: translate(0px,  -2px); }
+  18%  { transform: translate(-5px,  1px); }
+  38%  { transform: translate(-2px,  2px); }
+  56%  { transform: translate(3px,   0px); }
+  74%  { transform: translate(5px,  -2px); }
+  92%  { transform: translate(1px,   1px); }
+  100% { transform: translate(0px,  -2px); }
 }
 
 /* ── Eerie Doors ──────────────────────────────────────────────── */
