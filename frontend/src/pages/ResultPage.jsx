@@ -143,6 +143,8 @@ export default function ResultPage() {
   const navigate  = useNavigate()
   const { scores, pathway: pathwayKey, selectedQuestions } = location.state || {}
 
+  const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+
   const [globalStats, setGlobalStats] = useState(null)
   const [copied,      setCopied]      = useState(false)
   const [cardDone,    setCardDone]    = useState(false)
@@ -154,7 +156,7 @@ export default function ResultPage() {
     async function submitAndFetch() {
       try {
         await axios.post(
-          `${import.meta.env.VITE_API_URL}/api/quiz/submit`,
+          `${API}/api/quiz/submit`,
           {
             pathway: pathwayKey,
             scores,
@@ -163,7 +165,7 @@ export default function ResultPage() {
           }
         )
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/analytics/distribution`
+          `${API}/api/analytics/distribution`
         )
         // Backend returns [{_id, count}] — convert to {key: count} for GlobalStats
         const statsObj = {}

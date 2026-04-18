@@ -17,7 +17,12 @@ const redis = new Redis({
 
 const app = express()
 
-app.use(cors({ origin: process.env.FRONTEND_URL || '*' }))
+const ALLOWED_ORIGIN = (process.env.FRONTEND_URL || '').replace(/\/$/, '') || '*'
+app.use(cors({
+  origin: ALLOWED_ORIGIN,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}))
 app.use(express.json())
 
 // Attach redis to every request
