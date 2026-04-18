@@ -59,10 +59,11 @@ const TAGS = {
 }
 
 function hexToRgb(hex) {
+  if (!hex || typeof hex !== 'string' || hex.length < 7) return { r:201, g:151, b:58 }
   const r = parseInt(hex.slice(1,3),16)
   const g = parseInt(hex.slice(3,5),16)
   const b = parseInt(hex.slice(5,7),16)
-  return { r, g, b }
+  return { r: isNaN(r)?201:r, g: isNaN(g)?151:g, b: isNaN(b)?58:b }
 }
 
 function wrapText(ctx, text, x, y, maxW, lineH, maxLines = 4) {
@@ -90,6 +91,8 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 async function drawCard(pathwayKey, pathway, scores) {
+  console.log('[ShareCard] drawing for', pathwayKey, pathway)
+  if (!pathway) throw new Error('pathway is undefined — key: ' + pathwayKey)
   await document.fonts.ready
 
   const W = 1200, H = 630
@@ -209,7 +212,7 @@ async function drawCard(pathwayKey, pathway, scores) {
   ctx.fillStyle = 'rgba(255,255,255,0.55)'
   ctx.font = '400 11px Georgia, serif'
   ctx.textAlign = 'left'
-  wrapText(ctx, pathway.description ?? '', PAD + 8, 436, SPLIT - PAD - 16, 17, 5)
+  wrapText(ctx, pathway.description || pathway.name || '', PAD + 8, 436, SPLIT - PAD - 16, 17, 5)
 
   // Right panel
   const rx = SPLIT + PAD
@@ -275,7 +278,7 @@ async function drawCard(pathwayKey, pathway, scores) {
     ctx.beginPath(); ctx.moveTo(rx, scoreY+7); ctx.lineTo(rx+rw, scoreY+7); ctx.stroke()
 
     // Warning banner
-    const warn = (pathway.warning ?? '').slice(0, 95)
+    const warn = (pathway.warning || pathway.description || '').slice(0, 95)
     ctx.fillStyle = `rgba(${r},${g},${b},0.14)`
     roundRect(ctx, rx, scoreY+14, rw, 28, 4); ctx.fill()
     ctx.strokeStyle = `rgba(${r},${g},${b},0.3)`; ctx.lineWidth = 1
