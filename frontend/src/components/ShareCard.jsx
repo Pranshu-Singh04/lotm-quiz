@@ -91,13 +91,11 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 async function drawCard(pathwayKey, pathway, scores) {
-  console.log('[ShareCard] key:', pathwayKey)
-  console.log('[ShareCard] pathway:', pathway)
-  console.log('[ShareCard] PATHWAYS import:', typeof PATHWAYS, Object.keys(PATHWAYS || {}).length, 'keys')
-  console.log('[ShareCard] scores keys:', Object.keys(scores || {}))
-  if (!pathway) throw new Error('pathway is undefined — key: ' + pathwayKey)
-  if (!PATHWAYS) throw new Error('PATHWAYS import is undefined')
+  if (!pathway) throw new Error('pathway undefined: ' + pathwayKey)
+  let step = 'init'
+  try {
   await document.fonts.ready
+  step = 'canvas'
 
   const W = 1200, H = 630
   const SPLIT = 460
@@ -149,6 +147,7 @@ async function drawCard(pathwayKey, pathway, scores) {
   ctx.fillText('BEYONDGOD STREET  ·  SEQUENCE ALIGNMENT ENGINE', W/2, 46)
   ctx.letterSpacing = '0px'
 
+  step = 'left-panel'
   // Left panel
   const cx = SPLIT / 2
 
@@ -212,12 +211,14 @@ async function drawCard(pathwayKey, pathway, scores) {
     tx += tw + tagGap
   })
 
+  step = 'description'
   // Description
   ctx.fillStyle = 'rgba(255,255,255,0.55)'
   ctx.font = '400 11px Georgia, serif'
   ctx.textAlign = 'left'
   wrapText(ctx, pathway.description || pathway.name || '', PAD + 8, 436, SPLIT - PAD - 16, 17, 5)
 
+  step = 'right-panel'
   // Right panel
   const rx = SPLIT + PAD
   const rw = W - rx - PAD
@@ -268,6 +269,7 @@ async function drawCard(pathwayKey, pathway, scores) {
     roundRect(ctx, rx, barY, fillW, barH, 4); ctx.fill()
   })
 
+  step = 'scores'
   if (scores) {
     const sorted    = Object.entries(scores).sort((a,b)=>b[1]-a[1]).slice(0,5)
     const maxScore  = sorted[0]?.[1] || 1
@@ -326,7 +328,9 @@ async function drawCard(pathwayKey, pathway, scores) {
     ctx.beginPath(); ctx.arc(cx2, cy2, 2.5, 0, Math.PI*2); ctx.fill()
   })
 
+  step = 'done'
   return canvas.toDataURL('image/png')
+  } catch(e) { throw new Error(`[step:${step}] ${e.message}`) }
 }
 
 // ── Share Modal ────────────────────────────────────────────────────────────────

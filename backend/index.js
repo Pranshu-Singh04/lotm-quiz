@@ -17,9 +17,18 @@ const redis = new Redis({
 
 const app = express()
 
-const ALLOWED_ORIGIN = (process.env.FRONTEND_URL || '').replace(/\/$/, '') || '*'
+const PROD_ORIGIN = (process.env.FRONTEND_URL || '').replace(/\/$/, '')
 app.use(cors({
-  origin: ALLOWED_ORIGIN,
+  origin: (origin, cb) => {
+    // Allow production URL, any vercel.app preview, and localhost
+    if (!origin) return cb(null, true)
+    if (
+      origin === PROD_ORIGIN ||
+      origin.endsWith('.vercel.app') ||
+      origin.startsWith('http://localhost')
+    ) return cb(null, true)
+    cb(new Error('CORS: ' + origin + ' not allowed'))
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }))
