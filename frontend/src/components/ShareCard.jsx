@@ -92,10 +92,7 @@ function roundRect(ctx, x, y, w, h, r) {
 
 async function drawCard(pathwayKey, pathway, scores) {
   if (!pathway) throw new Error('pathway undefined: ' + pathwayKey)
-  let step = 'init'
-  try {
   await document.fonts.ready
-  step = 'canvas'
 
   const W = 1200, H = 630
   const SPLIT = 460
@@ -143,11 +140,8 @@ async function drawCard(pathwayKey, pathway, scores) {
   ctx.fillStyle = 'rgba(201,151,58,0.55)'
   ctx.font = '500 10px "Cinzel", serif'
   ctx.textAlign = 'center'
-  ctx.letterSpacing = '4px'
-  ctx.fillText('BEYONDGOD STREET  ·  SEQUENCE ALIGNMENT ENGINE', W/2, 46)
-  ctx.letterSpacing = '0px'
+  ctx.fillText('BEYONDGOD  STREET  ·  SEQUENCE  ALIGNMENT  ENGINE', W/2, 46)
 
-  step = 'left-panel'
   // Left panel
   const cx = SPLIT / 2
 
@@ -211,23 +205,20 @@ async function drawCard(pathwayKey, pathway, scores) {
     tx += tw + tagGap
   })
 
-  step = 'description'
   // Description
   ctx.fillStyle = 'rgba(255,255,255,0.55)'
   ctx.font = '400 11px Georgia, serif'
   ctx.textAlign = 'left'
   wrapText(ctx, pathway.description || pathway.name || '', PAD + 8, 436, SPLIT - PAD - 16, 17, 5)
 
-  step = 'right-panel'
   // Right panel
   const rx = SPLIT + PAD
   const rw = W - rx - PAD
 
   ctx.fillStyle = `rgba(${r},${g},${b},0.7)`
   ctx.font = '600 9px "Cinzel", serif'
-  ctx.textAlign = 'left'; ctx.letterSpacing = '2px'
+  ctx.textAlign = 'left'
   ctx.fillText('PATHWAY METRICS', rx, 88)
-  ctx.letterSpacing = '0px'
 
   ctx.strokeStyle = `rgba(${r},${g},${b},0.2)`; ctx.lineWidth = 1
   ctx.beginPath(); ctx.moveTo(rx, 96); ctx.lineTo(rx+rw, 96); ctx.stroke()
@@ -244,9 +235,8 @@ async function drawCard(pathwayKey, pathway, scores) {
 
     ctx.fillStyle = 'rgba(255,255,255,0.5)'
     ctx.font = '600 9px "Cinzel", serif'
-    ctx.textAlign = 'left'; ctx.letterSpacing = '1px'
+    ctx.textAlign = 'left'
     ctx.fillText(stat.label, rx, y)
-    ctx.letterSpacing = '0px'
 
     ctx.fillStyle = 'rgba(255,255,255,0.28)'
     ctx.font = '400 9px Georgia, serif'
@@ -269,50 +259,48 @@ async function drawCard(pathwayKey, pathway, scores) {
     roundRect(ctx, rx, barY, fillW, barH, 4); ctx.fill()
   })
 
-  step = 'scores'
   if (scores) {
-    const sorted    = Object.entries(scores).sort((a,b)=>b[1]-a[1]).slice(0,5)
-    const maxScore  = sorted[0]?.[1] || 1
-    const scoreY    = 440
+    const sorted   = Object.entries(scores).sort((a,b)=>b[1]-a[1]).slice(0,5)
+    const maxScore = sorted[0]?.[1] || 1
+    const scoreY   = 440
 
     ctx.fillStyle = `rgba(${r},${g},${b},0.7)`
     ctx.font = '600 9px "Cinzel", serif'
-    ctx.textAlign = 'left'; ctx.letterSpacing = '2px'
+    ctx.textAlign = 'left'
     ctx.fillText('TOP ALIGNMENT SCORES', rx, scoreY)
-    ctx.letterSpacing = '0px'
     ctx.strokeStyle = `rgba(${r},${g},${b},0.2)`; ctx.lineWidth = 1
     ctx.beginPath(); ctx.moveTo(rx, scoreY+7); ctx.lineTo(rx+rw, scoreY+7); ctx.stroke()
 
-    // Warning banner
-    const warn = (pathway.warning || pathway.description || '').slice(0, 95)
+    const warn = String(pathway.warning || pathway.description || '').slice(0, 95)
     ctx.fillStyle = `rgba(${r},${g},${b},0.14)`
     roundRect(ctx, rx, scoreY+14, rw, 28, 4); ctx.fill()
     ctx.strokeStyle = `rgba(${r},${g},${b},0.3)`; ctx.lineWidth = 1
     roundRect(ctx, rx, scoreY+14, rw, 28, 4); ctx.stroke()
     ctx.fillStyle = `rgba(${r},${g},${b},0.9)`
     ctx.font = '400 9px Georgia, serif'; ctx.textAlign = 'left'
-    ctx.fillText('⚠  ' + warn + (warn.length < (pathway.warning?.length ?? 0) ? '…' : ''), rx+8, scoreY+32)
+    ctx.fillText('⚠  ' + warn + (warn.length >= 95 ? '…' : ''), rx+8, scoreY+32)
 
-    // Bar chart
     const barAreaY = scoreY + 50, barAreaH = 54
-    const bw = Math.floor((rw - 4*(sorted.length-1)) / sorted.length)
+    const bw = sorted.length > 0 ? Math.floor((rw - 4*(sorted.length-1)) / sorted.length) : 60
 
     sorted.forEach(([key, val], i) => {
-      const p   = PATHWAYS[key]
-      const pct = val / maxScore
-      const bx  = rx + i*(bw+4)
-      const bh  = Math.max(4, barAreaH * pct)
-      const by  = barAreaY + barAreaH - bh
+      // Use col as fallback — avoid any PATHWAYS lookup that might fail
+      const safePathway = PATHWAYS ? PATHWAYS[key] : null
+      const pColor = safePathway?.color || col
+      const pName  = safePathway?.name  || key
+      const pct  = Number(val) / Number(maxScore)
+      const bx   = rx + i*(bw+4)
+      const bh   = Math.max(4, barAreaH * (isNaN(pct) ? 0 : Math.min(1, pct)))
+      const by   = barAreaY + barAreaH - bh
 
       ctx.fillStyle = 'rgba(255,255,255,0.05)'
       roundRect(ctx, bx, barAreaY, bw, barAreaH, 3); ctx.fill()
-      ctx.fillStyle = p?.color || col
+      ctx.fillStyle = pColor
       roundRect(ctx, bx, by, bw, bh, 3); ctx.fill()
-
-      ctx.fillStyle = key === pathwayKey ? (p?.color || col) : 'rgba(255,255,255,0.45)'
-      ctx.font = key === pathwayKey ? '700 8px "Cinzel", serif' : '400 8px "Cinzel", serif'
+      ctx.fillStyle = key === pathwayKey ? pColor : 'rgba(255,255,255,0.45)'
+      ctx.font = '400 8px "Cinzel", serif'
       ctx.textAlign = 'center'
-      ctx.fillText((p?.name || key).slice(0,9).toUpperCase(), bx + bw/2, barAreaY + barAreaH + 12)
+      ctx.fillText(String(pName).slice(0,9).toUpperCase(), bx + bw/2, barAreaY + barAreaH + 12)
     })
   }
 
@@ -328,9 +316,7 @@ async function drawCard(pathwayKey, pathway, scores) {
     ctx.beginPath(); ctx.arc(cx2, cy2, 2.5, 0, Math.PI*2); ctx.fill()
   })
 
-  step = 'done'
   return canvas.toDataURL('image/png')
-  } catch(e) { throw new Error(`[step:${step}] ${e.message}`) }
 }
 
 // ── Share Modal ────────────────────────────────────────────────────────────────
