@@ -138,8 +138,8 @@ export default function LoadingPage() {
       console.warn('Semantic scoring unavailable, using classical method:', err)
       setMlFailed(true)
 
-      // Graceful fallback — complete remaining steps visually
-      for (let s = activeStep; s <= 6; s++) {
+      // Graceful fallback — complete remaining steps visually (start from 1, not stale state)
+      for (let s = 1; s <= 6; s++) {
         setActiveStep(s)
         setStepProgress(1)
         await delay(220)

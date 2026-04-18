@@ -165,7 +165,10 @@ export default function ResultPage() {
         const res = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/analytics/distribution`
         )
-        setGlobalStats(res.data)
+        // Backend returns [{_id, count}] — convert to {key: count} for GlobalStats
+        const statsObj = {}
+        res.data.forEach(({ _id, count }) => { statsObj[_id] = count })
+        setGlobalStats(statsObj)
       } catch (err) {
         console.error('Backend unavailable:', err)
       }
