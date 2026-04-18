@@ -375,7 +375,7 @@ export default function ResultPage() {
           Browse All 22 Pathways
         </button>
         <button className="btn-secondary" onClick={() => navigate('/')}>
-          ← Retake Evaluation
+          ← Return to Bureau
         </button>
       </motion.div>
 

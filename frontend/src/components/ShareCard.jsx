@@ -462,12 +462,15 @@ export default function ShareCard({ pathwayKey, pathway, scores }) {
   const [modalOpen,  setModalOpen]  = useState(false)
 
   async function generate() {
-    if (dataUrl) { setModalOpen(true); return }   // already rendered — reuse
+    if (dataUrl) { setModalOpen(true); return }
     setGenerating(true)
     try {
       const url = await drawCard(pathwayKey, pathway, scores)
       setDataUrl(url)
       setModalOpen(true)
+    } catch (err) {
+      console.error('Share card render failed:', err)
+      alert('Card render failed — check console for details.')
     } finally {
       setGenerating(false)
     }

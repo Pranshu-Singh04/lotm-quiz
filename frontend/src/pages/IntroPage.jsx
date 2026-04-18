@@ -143,6 +143,9 @@ export default function IntroPage() {
             Begin Evaluation
             <span className="btn-begin-arrow">→</span>
           </button>
+          <button className="btn-secondary" style={{ marginTop: '12px' }} onClick={() => navigate('/pathways')}>
+            Browse All 22 Pathways
+          </button>
           <p className="intro-fine-print">
             Results powered by in-browser ML · The Bureau accepts no appeals
           </p>

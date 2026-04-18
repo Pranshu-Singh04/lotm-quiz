@@ -1352,13 +1352,13 @@ h2.subtitle {
 .share-modal {
   background: linear-gradient(160deg, #0e0a06, #150e08);
   border: 1px solid rgba(201,151,58,0.25);
-  border-top: 1px solid color-mix(in srgb, var(--acc) 40%, transparent);
+  border-top: 1px solid rgba(201,151,58,0.3);
   border-radius: 8px;
   width: min(680px, 100%);
   max-height: 90vh;
   overflow-y: auto;
   padding: 24px;
-  box-shadow: 0 0 60px rgba(0,0,0,0.7), 0 0 30px color-mix(in srgb, var(--acc) 10%, transparent);
+  box-shadow: 0 0 60px rgba(0,0,0,0.7);
 }
 .share-modal-header {
   display: flex; justify-content: space-between; align-items: center;
@@ -1421,8 +1421,8 @@ h2.subtitle {
 .share-btn--reddit:hover   { border-color: rgba(255,87,0,0.6); box-shadow: 0 0 14px rgba(255,87,0,0.1); }
 .share-btn--insta    { border-color: rgba(225,48,108,0.3); }
 .share-btn--insta:hover    { border-color: rgba(225,48,108,0.6); box-shadow: 0 0 14px rgba(225,48,108,0.12); }
-.share-btn--native   { border-color: color-mix(in srgb, var(--acc) 35%, transparent); }
-.share-btn--native:hover   { border-color: color-mix(in srgb, var(--acc) 65%, transparent); }
+.share-btn--native   { border-color: rgba(201,151,58,0.35); }
+.share-btn--native:hover   { border-color: rgba(201,151,58,0.65); }
 
 .share-modal-note {
   font-size: 10px; color: var(--ash); text-align: center;
