@@ -185,6 +185,185 @@ function RitualCircle() {
   )
 }
 
+// ── Scattered ceremonial decor ───────────────────────────────────
+// Each element: { x, y } as vw/vh percentages, type, size, delay, opacity
+
+// Mini ritual circle SVG
+function MiniCircle({ r, roughId, color, opacity, delay, rotate }) {
+  const pts = [0,1,2,3,4].map(i => {
+    const order = [0,2,4,1,3]
+    const a1 = (order[i]       * 72 - 90) * Math.PI / 180
+    const a2 = (order[(i+1)%5] * 72 - 90) * Math.PI / 180
+    return { x1: r*Math.cos(a1), y1: r*Math.sin(a1), x2: r*Math.cos(a2), y2: r*Math.sin(a2) }
+  })
+  return (
+    <g opacity={opacity} style={{ animation: `decor-spin ${rotate}s linear infinite` }}>
+      <circle cx="0" cy="0" r={r}        fill="none" stroke={color} strokeWidth="0.7" filter={`url(#${roughId})`} />
+      <circle cx="0" cy="0" r={r * 0.7}  fill="none" stroke={color} strokeWidth="0.4" filter={`url(#${roughId})`} opacity="0.6" />
+      {pts.map((p, i) => (
+        <line key={i} x1={p.x1} y1={p.y1} x2={p.x2} y2={p.y2}
+          stroke={color} strokeWidth="0.5" filter={`url(#${roughId})`} opacity="0.7" />
+      ))}
+      {[0,1,2,3,4].map(i => {
+        const a = (i * 72 - 90) * Math.PI / 180
+        return <circle key={i} cx={r*Math.cos(a)} cy={r*Math.sin(a)} r="1.5" fill={color} opacity="0.5" />
+      })}
+    </g>
+  )
+}
+
+// Sigil — overlapping triangles / Star of Solomon style
+function MiniSigil({ size, color, opacity, delay }) {
+  const r = size / 2
+  // Upward triangle
+  const up = [0,1,2].map(i => { const a = (i*120 - 90)*Math.PI/180; return [r*Math.cos(a), r*Math.sin(a)] })
+  // Downward triangle
+  const dn = [0,1,2].map(i => { const a = (i*120 + 90)*Math.PI/180; return [r*Math.cos(a), r*Math.sin(a)] })
+  const poly = pts => pts.map(p => p.join(',')).join(' ')
+  return (
+    <g opacity={opacity} style={{ animation: `decor-pulse 4s ease-in-out ${delay}s infinite alternate` }}>
+      <polygon points={poly(up)} fill="none" stroke={color} strokeWidth="0.7" />
+      <polygon points={poly(dn)} fill="none" stroke={color} strokeWidth="0.7" />
+      <circle cx="0" cy="0" r={r * 1.1} fill="none" stroke={color} strokeWidth="0.5" opacity="0.5" />
+      <circle cx="0" cy="0" r="2" fill={color} opacity="0.4" />
+    </g>
+  )
+}
+
+// Runic cross with tick marks
+function RunicCross({ size, color, opacity, delay }) {
+  const h = size / 2
+  // Tick marks at 8 directions
+  const ticks = Array.from({length: 8}, (_, i) => {
+    const a = (i * 45) * Math.PI / 180
+    const r1 = h * 0.85, r2 = h
+    return { x1: r1*Math.cos(a), y1: r1*Math.sin(a), x2: r2*Math.cos(a), y2: r2*Math.sin(a) }
+  })
+  return (
+    <g opacity={opacity} style={{ animation: `decor-pulse 5s ease-in-out ${delay}s infinite alternate` }}>
+      <circle cx="0" cy="0" r={h * 0.9} fill="none" stroke={color} strokeWidth="0.6" />
+      <line x1={-h} y1="0" x2={h} y2="0" stroke={color} strokeWidth="0.7" />
+      <line x1="0" y1={-h} x2="0" y2={h} stroke={color} strokeWidth="0.7" />
+      <line x1={-h*0.65} y1={-h*0.65} x2={h*0.65} y2={h*0.65} stroke={color} strokeWidth="0.4" opacity="0.5" />
+      <line x1={h*0.65} y1={-h*0.65} x2={-h*0.65} y2={h*0.65} stroke={color} strokeWidth="0.4" opacity="0.5" />
+      {ticks.map((t,i) => (
+        <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke={color} strokeWidth="0.8" />
+      ))}
+    </g>
+  )
+}
+
+// Arcane eye — triangle with inner circle and rays
+function ArcaneEye({ size, color, opacity, delay }) {
+  const h = size / 2
+  const tri = [[-h,h*0.5],[h,h*0.5],[0,-h]]
+  const poly = tri.map(p=>p.join(',')).join(' ')
+  return (
+    <g opacity={opacity} style={{ animation: `decor-pulse 6s ease-in-out ${delay}s infinite alternate` }}>
+      <polygon points={poly} fill="none" stroke={color} strokeWidth="0.7" />
+      <circle cx="0" cy="0" r={h * 0.35} fill="none" stroke={color} strokeWidth="0.6" />
+      <circle cx="0" cy="0" r={h * 0.12} fill={color} opacity="0.5" />
+      {Array.from({length:6}, (_,i) => {
+        const a = i * 60 * Math.PI / 180
+        const r1 = h*0.4, r2 = h*0.55
+        return <line key={i} x1={r1*Math.cos(a)} y1={r1*Math.sin(a)} x2={r2*Math.cos(a)} y2={r2*Math.sin(a)} stroke={color} strokeWidth="0.5" opacity="0.6" />
+      })}
+    </g>
+  )
+}
+
+// Scattered decor layout — positions as [left%, top%], type, params
+const DECOR_ITEMS = [
+  // Left side
+  { x:  3, y: 12, type: 'circle',  size: 55,  delay: 0,    rotateDir:  1, rotateSpeed: 28, opacity: 0.22 },
+  { x:  7, y: 42, type: 'sigil',   size: 38,  delay: 1.2,  opacity: 0.18 },
+  { x:  2, y: 68, type: 'cross',   size: 44,  delay: 0.5,  opacity: 0.20 },
+  { x: 10, y: 28, type: 'eye',     size: 32,  delay: 2.1,  opacity: 0.15 },
+  { x:  5, y: 82, type: 'circle',  size: 36,  delay: 1.8,  rotateDir: -1, rotateSpeed: 40, opacity: 0.16 },
+  { x: 13, y: 58, type: 'sigil',   size: 26,  delay: 0.8,  opacity: 0.13 },
+  // Right side
+  { x: 88, y: 15, type: 'circle',  size: 48,  delay: 0.6,  rotateDir: -1, rotateSpeed: 32, opacity: 0.20 },
+  { x: 93, y: 45, type: 'cross',   size: 40,  delay: 1.5,  opacity: 0.18 },
+  { x: 85, y: 72, type: 'sigil',   size: 42,  delay: 0.3,  opacity: 0.21 },
+  { x: 91, y: 32, type: 'eye',     size: 28,  delay: 2.4,  opacity: 0.14 },
+  { x: 96, y: 60, type: 'circle',  size: 34,  delay: 1.1,  rotateDir:  1, rotateSpeed: 50, opacity: 0.15 },
+  { x: 84, y: 88, type: 'cross',   size: 30,  delay: 0.9,  opacity: 0.13 },
+  // Top corners
+  { x:  1, y:  2, type: 'sigil',   size: 30,  delay: 1.6,  opacity: 0.12 },
+  { x: 95, y:  3, type: 'cross',   size: 28,  delay: 0.4,  opacity: 0.12 },
+]
+
+const BLOOD = 'rgba(140,15,15,VAL)'
+
+function ScatteredDecor() {
+  return (
+    <div className="scattered-decor" aria-hidden="true">
+      <svg width="0" height="0" style={{ position:'absolute' }}>
+        <defs>
+          <filter id="sd-rough">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+      {DECOR_ITEMS.map((item, i) => {
+        const col = BLOOD.replace('VAL', item.opacity + 0.05)
+        const baseOpacity = item.opacity
+        return (
+          <div
+            key={i}
+            className="decor-item"
+            style={{ left: `${item.x}vw`, top: `${item.y}vh` }}
+          >
+            <svg
+              width={item.size * 2 + 10}
+              height={item.size * 2 + 10}
+              viewBox={`${-item.size-5} ${-item.size-5} ${item.size*2+10} ${item.size*2+10}`}
+              overflow="visible"
+              style={{ animationDelay: `${item.delay}s` }}
+            >
+              {item.type === 'circle' && (
+                <MiniCircle
+                  r={item.size / 2}
+                  roughId="sd-rough"
+                  color={`rgba(140,15,15,${baseOpacity + 0.08})`}
+                  opacity={1}
+                  delay={item.delay}
+                  rotate={item.rotateDir > 0 ? item.rotateSpeed : -item.rotateSpeed}
+                />
+              )}
+              {item.type === 'sigil' && (
+                <MiniSigil
+                  size={item.size}
+                  color={`rgba(140,15,15,${baseOpacity + 0.08})`}
+                  opacity={1}
+                  delay={item.delay}
+                />
+              )}
+              {item.type === 'cross' && (
+                <RunicCross
+                  size={item.size}
+                  color={`rgba(140,15,15,${baseOpacity + 0.08})`}
+                  opacity={1}
+                  delay={item.delay}
+                />
+              )}
+              {item.type === 'eye' && (
+                <ArcaneEye
+                  size={item.size}
+                  color={`rgba(140,15,15,${baseOpacity + 0.08})`}
+                  opacity={1}
+                  delay={item.delay}
+                />
+              )}
+            </svg>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 // Candle configuration — 8 candles across the bottom
 const CANDLE_CONFIGS = [
   { height: 75,  delay: 0,    tilt: -1.5, waxColor: '#cfc0a0',
@@ -209,6 +388,7 @@ export default function Candles() {
   return (
     <>
       <RitualCircle />
+      <ScatteredDecor />
       <div className="candle-container" aria-hidden="true">
         {CANDLE_CONFIGS.map((cfg, i) => (
           <Candle key={i} {...cfg} />
