@@ -1428,3 +1428,100 @@ h2.subtitle {
   font-size: 10px; color: var(--ash); text-align: center;
   font-style: italic; line-height: 1.6; letter-spacing: 0.03em;
 }
+
+/* ── Eerie Candles ─────────────────────────────────────────────── */
+
+.ritual-bg-circle {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 600px);
+  height: min(90vw, 600px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.candle-container {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 clamp(8px, 4vw, 60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eerie-candle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: bottom center;
+  animation: candle-sway 6s ease-in-out infinite alternate;
+}
+
+@keyframes candle-sway {
+  0%   { transform: translateX(0px); }
+  25%  { transform: translateX(0.5px); }
+  50%  { transform: translateX(-0.3px); }
+  75%  { transform: translateX(0.7px); }
+  100% { transform: translateX(-0.5px); }
+}
+
+.flame-glow {
+  animation: glow-pulse 2.8s ease-in-out infinite alternate;
+}
+@keyframes glow-pulse {
+  0%   { opacity: 0.6; }
+  40%  { opacity: 0.9; }
+  70%  { opacity: 0.5; }
+  100% { opacity: 0.8; }
+}
+
+.flame-outer {
+  animation: flame-flicker 0.18s steps(1) infinite,
+             flame-drift 2.1s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+@keyframes flame-flicker {
+  0%  { opacity: 0.82; }
+  14% { opacity: 0.93; }
+  28% { opacity: 0.71; }
+  42% { opacity: 0.89; }
+  57% { opacity: 0.65; }
+  71% { opacity: 0.95; }
+  85% { opacity: 0.78; }
+  100%{ opacity: 0.88; }
+}
+@keyframes flame-drift {
+  0%   { transform: skewX(0deg) scaleX(1); }
+  30%  { transform: skewX(3deg) scaleX(0.92); }
+  60%  { transform: skewX(-4deg) scaleX(1.06); }
+  100% { transform: skewX(2deg) scaleX(0.96); }
+}
+
+.flame-inner {
+  animation: flame-inner-flicker 0.22s steps(1) infinite,
+             flame-drift 1.7s ease-in-out infinite alternate-reverse;
+  transform-origin: center;
+}
+@keyframes flame-inner-flicker {
+  0%  { opacity: 0.88; }
+  20% { opacity: 0.97; }
+  40% { opacity: 0.79; }
+  60% { opacity: 0.94; }
+  80% { opacity: 0.72; }
+  100%{ opacity: 0.91; }
+}
+
+.flame-core {
+  animation: core-jitter 0.12s steps(1) infinite;
+}
+@keyframes core-jitter {
+  0%  { opacity: 0.85; transform: translateX(0px); }
+  25% { opacity: 0.95; transform: translateX(0.5px); }
+  50% { opacity: 0.75; transform: translateX(-0.5px); }
+  75% { opacity: 0.90; transform: translateX(0.3px); }
+  100%{ opacity: 0.80; transform: translateX(-0.3px); }
+}

@@ -1,920 +1,920 @@
 [
   {"id":1,"s":"Risk Appetite","w":2,
-   "q":"You discover a sealed document labelled: 'Do not read. Irreversible consequences.'",
-   "sub":"What is your first impulse?",
-   "opts":[
-     {"t":"Read it immediately. Irreversible is interesting, not a deterrent.","s":{"error":3,"abyss":2}},
-     {"t":"Study the seal and context first — then decide.","s":{"whitetower":3,"visionary":1}},
-     {"t":"Secure it so no one else accesses it.","s":{"blackemperor":3,"darkness":2}},
-     {"t":"Leave it. Irreversible is not a price I pay without choosing.","s":{"justiciar":3,"hermit":2}}
-   ]},
-  {"id":2,"s":"Risk Appetite","w":2,
-   "q":"An opportunity appears. The window is 48 hours and the information is incomplete.",
-   "sub":"How long do you wait before deciding?",
-   "opts":[
-     {"t":"Act within hours. Hesitation is its own decision.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"Spend 40 of the 48 hours gathering data, then commit.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Make a probabilistic call at hour 24.","s":{"fool":3,"wheeloffortune":2}},
-     {"t":"Enter at hour 47 with a full contingency plan.","s":{"blackemperor":3,"fool":2}}
-   ]},
-  {"id":3,"s":"Risk Appetite","w":1,
-   "q":"Strange symbols appear in your peripheral vision — not hallucinations, but patterns in ordinary objects.",
+   "q":"A page tears itself free from a sealed tome and addresses you by name. The Bureau evaluator observes without writing anything down. That is worse.",
    "sub":"What do you do?",
    "opts":[
-     {"t":"Document them obsessively. Patterns have meaning.","s":{"hermit":3,"whitetower":2}},
-     {"t":"Investigate cautiously — gather three instances before theorizing.","s":{"visionary":3,"hermit":2}},
-     {"t":"Stop. Cease all occult activity immediately.","s":{"justiciar":3,"darkness":2}},
-     {"t":"Observe from a distance. Do nothing that would influence the pattern.","s":{"visionary":3,"fool":2}}
+     {"t":"Read it aloud immediately — the name is yours, the knowledge should be too.","s":{"error":3,"abyss":2}},
+     {"t":"Study the summoning circle the page describes before touching it.","s":{"whitetower":3,"visionary":1}},
+     {"t":"Confiscate and contain it — knowledge this eager to be found is bait.","s":{"blackemperor":3,"darkness":2}},
+     {"t":"Burn it. Whatever named you should not know it succeeded.","s":{"justiciar":3,"hermit":2}}
+   ]},
+  {"id":2,"s":"Risk Appetite","w":2,
+   "q":"A Beyonder characteristic surfaces in Backlund's black market. The window is 48 hours and the seller's identity is unverified.",
+   "sub":"How long do you wait before acting?",
+   "opts":[
+     {"t":"Move within hours — hesitation is just a slower form of refusal.","s":{"twilightgiant":3,"redpriest":2}},
+     {"t":"Spend 40 of the 48 hours tracing the seller's trail, then commit.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Make a probabilistic assessment at hour 24 — enough signal by then.","s":{"fool":3,"wheeloffortune":2}},
+     {"t":"Enter at hour 47 with a full contingency ritual prepared.","s":{"blackemperor":3,"fool":2}}
+   ]},
+  {"id":3,"s":"Risk Appetite","w":1,
+   "q":"Symbols begin appearing in your peripheral vision — carved into cobblestones, traced in candle smoke, written in the grain of wood. They are not there when you look directly.",
+   "sub":"What do you do?",
+   "opts":[
+     {"t":"Document them obsessively in a sealed journal. Patterns have meaning.","s":{"hermit":3,"whitetower":2}},
+     {"t":"Investigate cautiously — gather three independent sightings before theorizing.","s":{"visionary":3,"hermit":2}},
+     {"t":"Halt all Beyonder activity immediately. Contamination presents exactly like this.","s":{"justiciar":3,"darkness":2}},
+     {"t":"Observe from a distance. Do nothing that would influence what is observing you back.","s":{"visionary":3,"fool":2}}
    ]},
   {"id":4,"s":"Risk Appetite","w":3,
-   "q":"You are offered Beyonder characteristics from an unverified source at a suspiciously low price.",
+   "q":"A hooded figure at the edge of a Tarot Club meeting offers you Beyonder characteristics from an unnamed Sequence. The price is suspiciously reasonable.",
    "sub":"Your response?",
    "opts":[
-     {"t":"Take them. Power is power; source is a secondary concern.","s":{"abyss":3,"error":2}},
-     {"t":"Research the source exhaustively before deciding.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Negotiate for verification — accept only with witnesses.","s":{"justiciar":3,"fool":2}},
-     {"t":"Decline entirely. Unverified characteristics are contamination vectors.","s":{"hermit":3,"sun":2}}
+     {"t":"Take them. Power is power; provenance is a secondary concern.","s":{"abyss":3,"error":2}},
+     {"t":"Research the source through every channel available before deciding.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Negotiate for verification — accept only with a witness and a prayer to Mr. Fool.","s":{"justiciar":3,"fool":2}},
+     {"t":"Decline entirely. Unverified characteristics are contamination vectors wearing a friendly face.","s":{"hermit":3,"sun":2}}
    ]},
   {"id":5,"s":"Risk Appetite","w":3,
-   "q":"You have the opportunity to perform a ritual. Success probability: 70%. Failure is fatal.",
+   "q":"The ritual is ready. The potion is prepared. Your Sequence advancement has a 70% success rate. The other 30% ends at spiritualization.",
    "sub":"Do you proceed?",
    "opts":[
-     {"t":"Yes. Seventy percent is a good number.","s":{"redpriest":3,"twilightgiant":2}},
-     {"t":"Only if I can improve the odds first.","s":{"whitetower":3,"fool":2}},
-     {"t":"No. Thirty percent fatality is unacceptable for one ritual.","s":{"justiciar":3,"hermit":2}},
-     {"t":"Depends entirely on what success achieves.","s":{"fool":3,"visionary":2}}
+     {"t":"Yes. Seventy percent is a favorable omen.","s":{"redpriest":3,"twilightgiant":2}},
+     {"t":"Only after I improve the odds — one more ingredient, one more prayer.","s":{"whitetower":3,"fool":2}},
+     {"t":"No. A 30% chance of losing everything is not a gamble, it is a surrender.","s":{"justiciar":3,"hermit":2}},
+     {"t":"Entirely depends on what the next Sequence grants me.","s":{"fool":3,"visionary":2}}
    ]},
   {"id":6,"s":"Risk Appetite","w":1,
-   "q":"You witness a Beyonder phenomenon you have never encountered. It is not threatening you — yet.",
+   "q":"A Beyonder phenomenon manifests in the alley below your window. It has not noticed you yet. Its nature is unknown.",
    "sub":"First action?",
    "opts":[
      {"t":"Get closer. Observation requires proximity.","s":{"hermit":3,"whitetower":2}},
-     {"t":"Observe from a safe distance and document everything.","s":{"visionary":3,"darkness":2}},
-     {"t":"Maintain distance and prepare a defensive response.","s":{"twilightgiant":3,"darkness":2}},
-     {"t":"Leave. Uninvited contact with the unknown is a trap.","s":{"darkness":3,"death":2}}
+     {"t":"Observe from the window and document every detail — distance is information too.","s":{"visionary":3,"darkness":2}},
+     {"t":"Maintain distance and prepare a banishment response.","s":{"twilightgiant":3,"darkness":2}},
+     {"t":"Leave. Uninvited proximity to the unknown is how most Beyonders die.","s":{"darkness":3,"death":2}}
    ]},
   {"id":7,"s":"Risk Appetite","w":2,
-   "q":"A colleague proposes a shortcut to Sequence advancement — risky, but significantly faster.",
+   "q":"A fellow Tarot Club member proposes a shortcut to your next Sequence — unorthodox, not sanctioned by your pathway's texts, but significantly faster.",
    "sub":"Your honest reaction?",
    "opts":[
-     {"t":"Interested. Speed matters in this world.","s":{"abyss":3,"moon":2}},
-     {"t":"I want to see the full methodology before forming an opinion.","s":{"whitetower":3,"hermit":2}},
-     {"t":"No. Rushed ascension is the primary cause of contamination.","s":{"justiciar":3,"sun":2}},
-     {"t":"I would take the shortcut if the downside could be hedged.","s":{"fool":3,"error":2}}
+     {"t":"Interested. In the Foggy World, speed has its own kind of safety.","s":{"abyss":3,"moon":2}},
+     {"t":"I want to see the full methodology — every ingredient, every substitution — before forming an opinion.","s":{"whitetower":3,"hermit":2}},
+     {"t":"No. Rushed advancement is the primary cause of contamination and madness.","s":{"justiciar":3,"sun":2}},
+     {"t":"I'd consider it if the downside could be hedged with a safeguard ritual.","s":{"fool":3,"error":2}}
    ]},
   {"id":8,"s":"Risk Appetite","w":1,
-   "q":"You are about to make a decision and your gut says one thing, your analysis says another.",
+   "q":"The spirituality reading says one thing. The Astrology charts say another. A decision cannot wait.",
    "sub":"Which do you follow?",
    "opts":[
-     {"t":"The gut. It is faster and usually right.","s":{"moon":3,"twilightgiant":2}},
-     {"t":"The analysis. Feelings mislead; data does not.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Neither — I find a third option.","s":{"fool":3,"door":2}},
-     {"t":"The gut, but I document my reasoning for review afterward.","s":{"fool":2,"hermit":2}}
+     {"t":"The spirituality reading. It processes what the rational mind cannot report.","s":{"moon":3,"twilightgiant":2}},
+     {"t":"The charts. Feelings mislead; stellar positioning does not.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Neither — there is always a third path that the question did not offer.","s":{"fool":3,"door":2}},
+     {"t":"The reading, but I document my reasoning in my ritual journal for later review.","s":{"fool":2,"hermit":2}}
    ]},
   {"id":9,"s":"Risk Appetite","w":3,
-   "q":"A senior Beyonder offers to teach you a forbidden ritual. The knowledge is unique and irreplaceable — but acquiring it changes you in ways you cannot predict.",
+   "q":"A senior Beyonder of the same pathway offers to teach you a forbidden sub-ritual. The knowledge is unique — but it will change you in ways they cannot fully describe.",
    "sub":"Your answer?",
    "opts":[
      {"t":"Accept. Irreplaceable knowledge is worth irreversible change.","s":{"hermit":3,"moon":2}},
-     {"t":"Decline. I choose who I become.","s":{"chained":3,"sun":2}},
-     {"t":"Accept, but only after I understand exactly what changes and how.","s":{"whitetower":3,"fool":2}},
-     {"t":"Negotiate: take the knowledge, give something in return.","s":{"hangedman":3,"error":2}}
+     {"t":"Decline. I choose who I become — that right is not negotiable.","s":{"chained":3,"sun":2}},
+     {"t":"Accept only after I understand exactly what changes, and how to contain the effect.","s":{"whitetower":3,"fool":2}},
+     {"t":"Negotiate: take the knowledge, give something equivalent in return.","s":{"hangedman":3,"error":2}}
    ]},
   {"id":10,"s":"Risk Appetite","w":2,
-   "q":"You find a shortcut through the Spirit World — uncharted, possibly dangerous, saves three days of travel.",
+   "q":"An unmapped passage through the Foggy World appears — uncharted, possibly hostile, but it saves three days of travel to the next node.",
    "sub":"Your choice?",
    "opts":[
-     {"t":"Take it. Three days matter.","s":{"door":3,"fool":2}},
-     {"t":"Map the route first, then use it next time.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Only if I have someone experienced alongside me.","s":{"sun":2,"mother":2}},
-     {"t":"No. Unknown Spirit World routes are not worth the risk.","s":{"darkness":3,"death":2}}
+     {"t":"Take it. Three days in the Foggy World matter enormously.","s":{"door":3,"fool":2}},
+     {"t":"Map the route first using divination, then use it next time.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Only if I have an experienced Beyonder alongside me.","s":{"sun":2,"mother":2}},
+     {"t":"No. Unmapped Spirit World passages are where Beyonders do not return from.","s":{"darkness":3,"death":2}}
    ]},
   {"id":11,"s":"Risk Appetite","w":1,
-   "q":"Your instincts and your evidence point in opposite directions. A decision must be made now.",
+   "q":"Your spiritual intuition points one direction. Your analysis of the ritual components points another. The ceremony begins in minutes.",
    "opts":[
-     {"t":"Trust the instinct. The body processes more than the mind reports.","s":{"moon":3,"fool":2}},
-     {"t":"Trust the evidence. The body lies; data does not.","s":{"whitetower":3,"justiciar":2}},
-     {"t":"Neither — delay until they align.","s":{"hermit":3,"darkness":2}},
-     {"t":"Trust the instinct but document why, in case I need to revisit.","s":{"fool":3,"visionary":2}}
+     {"t":"Trust the intuition. The subconscious processes more of the Beyonder world than the mind can articulate.","s":{"moon":3,"fool":2}},
+     {"t":"Trust the analysis. The spiritual body lies; component ratios do not.","s":{"whitetower":3,"justiciar":2}},
+     {"t":"Neither — delay until they align, even if it means abandoning the ceremony.","s":{"hermit":3,"darkness":2}},
+     {"t":"Trust the intuition but record your reasoning in the ritual log — you may need to defend this later.","s":{"fool":3,"visionary":2}}
    ]},
 
   {"id":12,"s":"Decision-Making","w":2,
-   "q":"A crisis has just emerged. Lives are at stake. You have sixty seconds.",
+   "q":"A Beyonder crisis erupts. Multiple civilians are at risk of contamination. You have sixty seconds before the window closes.",
    "sub":"How do you respond?",
    "opts":[
-     {"t":"Take command. Someone has to, and I can.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"Assess the threat vector, then act with maximum precision.","s":{"visionary":3,"whitetower":2}},
-     {"t":"Do what saves the most lives, regardless of method.","s":{"sun":3,"mother":2}},
-     {"t":"Execute the highest-probability action immediately.","s":{"fool":3,"twilightgiant":2}}
+     {"t":"Take command immediately. Someone must, and I can.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"Identify the contamination vector first, then act with surgical precision.","s":{"visionary":3,"whitetower":2}},
+     {"t":"Do what saves the most lives — method is secondary to outcome.","s":{"sun":3,"mother":2}},
+     {"t":"Execute the highest-probability action and adjust mid-sequence.","s":{"fool":3,"twilightgiant":2}}
    ]},
   {"id":13,"s":"Decision-Making","w":3,
-   "q":"You are leading a critical operation. A subordinate spots a flaw you missed.",
+   "q":"You are leading a covert operation in Backlund. A subordinate identifies a flaw in your ritual design you missed.",
    "sub":"What happens next?",
    "opts":[
-     {"t":"I credit them, correct the plan, and proceed.","s":{"sun":3,"mother":2}},
-     {"t":"I correct the plan without comment. Credit is irrelevant.","s":{"blackemperor":3,"whitetower":2}},
-     {"t":"I ask how they found it. I want to understand my own blind spot.","s":{"whitetower":3,"hermit":2}},
-     {"t":"I take the note with visible irritation and do not forget the moment.","s":{"tyrant":3,"abyss":2}}
+     {"t":"Credit them openly, correct the design, and proceed without ego.","s":{"sun":3,"mother":2}},
+     {"t":"Correct the ritual without comment — credit is irrelevant to the outcome.","s":{"blackemperor":3,"whitetower":2}},
+     {"t":"Ask how they found it. I want to understand my own blind spot precisely.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Accept the correction with visible irritation. I do not forget moments like this.","s":{"tyrant":3,"abyss":2}}
    ]},
   {"id":14,"s":"Decision-Making","w":1,
-   "q":"Your decision-making process is best described as...",
+   "q":"When you process information, your method is best described as...",
    "opts":[
-     {"t":"Layered — I build from fragments until the pattern resolves.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Instinctive — body first, justification second.","s":{"moon":3,"twilightgiant":2}},
-     {"t":"Social — I read what everyone needs, then find the path through.","s":{"visionary":3,"mother":2}},
-     {"t":"Opportunistic — I map what's available, then move.","s":{"error":3,"fool":2}}
+     {"t":"Layered — I build from fragments until the pattern resolves itself from the noise.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Instinctive — the spiritual body responds first, the mind justifies afterward.","s":{"moon":3,"twilightgiant":2}},
+     {"t":"Social — I read what each person in the room needs and find the path through.","s":{"visionary":3,"mother":2}},
+     {"t":"Opportunistic — I map what's available and move before anyone else recognizes the opening.","s":{"error":3,"fool":2}}
    ]},
   {"id":15,"s":"Decision-Making","w":2,
-   "q":"You receive conflicting information from two reliable sources.",
+   "q":"Two sources within the Tarot Club offer contradictory intelligence — both are usually reliable.",
    "sub":"How do you proceed?",
    "opts":[
-     {"t":"Find the third source that resolves the contradiction.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Determine which source has more to gain by lying.","s":{"visionary":3,"fool":2}},
-     {"t":"Act on the version that leaves me more options if it's wrong.","s":{"door":3,"fool":2}},
-     {"t":"Set both aside until more information arrives.","s":{"darkness":3,"death":2}}
+     {"t":"Find the third source that resolves the contradiction — truth leaves more than two traces.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Determine which source has more to gain if you act on their version.","s":{"visionary":3,"fool":2}},
+     {"t":"Act on whichever version leaves more options open if it turns out to be wrong.","s":{"door":3,"fool":2}},
+     {"t":"Set both aside and wait. Acting on contradictory intelligence is how Beyonders get ambushed.","s":{"darkness":3,"death":2}}
    ]},
   {"id":16,"s":"Decision-Making","w":3,
-   "q":"Mid-execution you realize your plan was wrong from the start.",
+   "q":"Mid-ritual you realize the summoning circle was drawn with an incorrect glyph. The ceremony is already in progress.",
    "sub":"Your response?",
    "opts":[
-     {"t":"Abort and rebuild from scratch. A flawed foundation collapses everything.","s":{"whitetower":3,"paragon":2}},
-     {"t":"Adapt mid-execution. Plans are frameworks, not scripts.","s":{"fool":3,"door":2}},
-     {"t":"Complete it anyway — stopping now costs more than finishing.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"Find the last salvageable point and restart from there.","s":{"hermit":3,"blackemperor":2}}
+     {"t":"Abort immediately and rebuild from the correct foundation. A flawed circle collapses everything built on it.","s":{"whitetower":3,"paragon":2}},
+     {"t":"Adapt mid-ritual — the framework guides, it does not script.","s":{"fool":3,"door":2}},
+     {"t":"Complete it — stopping now releases what was already summoned without containment.","s":{"twilightgiant":3,"redpriest":2}},
+     {"t":"Find the last stable point in the sequence and restart from there.","s":{"hermit":3,"blackemperor":2}}
    ]},
   {"id":17,"s":"Decision-Making","w":2,
-   "q":"You must make a decision that will hurt someone regardless of what you choose.",
+   "q":"You must make a choice that harms someone regardless of what you choose. There is no clean exit.",
    "opts":[
-     {"t":"Choose based on who suffers least in aggregate.","s":{"visionary":3,"justiciar":2}},
-     {"t":"Choose based on who deserves it less.","s":{"justiciar":3,"sun":2}},
-     {"t":"Choose based on what you can live with.","s":{"fool":3,"hangedman":2}},
-     {"t":"Choose based on what advances the mission.","s":{"blackemperor":3,"redpriest":2}}
+     {"t":"Choose whoever suffers least in aggregate — I do the arithmetic.","s":{"visionary":3,"justiciar":2}},
+     {"t":"Choose based on who deserves it less — some suffering is more unjust than other suffering.","s":{"justiciar":3,"sun":2}},
+     {"t":"Choose based on what I can live with carrying — my conscience is a tool I need functional.","s":{"fool":3,"hangedman":2}},
+     {"t":"Choose whatever advances the larger mission. Personal harm is always denominator, never numerator.","s":{"blackemperor":3,"redpriest":2}}
    ]},
   {"id":18,"s":"Decision-Making","w":1,
-   "q":"After a significant failure, how quickly are you operational again?",
+   "q":"A ritual goes catastrophically wrong. The Circle fails. When are you operational again?",
    "opts":[
-     {"t":"I was analyzing the failure as it happened. I'm already working.","s":{"whitetower":3,"paragon":2}},
-     {"t":"One night. Then back, better.","s":{"twilightgiant":3,"tyrant":2}},
-     {"t":"I sit with it until I understand it completely.","s":{"death":3,"hangedman":2}},
-     {"t":"I pivot mid-failure. I never fully stop.","s":{"error":3,"door":2}}
+     {"t":"I was analyzing what went wrong while it was still happening. I never stopped working.","s":{"whitetower":3,"paragon":2}},
+     {"t":"One night of darkness. Then I return, better and colder.","s":{"twilightgiant":3,"tyrant":2}},
+     {"t":"I sit with it until I understand exactly what it means — and what it has made me.","s":{"death":3,"hangedman":2}},
+     {"t":"I pivot mid-failure. I never fully stop moving.","s":{"error":3,"door":2}}
    ]},
   {"id":19,"s":"Decision-Making","w":3,
-   "q":"What is the highest virtue in decision-making?",
+   "q":"In the occult world, what is the supreme virtue of a decision-maker?",
    "opts":[
-     {"t":"Accuracy — the right answer, reached correctly.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Speed — the right window, not missed.","s":{"twilightgiant":3,"fool":2}},
-     {"t":"Fairness — the decision everyone can live with.","s":{"justiciar":3,"sun":2}},
-     {"t":"Ruthlessness — the decision that actually works.","s":{"blackemperor":3,"abyss":2}}
+     {"t":"Accuracy — the right answer, reached correctly, without contamination.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Speed — the right window, seized before the Foggy World shifts.","s":{"twilightgiant":3,"fool":2}},
+     {"t":"Fairness — the decision everyone can survive, including those who lost.","s":{"justiciar":3,"sun":2}},
+     {"t":"Ruthlessness — the decision that actually works, regardless of what it costs.","s":{"blackemperor":3,"abyss":2}}
    ]},
   {"id":20,"s":"Decision-Making","w":2,
-   "q":"You are asked to teach someone else your method of thinking.",
+   "q":"A new Sequence 9 asks you to teach them how to think about the Beyonder world.",
    "sub":"What do you tell them?",
    "opts":[
-     {"t":"I can't. What works for me is a product of who I am, not a transferable system.","s":{"moon":3,"fool":2}},
-     {"t":"I give them the framework. What they do with it is their work.","s":{"whitetower":3,"hermit":2}},
-     {"t":"I take them through a case study and let the method emerge from the example.","s":{"paragon":3,"mother":2}},
-     {"t":"I don't teach explicitly. Observation was how I learned.","s":{"darkness":3,"visionary":2}}
+     {"t":"Nothing transferable — what keeps me alive is a product of who I am, not a system they can inherit.","s":{"moon":3,"fool":2}},
+     {"t":"I give them the framework. What they build on it is their own.","s":{"whitetower":3,"hermit":2}},
+     {"t":"I walk them through a real case and let the method emerge from the example.","s":{"paragon":3,"mother":2}},
+     {"t":"I don't teach explicitly. I let them observe. That is how I learned, and it was the right way.","s":{"darkness":3,"visionary":2}}
    ]},
   {"id":21,"s":"Decision-Making","w":2,
-   "q":"New information arrives that makes your prior work obsolete.",
+   "q":"A new cipher reveals that the intelligence your entire operation was built on is false.",
    "opts":[
-     {"t":"Start again. That is what evidence demands.","s":{"paragon":3,"whitetower":2}},
-     {"t":"The new information is probably wrong.","s":{"tyrant":3,"blackemperor":2}},
-     {"t":"Adapt the existing work. Nothing is fully obsolete.","s":{"fool":3,"error":2}},
-     {"t":"I was always building toward the next version anyway.","s":{"door":3,"wheeloffortune":2}}
+     {"t":"Start over. That is what evidence demands — always.","s":{"paragon":3,"whitetower":2}},
+     {"t":"The cipher is probably wrong. I trust the original intelligence.","s":{"tyrant":3,"blackemperor":2}},
+     {"t":"Adapt the existing operation. Nothing is fully obsolete — leverage what still holds.","s":{"fool":3,"error":2}},
+     {"t":"I was already building toward the next version anyway. This just accelerates the transition.","s":{"door":3,"wheeloffortune":2}}
    ]},
   {"id":22,"s":"Decision-Making","w":3,
-   "q":"Two paths: one guarantees moderate success, one gambles for transformation.",
+   "q":"Two paths toward your next Sequence: one guarantees slow, stable advancement; one risks everything for a transcendent leap.",
    "opts":[
-     {"t":"Transformation. Moderate success is another word for forgettable.","s":{"moon":3,"demoness":2}},
-     {"t":"Guaranteed success. Build from the stable base.","s":{"paragon":3,"mother":2}},
-     {"t":"Transformation — but I'll hedge the downside first.","s":{"fool":3,"visionary":2}},
-     {"t":"Depends entirely on what the transformation costs.","s":{"hangedman":3,"death":2}}
+     {"t":"The transcendent leap. Stable advancement is another word for forgettable.","s":{"moon":3,"demoness":2}},
+     {"t":"Guaranteed advancement. Build from the stable base — power compounded is power kept.","s":{"paragon":3,"mother":2}},
+     {"t":"The leap — but I will construct every available safeguard first.","s":{"fool":3,"visionary":2}},
+     {"t":"Depends entirely on what the transcendence costs me — in soul, in self, in time.","s":{"hangedman":3,"death":2}}
    ]},
 
   {"id":23,"s":"Social Dynamics","w":2,
-   "q":"You enter a room where hierarchy is unclear.",
+   "q":"You arrive at a gathering of Beyonders. The hierarchy is unclear and everyone is performing composure.",
    "sub":"Where do you naturally end up?",
    "opts":[
-     {"t":"At the center, organizing.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"At the edge, watching.","s":{"darkness":3,"visionary":2}},
-     {"t":"Wherever information flows fastest.","s":{"fool":3,"whitetower":2}},
-     {"t":"Wherever I can be most useful.","s":{"mother":3,"sun":2}}
+     {"t":"At the center, quietly organizing who goes where and why.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"At the edge, watching. I learn more from observation than participation.","s":{"darkness":3,"visionary":2}},
+     {"t":"Wherever the information flows fastest — find the nodes, find the truth.","s":{"fool":3,"whitetower":2}},
+     {"t":"Wherever I can be most useful to whoever seems most at risk.","s":{"mother":3,"sun":2}}
    ]},
   {"id":24,"s":"Social Dynamics","w":3,
-   "q":"Your team is about to make a decision you believe is catastrophically wrong.",
+   "q":"Your Tarot Club chapter is about to make a decision you believe will end in several people's deaths.",
    "sub":"What do you do?",
    "opts":[
-     {"t":"Override them. I am right and the stakes are too high.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"Present the correct argument clearly, once. Then accept the vote.","s":{"justiciar":3,"sun":2}},
-     {"t":"Let them proceed and position myself to fix the aftermath.","s":{"visionary":3,"fool":2}},
-     {"t":"Sabotage the decision covertly if argument fails.","s":{"demoness":3,"error":2}}
+     {"t":"Override them. I am right and the stakes are too high for process.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"Present the correct argument clearly, once, with evidence. Then accept the vote.","s":{"justiciar":3,"sun":2}},
+     {"t":"Let them proceed and position myself to salvage the aftermath.","s":{"visionary":3,"fool":2}},
+     {"t":"Covertly sabotage the decision if argument fails — the outcome matters more than the method.","s":{"demoness":3,"error":2}}
    ]},
   {"id":25,"s":"Social Dynamics","w":1,
-   "q":"You see a stranger in genuine distress. No one else notices.",
+   "q":"A stranger at the docks in Tingen is showing early signs of Beyonder contamination. No one else has noticed.",
    "opts":[
-     {"t":"Help immediately, no hesitation.","s":{"sun":3,"mother":2}},
-     {"t":"Assess whether helping puts me at risk first.","s":{"darkness":3,"fool":2}},
-     {"t":"Help anonymously so they don't know who assisted them.","s":{"darkness":3,"hermit":2}},
-     {"t":"Note the situation but do not intervene — I don't involve myself in strangers' fates.","s":{"death":3,"whitetower":2}}
+     {"t":"Intervene immediately — every contamination case I ignore becomes someone else's disaster.","s":{"sun":3,"mother":2}},
+     {"t":"Assess whether intervention puts me at risk of exposure first.","s":{"darkness":3,"fool":2}},
+     {"t":"Help anonymously — leave what they need without revealing who assisted.","s":{"darkness":3,"hermit":2}},
+     {"t":"Note the situation and move on. I do not insert myself into strangers' fates.","s":{"death":3,"whitetower":2}}
    ]},
   {"id":26,"s":"Social Dynamics","w":2,
-   "q":"What is a group for?",
+   "q":"What is a Beyonder organization fundamentally for?",
    "opts":[
-     {"t":"A force multiplier. Organized people accomplish what individuals cannot.","s":{"blackemperor":3,"redpriest":2}},
-     {"t":"A protection system. We watch each other's backs.","s":{"tyrant":3,"mother":2}},
-     {"t":"A source of diverse information and perspective.","s":{"visionary":3,"hermit":2}},
-     {"t":"Cover. Group membership provides options a lone actor lacks.","s":{"error":3,"fool":2}}
+     {"t":"A force multiplier — coordinated Beyonders accomplish what individuals cannot.","s":{"blackemperor":3,"redpriest":2}},
+     {"t":"A protection system — we watch each other's backs when the Foggy World encroaches.","s":{"tyrant":3,"mother":2}},
+     {"t":"A source of diverse intelligence and Beyonder perspective.","s":{"visionary":3,"hermit":2}},
+     {"t":"Cover — group membership provides options and anonymity a lone Beyonder cannot manufacture.","s":{"error":3,"fool":2}}
    ]},
   {"id":27,"s":"Social Dynamics","w":3,
-   "q":"Someone in your circle has been disloyal. You have evidence. They have allies.",
+   "q":"A member of your Tarot Club has been feeding intelligence to a rival faction. You have proof. They have three allies in the chapter.",
    "sub":"What do you do?",
    "opts":[
-     {"t":"Expose them publicly, completely, immediately.","s":{"justiciar":3,"sun":2}},
-     {"t":"Remove them quietly so the group doesn't fracture.","s":{"blackemperor":3,"darkness":2}},
-     {"t":"Hold the information until the strategically optimal moment.","s":{"visionary":3,"fool":2}},
-     {"t":"Let them destroy themselves. I am patient.","s":{"death":3,"hermit":2}}
+     {"t":"Expose them publicly, completely, and immediately — betrayal has no grace period.","s":{"justiciar":3,"sun":2}},
+     {"t":"Remove them quietly so the chapter does not fracture over it.","s":{"blackemperor":3,"darkness":2}},
+     {"t":"Hold the information until the moment when using it serves the most purpose.","s":{"visionary":3,"fool":2}},
+     {"t":"Do nothing. Traitors of this kind destroy themselves. I am patient.","s":{"death":3,"hermit":2}}
    ]},
   {"id":28,"s":"Social Dynamics","w":2,
-   "q":"How do you inspire people to follow you?",
+   "q":"How do you make Beyonders follow your lead?",
    "opts":[
-     {"t":"I don't inspire — I demonstrate and they draw their own conclusions.","s":{"whitetower":3,"hermit":2}},
-     {"t":"I create conditions where following me is the rational choice.","s":{"visionary":3,"blackemperor":2}},
-     {"t":"By embodying what I want them to become.","s":{"sun":3,"twilightgiant":2}},
-     {"t":"By making them feel genuinely understood — truly seen.","s":{"mother":3,"visionary":2}}
+     {"t":"I don't try to inspire — I demonstrate and let them draw their own conclusions.","s":{"whitetower":3,"hermit":2}},
+     {"t":"I create conditions where following me is the only rational choice available.","s":{"visionary":3,"blackemperor":2}},
+     {"t":"By embodying what I want them to become — the body shows what the words cannot.","s":{"sun":3,"twilightgiant":2}},
+     {"t":"By making them feel genuinely seen — truly understood in a world that conceals everything.","s":{"mother":3,"visionary":2}}
    ]},
   {"id":29,"s":"Social Dynamics","w":1,
-   "q":"A person you dislike is right about something important. Do you acknowledge it?",
+   "q":"A Beyonder you find personally insufferable has just correctly identified the flaw in your ritual design. Do you acknowledge it?",
    "opts":[
-     {"t":"Yes, immediately. Being right matters more than being liked.","s":{"justiciar":3,"whitetower":2}},
-     {"t":"Yes, but privately. No need to give them status in the room.","s":{"blackemperor":3,"darkness":2}},
-     {"t":"Eventually, after I've verified it independently.","s":{"whitetower":3,"hermit":2}},
-     {"t":"I adjust my behavior accordingly without acknowledging it directly.","s":{"visionary":3,"error":2}}
+     {"t":"Yes, immediately and publicly. Being right matters more than who is watching.","s":{"justiciar":3,"whitetower":2}},
+     {"t":"Yes, but privately. No need to give them standing in the room.","s":{"blackemperor":3,"darkness":2}},
+     {"t":"Eventually, after I have verified their reasoning independently.","s":{"whitetower":3,"hermit":2}},
+     {"t":"I adjust the design without comment. Acknowledgment is a separate transaction.","s":{"visionary":3,"error":2}}
    ]},
   {"id":30,"s":"Social Dynamics","w":3,
-   "q":"Your leader is driving everyone toward disaster — but they have complete loyalty of the group.",
+   "q":"The leader of your Beyonder order is driving everyone toward catastrophic confrontation with a higher Sequence being — and commands complete loyalty.",
    "opts":[
-     {"t":"I take control. Someone must.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"I try to redirect through influence, not confrontation.","s":{"visionary":3,"fool":2}},
-     {"t":"I leave and build something better.","s":{"door":3,"demoness":2}},
-     {"t":"I wait. Bad leadership is self-correcting.","s":{"death":3,"darkness":2}}
+     {"t":"I take control. The loyalty is misplaced and someone must redirect it.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"I redirect through influence and lateral pressure — never direct confrontation.","s":{"visionary":3,"fool":2}},
+     {"t":"I leave and build something that does not require this kind of madness.","s":{"door":3,"demoness":2}},
+     {"t":"I wait. Bad leadership in the occult world is self-correcting, and usually fatal.","s":{"death":3,"darkness":2}}
    ]},
   {"id":31,"s":"Social Dynamics","w":2,
-   "q":"What is betrayal, fundamentally?",
+   "q":"What is betrayal, in the context of Beyonder alliances?",
    "opts":[
-     {"t":"A violation of the compact that makes cooperation possible.","s":{"justiciar":3,"blackemperor":2}},
-     {"t":"A miscalculation — loyalty is always more valuable long-term.","s":{"tyrant":3,"mother":2}},
-     {"t":"Information. It tells you who someone actually is.","s":{"visionary":3,"fool":2}},
-     {"t":"Inevitable. Everyone eventually chooses themselves.","s":{"abyss":3,"error":2}}
+     {"t":"A violation of the compact that makes Beyonder cooperation possible at all.","s":{"justiciar":3,"blackemperor":2}},
+     {"t":"A miscalculation — loyalty compounds. Betrayal destroys the compounding.","s":{"tyrant":3,"mother":2}},
+     {"t":"Information. It tells you precisely who someone actually is when the stakes are real.","s":{"visionary":3,"fool":2}},
+     {"t":"Inevitable. Every Beyonder eventually chooses their own survival.","s":{"abyss":3,"error":2}}
    ]},
   {"id":32,"s":"Social Dynamics","w":3,
-   "q":"You are completely alone. No observation, no consequences, no accountability.",
+   "q":"You are alone in the ruins of a Beyonder site. No observation, no record, no consequences, no one to ever know.",
    "sub":"What drives your behavior?",
    "opts":[
-     {"t":"Nothing changes. I am the same person in and out of observation.","s":{"justiciar":3,"sun":2}},
-     {"t":"I pursue what I actually want, not what I'm supposed to want.","s":{"abyss":3,"demoness":2}},
-     {"t":"I rest. The performance is exhausting.","s":{"chained":3,"moon":2}},
-     {"t":"I explore what I can't when others are watching.","s":{"door":3,"hermit":2}}
+     {"t":"Nothing changes. I am the same person with or without observation.","s":{"justiciar":3,"sun":2}},
+     {"t":"I pursue what I actually want — not what I perform wanting.","s":{"abyss":3,"demoness":2}},
+     {"t":"I rest. The performance of being a Beyonder is exhausting.","s":{"chained":3,"moon":2}},
+     {"t":"I explore what I cannot when others are watching.","s":{"door":3,"hermit":2}}
    ]},
   {"id":33,"s":"Social Dynamics","w":1,
-   "q":"Someone asks: 'what kind of person are you?' What is your honest answer?",
+   "q":"A Nighthawks clerk asks what kind of Beyonder you are. What is your honest answer?",
    "opts":[
-     {"t":"The kind who gets things done.","s":{"blackemperor":3,"redpriest":2}},
-     {"t":"Complicated. More than you'd expect.","s":{"fool":3,"moon":2}},
-     {"t":"The kind who watches, and remembers.","s":{"visionary":3,"darkness":2}},
-     {"t":"The kind who builds things that last.","s":{"paragon":3,"mother":2}}
+     {"t":"The kind who completes the operation.","s":{"blackemperor":3,"redpriest":2}},
+     {"t":"Complicated. More than you would expect from this Sequence.","s":{"fool":3,"moon":2}},
+     {"t":"The kind who watches everything and forgets nothing.","s":{"visionary":3,"darkness":2}},
+     {"t":"The kind who builds things that outlast the builders.","s":{"paragon":3,"mother":2}}
    ]},
 
   {"id":34,"s":"Core Motivation","w":3,
-   "q":"What would make your life feel completely meaningful?",
+   "q":"What would make your existence as a Beyonder feel completely meaningful?",
    "opts":[
-     {"t":"Understanding something no one has understood before.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Building something that outlasts me.","s":{"paragon":3,"mother":2}},
-     {"t":"Protecting everyone I care about, successfully, until the end.","s":{"mother":3,"darkness":2}},
-     {"t":"Reaching a level of power where nothing can touch me or mine.","s":{"abyss":3,"blackemperor":2}}
+     {"t":"Understanding something about the Beyonder world that no one has understood before.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Building something — an order, a lineage, a body of knowledge — that outlasts my death.","s":{"paragon":3,"mother":2}},
+     {"t":"Protecting everyone I care about from contamination and Sequence degradation, successfully, until the end.","s":{"mother":3,"darkness":2}},
+     {"t":"Reaching a Sequence where nothing in this world can threaten me or mine.","s":{"abyss":3,"blackemperor":2}}
    ]},
   {"id":35,"s":"Core Motivation","w":2,
-   "q":"You are offered everything you want — but you must give up something fundamental.",
-   "sub":"What would you refuse to sacrifice?",
+   "q":"The Admiral of Stars offers you everything you want. In exchange, you must sacrifice one fundamental thing.",
+   "sub":"What would you absolutely refuse to surrender?",
    "opts":[
-     {"t":"My identity. Everything else can be rebuilt.","s":{"fool":3,"door":2}},
-     {"t":"My values. Power without them is just noise.","s":{"justiciar":3,"sun":2}},
-     {"t":"The people I love. No power is worth that.","s":{"mother":3,"tyrant":2}},
-     {"t":"My independence. To be dependent is to be controlled.","s":{"demoness":3,"error":2}}
+     {"t":"My identity. Every other loss can be rebuilt.","s":{"fool":3,"door":2}},
+     {"t":"My values. Power without them is just a higher Sequence of noise.","s":{"justiciar":3,"sun":2}},
+     {"t":"The people I love. No Sequence advancement is worth that arithmetic.","s":{"mother":3,"tyrant":2}},
+     {"t":"My independence. To be dependent on anyone — even a Tarot card — is to be controlled.","s":{"demoness":3,"error":2}}
    ]},
   {"id":36,"s":"Core Motivation","w":3,
-   "q":"What is the nature of true power?",
+   "q":"What is the nature of true Beyonder power?",
    "opts":[
-     {"t":"Understanding — you cannot control what you don't comprehend.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Authority — the recognition by others that you command.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"Creation — leaving something real in the world.","s":{"paragon":3,"mother":2}},
-     {"t":"Freedom — the removal of anything that constrains you.","s":{"door":3,"demoness":2}}
+     {"t":"Understanding — you cannot command what you do not comprehend.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Authority — the recognition by others that you stand above.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"Creation — leaving something real in the Beyonder world that would not exist without you.","s":{"paragon":3,"mother":2}},
+     {"t":"Freedom — the removal of every constraint that the occult world places on you.","s":{"door":3,"demoness":2}}
    ]},
   {"id":37,"s":"Core Motivation","w":2,
-   "q":"What keeps you moving forward on the hardest days?",
+   "q":"The pathway is long. Sequence advancement is slow and dangerous. What keeps you moving on the hardest days?",
    "opts":[
      {"t":"Stubbornness. I refuse to be the one who stops.","s":{"twilightgiant":3,"chained":2}},
-     {"t":"Curiosity. There is always more I don't know yet.","s":{"hermit":3,"whitetower":2}},
-     {"t":"Responsibility. Others are counting on me.","s":{"mother":3,"sun":2}},
-     {"t":"Hunger. I want what is at the end, and I want it badly.","s":{"abyss":3,"redpriest":2}}
+     {"t":"Curiosity. There is always more the Beyonder world has not yet shown me.","s":{"hermit":3,"whitetower":2}},
+     {"t":"Responsibility. Others are depending on what I become.","s":{"mother":3,"sun":2}},
+     {"t":"Hunger. I want what is at the end of this pathway, and I want it badly.","s":{"abyss":3,"redpriest":2}}
    ]},
   {"id":38,"s":"Core Motivation","w":1,
-   "q":"If you could master one thing completely, what would it be?",
+   "q":"If you could master one thing about the Beyonder world completely, what would it be?",
    "opts":[
-     {"t":"Understanding — of people, systems, and hidden patterns.","s":{"visionary":3,"whitetower":2}},
-     {"t":"Control — of outcomes, circumstances, and myself.","s":{"blackemperor":3,"chained":2}},
-     {"t":"Creation — the ability to make something from nothing.","s":{"paragon":3,"mother":2}},
-     {"t":"Movement — go anywhere, become anyone, escape anything.","s":{"door":3,"fool":2}}
+     {"t":"Understanding — of people, hidden systems, and the patterns beneath occult phenomena.","s":{"visionary":3,"whitetower":2}},
+     {"t":"Control — of outcomes, ritual results, and my own spiritual body.","s":{"blackemperor":3,"chained":2}},
+     {"t":"Creation — the ability to summon something meaningful from the Foggy World.","s":{"paragon":3,"mother":2}},
+     {"t":"Movement — go anywhere, become anyone, escape any Sequence trap.","s":{"door":3,"fool":2}}
    ]},
   {"id":39,"s":"Core Motivation","w":3,
-   "q":"You have one lifetime. What is it for?",
+   "q":"You have one life as a Beyonder. What is it for?",
    "opts":[
-     {"t":"Accumulating wisdom beyond what any one life should contain.","s":{"hermit":3,"death":2}},
-     {"t":"Shaping the world into something better than I found it.","s":{"sun":3,"mother":2}},
-     {"t":"Reaching the apex of what I could become.","s":{"abyss":3,"twilightgiant":2}},
-     {"t":"Living entirely on my own terms, regardless of consequence.","s":{"demoness":3,"door":2}}
+     {"t":"Accumulating wisdom beyond what any single Sequence should be able to contain.","s":{"hermit":3,"death":2}},
+     {"t":"Shaping the Beyonder world into something better than I found it.","s":{"sun":3,"mother":2}},
+     {"t":"Reaching the apex of my pathway — whatever the cost, whatever the change.","s":{"abyss":3,"twilightgiant":2}},
+     {"t":"Living entirely on my own terms, free of every occult authority's expectations.","s":{"demoness":3,"door":2}}
    ]},
   {"id":40,"s":"Core Motivation","w":2,
-   "q":"What does legacy mean to you?",
+   "q":"What does legacy mean to a Beyonder?",
    "opts":[
-     {"t":"What I built that still functions after I'm gone.","s":{"paragon":3,"blackemperor":2}},
-     {"t":"How I changed people who carry that change forward.","s":{"mother":3,"sun":2}},
-     {"t":"What people knew about my power, and why they respected it.","s":{"abyss":3,"tyrant":2}},
-     {"t":"Nothing. Legacy is for people who couldn't enjoy the present.","s":{"moon":3,"error":2}}
+     {"t":"What I built that still functions after spiritualization removes me.","s":{"paragon":3,"blackemperor":2}},
+     {"t":"How I changed the Beyonders who carry that change forward through their own advancement.","s":{"mother":3,"sun":2}},
+     {"t":"What the occult world remembered of my power, and why it feared me.","s":{"abyss":3,"tyrant":2}},
+     {"t":"Nothing. Legacy is for people who could not enjoy the ritual while it was happening.","s":{"moon":3,"error":2}}
    ]},
   {"id":41,"s":"Core Motivation","w":3,
-   "q":"You have achieved what you spent years pursuing. It is less than you expected.",
+   "q":"You reach the Sequence you spent years pursuing. The advancement is complete. The reality of it is less than you imagined.",
    "sub":"What happens next?",
    "opts":[
-     {"t":"I find the next thing. The pursuit is the actual point.","s":{"door":3,"hermit":2}},
-     {"t":"I realize the meaning was in the path, not the destination.","s":{"death":3,"hangedman":2}},
-     {"t":"I build again. The next version will be enough.","s":{"paragon":3,"tyrant":2}},
-     {"t":"I sit with the disappointment until I understand it completely.","s":{"hangedman":3,"fool":2}}
+     {"t":"I find the next Sequence. The pursuit is the actual meaning.","s":{"door":3,"hermit":2}},
+     {"t":"I realize the meaning was in the pathway, not the destination — the ritual, not the result.","s":{"death":3,"hangedman":2}},
+     {"t":"I build again toward the next level. The next Sequence will be sufficient.","s":{"paragon":3,"tyrant":2}},
+     {"t":"I sit with the disappointment until I understand what it has taught me about desire.","s":{"hangedman":3,"fool":2}}
    ]},
   {"id":42,"s":"Core Motivation","w":1,
-   "q":"The thing you fear most is...",
+   "q":"The thing that frightens you most as a Beyonder is...",
    "opts":[
-     {"t":"Being trapped somewhere I cannot leave.","s":{"door":3,"chained":2}},
-     {"t":"Losing the ability to understand what is happening to me.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Becoming something I wouldn't recognize.","s":{"fool":3,"moon":2}},
-     {"t":"Being made irrelevant.","s":{"blackemperor":3,"abyss":2}}
+     {"t":"Being trapped in a Sequence I cannot advance beyond or retreat from.","s":{"door":3,"chained":2}},
+     {"t":"Losing the capacity to understand what is happening to my spiritual body.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Becoming something I would not recognize or consent to becoming.","s":{"fool":3,"moon":2}},
+     {"t":"Being made irrelevant by a higher Sequence.","s":{"blackemperor":3,"abyss":2}}
    ]},
   {"id":43,"s":"Core Motivation","w":2,
-   "q":"What motivates you more: what you can gain, or what you can prevent being taken?",
+   "q":"In the Beyonder world, what motivates you more: what you can gain, or what you can prevent from being taken?",
    "opts":[
-     {"t":"Gain. Defense is the slow path to nothing.","s":{"abyss":3,"redpriest":2}},
-     {"t":"Prevention. What I have is worth more than what I don't.","s":{"darkness":3,"mother":2}},
-     {"t":"Neither — I care about what I can build.","s":{"paragon":3,"whitetower":2}},
-     {"t":"Depends on what is at stake.","s":{"fool":3,"visionary":2}}
+     {"t":"Gain. Defense is the slow path to a lower Sequence.","s":{"abyss":3,"redpriest":2}},
+     {"t":"Prevention. What I have earned is worth more than what I might acquire.","s":{"darkness":3,"mother":2}},
+     {"t":"Neither — I care about what I can build that neither gaining nor losing can touch.","s":{"paragon":3,"whitetower":2}},
+     {"t":"Entirely depends on what is at stake in the current moment.","s":{"fool":3,"visionary":2}}
    ]},
   {"id":44,"s":"Core Motivation","w":3,
-   "q":"You are offered the chance to know the exact moment and manner of your death.",
+   "q":"A prophetic ritual offers to show you the exact moment and manner of your death in the Beyonder world.",
    "sub":"Do you accept?",
    "opts":[
-     {"t":"Yes. Knowledge of the inevitable removes its power.","s":{"death":3,"whitetower":2}},
-     {"t":"Yes — then I can arrange everything accordingly.","s":{"fool":3,"blackemperor":2}},
-     {"t":"No. That kind of knowledge changes how you live every moment.","s":{"hangedman":3,"moon":2}},
-     {"t":"No. Some mysteries should remain mysteries.","s":{"hermit":3,"darkness":2}}
+     {"t":"Yes. Knowledge of the inevitable removes its power over me.","s":{"death":3,"whitetower":2}},
+     {"t":"Yes — then I can arrange every ritual and every alliance around it.","s":{"fool":3,"blackemperor":2}},
+     {"t":"No. That knowledge changes how every Sequence advancement feels from this moment forward.","s":{"hangedman":3,"moon":2}},
+     {"t":"No. Some mysteries in the Foggy World should remain mysteries.","s":{"hermit":3,"darkness":2}}
    ]},
 
   {"id":45,"s":"Conflict","w":3,
-   "q":"Someone has wronged you deeply and deliberately. They are currently untouchable.",
+   "q":"A high Sequence Beyonder has wronged you deliberately. They are currently protected by their organization and untouchable.",
    "sub":"Your long-term response?",
    "opts":[
-     {"t":"I wait. The untouchable never stay untouchable forever.","s":{"death":3,"visionary":2}},
-     {"t":"I build until I can reach them. Then I do.","s":{"blackemperor":3,"abyss":2}},
-     {"t":"I find the leverage that makes them touchable now.","s":{"error":3,"demoness":2}},
-     {"t":"I let it go. Carrying that changes me.","s":{"sun":3,"hangedman":2}}
+     {"t":"I wait. The untouchable never remain untouchable. Sequences change. Organizations fracture.","s":{"death":3,"visionary":2}},
+     {"t":"I advance. Then I reach them. Then I collect.","s":{"blackemperor":3,"abyss":2}},
+     {"t":"I find the leverage that makes them touchable before I need to advance.","s":{"error":3,"demoness":2}},
+     {"t":"I release it. Carrying that kind of purpose contaminates as surely as a failed ritual.","s":{"sun":3,"hangedman":2}}
    ]},
   {"id":46,"s":"Conflict","w":2,
-   "q":"Physical violence is...",
+   "q":"Physical violence in the Beyonder world is...",
    "opts":[
-     {"t":"An option like any other — deploy when efficient.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"A last resort. Escalation has permanent consequences.","s":{"justiciar":3,"darkness":2}},
-     {"t":"The language some people only understand.","s":{"tyrant":3,"abyss":2}},
-     {"t":"Usually a failure of strategy.","s":{"visionary":3,"blackemperor":2}}
+     {"t":"An option like any other — deploy it when it is the most efficient solution.","s":{"twilightgiant":3,"redpriest":2}},
+     {"t":"A last resort. Beyonder escalation has permanently disfiguring consequences.","s":{"justiciar":3,"darkness":2}},
+     {"t":"The language some Beyonders only understand.","s":{"tyrant":3,"abyss":2}},
+     {"t":"Usually a sign that your strategy failed three steps earlier.","s":{"visionary":3,"blackemperor":2}}
    ]},
   {"id":47,"s":"Conflict","w":3,
-   "q":"You are losing a fight you cannot afford to lose.",
+   "q":"You are losing a Beyonder confrontation you cannot afford to lose. The opponent's Sequence is higher.",
    "sub":"What do you do?",
    "opts":[
-     {"t":"Switch tactics entirely. Winning by current rules isn't working.","s":{"fool":3,"door":2}},
-     {"t":"Endure. I cannot lose what I refuse to give up.","s":{"twilightgiant":3,"chained":2}},
-     {"t":"Deploy everything I have been holding in reserve.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"Let the rage carry me. Real anger is a different kind of fuel.","s":{"redpriest":3,"moon":2}}
+     {"t":"Switch tactics entirely. Losing by the current rules means changing the rules.","s":{"fool":3,"door":2}},
+     {"t":"Endure. I cannot lose what I refuse to surrender.","s":{"twilightgiant":3,"chained":2}},
+     {"t":"Deploy everything I have been conserving. Every reserve, every artifact.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"Let the anger carry me. Real fury activates things that careful Beyonders keep locked.","s":{"redpriest":3,"moon":2}}
    ]},
   {"id":48,"s":"Conflict","w":1,
-   "q":"Your preferred range in a conflict is...",
+   "q":"Your preferred position in a Beyonder conflict is...",
    "opts":[
-     {"t":"Invisible. By the time they see me, it's already over.","s":{"demoness":3,"darkness":2}},
-     {"t":"Close. I need to understand what I'm fighting.","s":{"twilightgiant":3,"hangedman":2}},
-     {"t":"Distant. Information and positioning before engagement.","s":{"visionary":3,"whitetower":2}},
-     {"t":"Inside their head. The real battle was never physical.","s":{"visionary":3,"abyss":2}}
+     {"t":"Invisible. By the time they locate me, the outcome is already determined.","s":{"demoness":3,"darkness":2}},
+     {"t":"Close. I need to understand what I am fighting before I can end it.","s":{"twilightgiant":3,"hangedman":2}},
+     {"t":"Distant — intelligence and positioning before any direct engagement.","s":{"visionary":3,"whitetower":2}},
+     {"t":"Inside their spiritual body. The real conflict was never physical.","s":{"visionary":3,"abyss":2}}
    ]},
   {"id":49,"s":"Conflict","w":2,
-   "q":"An enemy offers a ceasefire. Their position appears genuine.",
+   "q":"An enemy Beyonder faction offers a ceasefire. Their position appears genuine — and desperate.",
    "opts":[
-     {"t":"Accept. Fighting a willing non-combatant is wasteful.","s":{"justiciar":3,"whitetower":2}},
-     {"t":"Accept publicly, prepare privately.","s":{"blackemperor":3,"error":2}},
-     {"t":"Accept only if the terms can be independently verified.","s":{"fool":3,"visionary":2}},
-     {"t":"Decline. Ceasefire is how the weak regroup.","s":{"redpriest":3,"tyrant":2}}
+     {"t":"Accept. Engaging with a faction willing to negotiate is wasteful.","s":{"justiciar":3,"whitetower":2}},
+     {"t":"Accept publicly. Prepare for their betrayal privately.","s":{"blackemperor":3,"error":2}},
+     {"t":"Accept only if the terms can be independently verified through divination.","s":{"fool":3,"visionary":2}},
+     {"t":"Decline. Ceasefires are how weaker factions buy time to regroup.","s":{"redpriest":3,"tyrant":2}}
    ]},
   {"id":50,"s":"Conflict","w":3,
-   "q":"You discover that the 'enemy' was never your enemy — they were deceived, as you were.",
+   "q":"Through a prayer response from Mr. Fool, you learn that the faction you have been fighting was manipulated, just as you were, by the same hidden party.",
    "sub":"What changes?",
    "opts":[
-     {"t":"Everything. The real enemy is whoever arranged this.","s":{"justiciar":3,"fool":2}},
-     {"t":"Nothing immediately — trust is earned, not assumed.","s":{"darkness":3,"visionary":2}},
-     {"t":"I offer alliance but watch them carefully.","s":{"fool":3,"mother":2}},
-     {"t":"I feel nothing. The consequences of their actions remain real.","s":{"death":3,"blackemperor":2}}
+     {"t":"Everything. The true enemy is whoever arranged this manipulation — and they are now my priority.","s":{"justiciar":3,"fool":2}},
+     {"t":"Nothing immediately. Trust is earned in the Beyonder world, not assumed from shared grievance.","s":{"darkness":3,"visionary":2}},
+     {"t":"I offer conditional alliance and watch them with both eyes open.","s":{"fool":3,"mother":2}},
+     {"t":"I feel nothing different. The consequences of their actions against me remain real.","s":{"death":3,"blackemperor":2}}
    ]},
   {"id":51,"s":"Conflict","w":2,
-   "q":"What is the most effective weapon?",
+   "q":"In a Beyonder conflict, what is the most decisive weapon?",
    "opts":[
-     {"t":"Information.","s":{"visionary":3,"whitetower":2}},
-     {"t":"Fear.","s":{"abyss":3,"darkness":2}},
-     {"t":"Loyalty.","s":{"tyrant":3,"mother":2}},
-     {"t":"Timing.","s":{"fool":3,"error":2}}
+     {"t":"Information — know what they cannot know you know.","s":{"visionary":3,"whitetower":2}},
+     {"t":"Fear — a Beyonder who hesitates has already lost half the confrontation.","s":{"abyss":3,"darkness":2}},
+     {"t":"Loyalty — a faction that holds together defeats one that is individually more powerful.","s":{"tyrant":3,"mother":2}},
+     {"t":"Timing — the right moment destroys what no amount of power could dent.","s":{"fool":3,"error":2}}
    ]},
   {"id":52,"s":"Conflict","w":3,
-   "q":"You win a conflict that cost more than you expected.",
+   "q":"You win the confrontation. The cost was higher than projected — in characteristics, in allies, in years.",
    "sub":"What do you do with the victory?",
    "opts":[
-     {"t":"Consolidate. Convert victory into permanent advantage.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"Rest. The cost was real and I am honest about it.","s":{"hangedman":3,"death":2}},
-     {"t":"Analyze what the unexpected cost reveals about my planning.","s":{"whitetower":3,"paragon":2}},
-     {"t":"Move on immediately. Victory is past tense.","s":{"door":3,"moon":2}}
+     {"t":"Consolidate immediately. Convert the victory into permanent structural advantage.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"Rest and acknowledge the cost honestly. The Beyonder world does not respect those who pretend they are not damaged.","s":{"hangedman":3,"death":2}},
+     {"t":"Analyze what the unexpected cost reveals about my planning and my Sequence's limitations.","s":{"whitetower":3,"paragon":2}},
+     {"t":"Move immediately to the next objective. Victory is already past tense.","s":{"door":3,"moon":2}}
    ]},
   {"id":53,"s":"Conflict","w":1,
-   "q":"Your anger is most dangerous when...",
+   "q":"Your anger as a Beyonder is most dangerous when...",
    "opts":[
-     {"t":"I stop feeling it and start calculating.","s":{"blackemperor":3,"visionary":2}},
-     {"t":"I let it out completely.","s":{"redpriest":3,"moon":2}},
-     {"t":"I decide the cause was worth it.","s":{"twilightgiant":3,"chained":2}},
+     {"t":"I stop feeling it and begin calculating instead.","s":{"blackemperor":3,"visionary":2}},
+     {"t":"I let it release completely through the spiritual body.","s":{"redpriest":3,"moon":2}},
+     {"t":"I decide the cause behind it was worth what it will cost me.","s":{"twilightgiant":3,"chained":2}},
      {"t":"I have been patient for a very long time.","s":{"death":3,"tyrant":2}}
    ]},
   {"id":54,"s":"Conflict","w":2,
-   "q":"Is it ever right to harm someone who is not your enemy?",
+   "q":"Is it ever justified to harm a Beyonder who is not your enemy?",
    "opts":[
-     {"t":"No. Collateral harm is a sign of poor strategy.","s":{"justiciar":3,"visionary":2}},
-     {"t":"Sometimes. Acceptable losses are the arithmetic of survival.","s":{"blackemperor":3,"redpriest":2}},
-     {"t":"Occasionally, if the alternative is genuinely worse.","s":{"fool":3,"darkness":2}},
-     {"t":"Only if they would become an enemy if they knew what I was doing.","s":{"error":3,"demoness":2}}
+     {"t":"No. Collateral harm is proof of inadequate planning.","s":{"justiciar":3,"visionary":2}},
+     {"t":"Sometimes. Acceptable losses are the arithmetic of Sequence survival.","s":{"blackemperor":3,"redpriest":2}},
+     {"t":"Occasionally, if the alternative outcome is genuinely worse by clear measure.","s":{"fool":3,"darkness":2}},
+     {"t":"Only if they would choose to become my enemy the moment they learned what I was doing.","s":{"error":3,"demoness":2}}
    ]},
   {"id":55,"s":"Conflict","w":3,
-   "q":"How do you feel about mercy?",
+   "q":"A defeated Beyonder is at your mercy. How do you feel about the question of mercy?",
    "opts":[
-     {"t":"It is information about you — deploy it strategically.","s":{"blackemperor":3,"visionary":2}},
-     {"t":"It is the hardest thing to give and therefore the most meaningful.","s":{"sun":3,"mother":2}},
-     {"t":"It is usually a trap.","s":{"abyss":3,"tyrant":2}},
-     {"t":"It is what separates us from what we're fighting against.","s":{"justiciar":3,"sun":2}}
+     {"t":"It is information about you — deploy it with full strategic awareness of what it signals.","s":{"blackemperor":3,"visionary":2}},
+     {"t":"It is the most difficult thing to extend and therefore the most meaningful.","s":{"sun":3,"mother":2}},
+     {"t":"It is usually a trap. The Beyonder world does not reward it.","s":{"abyss":3,"tyrant":2}},
+     {"t":"It is precisely what separates us from whatever we are fighting against.","s":{"justiciar":3,"sun":2}}
    ]},
 
   {"id":56,"s":"Authority & Order","w":2,
-   "q":"A rule exists for a reason no longer relevant. It still causes harm.",
+   "q":"A Beyonder organization's founding rule has outlived its purpose and now actively causes harm to those it was designed to protect.",
    "opts":[
-     {"t":"Change it through legitimate channels.","s":{"justiciar":3,"sun":2}},
-     {"t":"Change it through whatever channels work fastest.","s":{"blackemperor":3,"demoness":2}},
-     {"t":"Ignore it privately while preserving it publicly.","s":{"error":3,"fool":2}},
-     {"t":"Document the harm and wait for others to recognize the problem.","s":{"whitetower":3,"death":2}}
+     {"t":"Change it through the organization's legitimate internal channels.","s":{"justiciar":3,"sun":2}},
+     {"t":"Change it through whatever channels work before more harm is done.","s":{"blackemperor":3,"demoness":2}},
+     {"t":"Ignore it privately while preserving its public existence.","s":{"error":3,"fool":2}},
+     {"t":"Document the harm systematically and wait for others to recognize the problem themselves.","s":{"whitetower":3,"death":2}}
    ]},
   {"id":57,"s":"Authority & Order","w":3,
-   "q":"Which statement is closest to your view of authority?",
+   "q":"Which statement most accurately reflects your view of occult authority?",
    "opts":[
-     {"t":"Authority is legitimate only when it serves those under it.","s":{"sun":3,"justiciar":2}},
-     {"t":"Authority is a tool. The question is who wields it and how.","s":{"blackemperor":3,"visionary":2}},
-     {"t":"Authority is a fiction maintained by those who believe in it.","s":{"fool":3,"error":2}},
-     {"t":"Authority is dangerous unless constrained by law.","s":{"justiciar":3,"whitetower":2}}
+     {"t":"Authority is legitimate only when it genuinely serves those beneath it.","s":{"sun":3,"justiciar":2}},
+     {"t":"Authority is a tool. The only question worth asking is who wields it and to what end.","s":{"blackemperor":3,"visionary":2}},
+     {"t":"Authority in the Beyonder world is a performance maintained by those willing to believe in it.","s":{"fool":3,"error":2}},
+     {"t":"Authority is dangerous unless constrained by something older and harder than itself.","s":{"justiciar":3,"whitetower":2}}
    ]},
   {"id":58,"s":"Authority & Order","w":2,
-   "q":"What would you do with absolute power?",
+   "q":"You are granted absolute authority over every Beyonder faction in Backlund. What do you do with it?",
    "opts":[
-     {"t":"Establish a just order that outlasts my tenure.","s":{"blackemperor":3,"justiciar":2}},
-     {"t":"Understand everything that has been hidden from me.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Protect everyone I care about completely.","s":{"mother":3,"darkness":2}},
-     {"t":"Be free of every constraint I have ever lived with.","s":{"demoness":3,"door":2}}
+     {"t":"Establish a just order that will outlast my tenure and survive my death.","s":{"blackemperor":3,"justiciar":2}},
+     {"t":"Finally understand everything about the Beyonder world that has been kept from me.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Make everyone I care about genuinely, permanently safe.","s":{"mother":3,"darkness":2}},
+     {"t":"Become free of every Sequence constraint I have ever been forced to live within.","s":{"demoness":3,"door":2}}
    ]},
   {"id":59,"s":"Authority & Order","w":3,
-   "q":"You are given authority over a group that doesn't respect you yet.",
-   "sub":"How do you establish it?",
+   "q":"You are placed in authority over a Beyonder chapter that does not respect you. Your Sequence is lower than several members'.",
+   "sub":"How do you establish leadership?",
    "opts":[
-     {"t":"Demonstrate capability visibly and immediately.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"Identify the actual power structure and align with it first.","s":{"visionary":3,"blackemperor":2}},
-     {"t":"Establish clear, fair rules and hold to them absolutely.","s":{"justiciar":3,"sun":2}},
-     {"t":"I don't establish it. I earn it incrementally or not at all.","s":{"hermit":3,"death":2}}
+     {"t":"Demonstrate capability visibly and immediately — let the result speak for the authority.","s":{"twilightgiant":3,"redpriest":2}},
+     {"t":"Identify who holds the real power in this chapter and align with them before anything else.","s":{"visionary":3,"blackemperor":2}},
+     {"t":"Establish clear, consistent rules and hold to them without exception.","s":{"justiciar":3,"sun":2}},
+     {"t":"I do not establish authority by announcement. I earn it incrementally or I do not have it.","s":{"hermit":3,"death":2}}
    ]},
   {"id":60,"s":"Authority & Order","w":1,
-   "q":"The law conflicts with justice. What do you follow?",
+   "q":"Beyonder law conflicts with what you know to be just. What do you follow?",
    "opts":[
-     {"t":"Justice. The law is a tool; I don't worship tools.","s":{"demoness":3,"fool":2}},
-     {"t":"The law — changing it is better than breaking it.","s":{"justiciar":3,"whitetower":2}},
-     {"t":"Depends on the stakes and who is watching.","s":{"error":3,"visionary":2}},
-     {"t":"Justice, but quietly — I don't need to be seen doing it.","s":{"darkness":3,"sun":2}}
+     {"t":"Justice. The law is a tool and I do not worship tools.","s":{"demoness":3,"fool":2}},
+     {"t":"The law — changing it from within is better than breaking it from outside.","s":{"justiciar":3,"whitetower":2}},
+     {"t":"Depends on the stakes and who is in a position to observe the choice.","s":{"error":3,"visionary":2}},
+     {"t":"Justice — but quietly, without requiring anyone to witness me doing it.","s":{"darkness":3,"sun":2}}
    ]},
   {"id":61,"s":"Authority & Order","w":2,
-   "q":"Someone breaks a rule you enforced. But the rule was wrong.",
+   "q":"A Beyonder under your charge violates a protocol you enforced. Upon review, the protocol was wrong.",
    "opts":[
-     {"t":"Let it go this time, and change the rule.","s":{"sun":3,"justiciar":2}},
-     {"t":"Enforce it anyway. Selective enforcement is worse than bad rules.","s":{"justiciar":3,"blackemperor":2}},
-     {"t":"Use the breach as evidence that the rule should change.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Decide based entirely on who broke it.","s":{"visionary":3,"tyrant":2}}
+     {"t":"Overlook it this time, and correct the protocol.","s":{"sun":3,"justiciar":2}},
+     {"t":"Enforce it anyway. Selective enforcement is more corrosive than a bad rule.","s":{"justiciar":3,"blackemperor":2}},
+     {"t":"Use the violation as documented evidence that the protocol requires revision.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Decide based entirely on who broke it and what their record suggests.","s":{"visionary":3,"tyrant":2}}
    ]},
   {"id":62,"s":"Authority & Order","w":3,
-   "q":"You are asked to enforce an order you believe is unjust.",
+   "q":"The Nighthawks orders you to enforce a directive you believe is unjust.",
    "opts":[
-     {"t":"Refuse, openly, with full knowledge of the cost.","s":{"sun":3,"chained":2}},
-     {"t":"Comply, then work to change it through other means.","s":{"justiciar":3,"darkness":2}},
-     {"t":"Find a technical interpretation that satisfies both parties.","s":{"fool":3,"whitetower":2}},
-     {"t":"Comply. I serve something larger, and unilateral exceptions destroy trust.","s":{"blackemperor":3,"death":2}}
+     {"t":"Refuse openly, with full knowledge of what refusal costs me.","s":{"sun":3,"chained":2}},
+     {"t":"Comply, then work through every internal channel to change it.","s":{"justiciar":3,"darkness":2}},
+     {"t":"Find a technical interpretation that satisfies both the order and my conscience.","s":{"fool":3,"whitetower":2}},
+     {"t":"Comply. I serve something larger than my preferences, and unilateral exceptions destroy the structure that protects everyone.","s":{"blackemperor":3,"death":2}}
    ]},
   {"id":63,"s":"Authority & Order","w":2,
-   "q":"What form of control is most complete?",
+   "q":"Among Beyonders, what form of control is most complete and hardest to escape?",
    "opts":[
-     {"t":"Controlling someone's perception of reality.","s":{"visionary":3,"abyss":2}},
-     {"t":"Controlling what they fear.","s":{"abyss":3,"darkness":2}},
-     {"t":"Controlling what they need.","s":{"mother":3,"blackemperor":2}},
-     {"t":"Controlling the rules they are required to follow.","s":{"blackemperor":3,"justiciar":2}}
+     {"t":"Controlling someone's perception of what is real in the Foggy World.","s":{"visionary":3,"abyss":2}},
+     {"t":"Controlling what they fear losing.","s":{"abyss":3,"darkness":2}},
+     {"t":"Controlling what they need to survive their current Sequence.","s":{"mother":3,"blackemperor":2}},
+     {"t":"Controlling the rituals and rules they are required to operate within.","s":{"blackemperor":3,"justiciar":2}}
    ]},
   {"id":64,"s":"Authority & Order","w":1,
-   "q":"Order is...",
+   "q":"Occult order is...",
    "opts":[
-     {"t":"The framework that makes everything else possible.","s":{"blackemperor":3,"justiciar":2}},
-     {"t":"A temporary condition between periods of chaos.","s":{"wheeloffortune":3,"death":2}},
-     {"t":"Something I impose on my own life, not others'.","s":{"hermit":3,"chained":2}},
-     {"t":"Less real than people think.","s":{"fool":3,"door":2}}
+     {"t":"The framework that makes Beyonder cooperation possible at all.","s":{"blackemperor":3,"justiciar":2}},
+     {"t":"A temporary condition between periods of inevitable collapse and reorganization.","s":{"wheeloffortune":3,"death":2}},
+     {"t":"Something I impose on my own practice — not a right I have over others'.","s":{"hermit":3,"chained":2}},
+     {"t":"Less real than most Beyonders believe, and more fragile than any of them admit.","s":{"fool":3,"door":2}}
    ]},
   {"id":65,"s":"Authority & Order","w":3,
-   "q":"What does it feel like to be outside any authority's reach?",
+   "q":"What does it feel like to be entirely beyond the reach of any Beyonder authority?",
    "opts":[
-     {"t":"Vulnerable — accountability is also protection.","s":{"justiciar":3,"sun":2}},
-     {"t":"Free — finally, entirely myself.","s":{"door":3,"demoness":2}},
-     {"t":"Clarifying — without rules, you find what you actually want.","s":{"abyss":3,"moon":2}},
-     {"t":"Dangerous — for everyone in my vicinity.","s":{"tyrant":3,"redpriest":2}}
+     {"t":"Vulnerable — accountability is also what protects you from your own worst decisions.","s":{"justiciar":3,"sun":2}},
+     {"t":"Free — finally, entirely, unreservedly myself.","s":{"door":3,"demoness":2}},
+     {"t":"Clarifying — without the constraints, you discover what you actually are.","s":{"abyss":3,"moon":2}},
+     {"t":"Dangerous — for everyone who happens to be nearby.","s":{"tyrant":3,"redpriest":2}}
    ]},
   {"id":66,"s":"Authority & Order","w":2,
-   "q":"The most dangerous kind of authority is...",
+   "q":"What form of authority in the Beyonder world is most dangerous?",
    "opts":[
-     {"t":"Unaccountable authority — power without consequence.","s":{"justiciar":3,"sun":2}},
-     {"t":"Authority that believes itself just — certainty is more dangerous than intent.","s":{"fool":3,"whitetower":2}},
-     {"t":"Authority that can rewrite the rules mid-game.","s":{"blackemperor":3,"error":2}},
-     {"t":"My own authority over myself — if I lose that, nothing else matters.","s":{"chained":3,"hangedman":2}}
+     {"t":"Unaccountable authority — Sequence power without any mechanism of consequence.","s":{"justiciar":3,"sun":2}},
+     {"t":"Authority that believes itself just — certainty about one's righteousness is more dangerous than malice.","s":{"fool":3,"whitetower":2}},
+     {"t":"Authority that can rewrite the rituals and rules mid-operation.","s":{"blackemperor":3,"error":2}},
+     {"t":"My own authority over myself — if I lose sovereignty over my spiritual body, nothing else matters.","s":{"chained":3,"hangedman":2}}
    ]},
 
   {"id":67,"s":"Worldview","w":3,
-   "q":"What is death?",
+   "q":"What is death in the Beyonder world?",
    "opts":[
-     {"t":"Transformation. What ends becomes material for what comes next.","s":{"death":3,"moon":2}},
-     {"t":"A boundary I need to understand, not a destination.","s":{"hermit":3,"whitetower":2}},
-     {"t":"A threat to be managed and eventually overcome.","s":{"abyss":3,"paragon":2}},
-     {"t":"An ending that makes the middle meaningful.","s":{"fool":3,"hangedman":2}}
+     {"t":"Transformation — what ends becomes material for what comes next in the cycle.","s":{"death":3,"moon":2}},
+     {"t":"A boundary I need to understand completely, not a destination I should approach.","s":{"hermit":3,"whitetower":2}},
+     {"t":"A threat to be managed and, if the pathway permits, eventually overcome.","s":{"abyss":3,"paragon":2}},
+     {"t":"An ending that makes the middle of the pathway meaningful.","s":{"fool":3,"hangedman":2}}
    ]},
   {"id":68,"s":"Worldview","w":2,
-   "q":"The universe is fundamentally...",
+   "q":"The Beyonder world — the Foggy World, the True Creator, the Great Old Ones — is fundamentally...",
    "opts":[
-     {"t":"Knowable, if you're willing to do the work.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Indifferent. What matters is what we impose on it.","s":{"blackemperor":3,"death":2}},
-     {"t":"Connected — everything influences everything else.","s":{"fool":3,"visionary":2}},
-     {"t":"Cyclical. It turns, and we turn with it.","s":{"wheeloffortune":3,"moon":2}}
+     {"t":"Knowable, if you are willing to do the work and pay the cost.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Indifferent to us. What matters is what we impose on it before it notices.","s":{"blackemperor":3,"death":2}},
+     {"t":"Connected in ways that contamination and divination both partially reveal.","s":{"fool":3,"visionary":2}},
+     {"t":"Cyclical — it turns, and the Wheel turns with it, and we turn inside the Wheel.","s":{"wheeloffortune":3,"moon":2}}
    ]},
   {"id":69,"s":"Worldview","w":3,
-   "q":"What is the relationship between darkness and light?",
+   "q":"What is the relationship between the light of the Sun pathway and the darkness of the Abyss?",
    "opts":[
-     {"t":"Light reveals; darkness conceals. Both are necessary.","s":{"darkness":3,"fool":2}},
-     {"t":"They are the same force at different scales.","s":{"death":3,"hermit":2}},
-     {"t":"I don't romanticize either. What matters is which is useful now.","s":{"blackemperor":3,"visionary":2}},
-     {"t":"Light is the goal; darkness is what you pass through to reach it.","s":{"sun":3,"hangedman":2}}
+     {"t":"Light reveals; darkness conceals. The Beyonder world needs both and does not prefer either.","s":{"darkness":3,"fool":2}},
+     {"t":"They are the same force at different Sequences — what we call light from below, they call darkness from above.","s":{"death":3,"hermit":2}},
+     {"t":"I don't romanticize either. What matters is which is more useful for what I need to do right now.","s":{"blackemperor":3,"visionary":2}},
+     {"t":"The light is the destination. The darkness is what you pass through to reach it.","s":{"sun":3,"hangedman":2}}
    ]},
   {"id":70,"s":"Worldview","w":1,
-   "q":"Your relationship with fate is best described as...",
+   "q":"Your relationship with the Wheel of Fortune — with fate — is best described as...",
    "opts":[
-     {"t":"I don't believe in fate. I believe in leverage.","s":{"blackemperor":3,"error":2}},
-     {"t":"Fate is a draft. I negotiate the final version.","s":{"fool":3,"wheeloffortune":2}},
-     {"t":"Fate is real and I pay attention to it.","s":{"hermit":3,"visionary":2}},
-     {"t":"I am comfortable being fate's instrument.","s":{"death":3,"hangedman":2}}
+     {"t":"I don't believe in fate. I believe in leverage and sufficient preparation.","s":{"blackemperor":3,"error":2}},
+     {"t":"Fate is a first draft. I negotiate the final version through ritual and will.","s":{"fool":3,"wheeloffortune":2}},
+     {"t":"Fate is real and I pay close attention to its movements.","s":{"hermit":3,"visionary":2}},
+     {"t":"I am comfortable being fate's instrument when the cause is large enough.","s":{"death":3,"hangedman":2}}
    ]},
   {"id":71,"s":"Worldview","w":2,
-   "q":"What is the primary source of human suffering?",
+   "q":"What is the primary cause of suffering in the Beyonder world?",
    "opts":[
-     {"t":"Ignorance — people suffer because they don't understand what's happening.","s":{"whitetower":3,"sun":2}},
-     {"t":"Desire — wanting what cannot or should not be had.","s":{"hangedman":3,"abyss":2}},
-     {"t":"Injustice — systems that harm the innocent while protecting the guilty.","s":{"justiciar":3,"sun":2}},
-     {"t":"The gap between what is and what people wish was.","s":{"death":3,"fool":2}}
+     {"t":"Ignorance — Beyonders suffer because they do not understand what is happening to their spiritual body.","s":{"whitetower":3,"sun":2}},
+     {"t":"Desire — wanting what cannot or should not be taken from the Foggy World.","s":{"hangedman":3,"abyss":2}},
+     {"t":"Injustice — the Sequence system protects the powerful while destroying those beneath them.","s":{"justiciar":3,"sun":2}},
+     {"t":"The gap between what is and what every Beyonder wishes was.","s":{"death":3,"fool":2}}
    ]},
   {"id":72,"s":"Worldview","w":3,
-   "q":"Evidence arrives that a foundational belief you have held is wrong.",
+   "q":"A prayer response from Mr. Fool arrives that contradicts a foundational belief you have held since your first ritual.",
    "opts":[
-     {"t":"I revise. That is what evidence is for.","s":{"whitetower":3,"paragon":2}},
-     {"t":"I investigate the evidence first — extraordinary claims require extraordinary proof.","s":{"hermit":3,"fool":2}},
-     {"t":"I hold the discomfort until I integrate it.","s":{"hangedman":3,"chained":2}},
-     {"t":"I resist, but eventually the evidence wins.","s":{"sun":3,"justiciar":2}}
+     {"t":"I revise. That is what evidence — even divine evidence — is for.","s":{"whitetower":3,"paragon":2}},
+     {"t":"I investigate the response first. Extraordinary claims from Mr. Fool require extraordinary scrutiny.","s":{"hermit":3,"fool":2}},
+     {"t":"I hold the discomfort until I have integrated what it means for everything I've built on that belief.","s":{"hangedman":3,"chained":2}},
+     {"t":"I resist. But if the evidence accumulates, the evidence eventually wins.","s":{"sun":3,"justiciar":2}}
    ]},
   {"id":73,"s":"Worldview","w":2,
-   "q":"Which of these is most true?",
+   "q":"In the Beyonder world, which of these is most fundamentally true?",
    "opts":[
-     {"t":"Knowledge is power.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Power is knowledge.","s":{"abyss":3,"visionary":2}},
-     {"t":"Freedom is power.","s":{"door":3,"demoness":2}},
-     {"t":"Endurance is power.","s":{"twilightgiant":3,"chained":2}}
+     {"t":"Knowledge is power — every Sequence advancement begins with understanding.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Power is knowledge — what you can do shapes what you can perceive.","s":{"abyss":3,"visionary":2}},
+     {"t":"Freedom is power — the only Beyonder who cannot be broken is the one who cannot be caged.","s":{"door":3,"demoness":2}},
+     {"t":"Endurance is power — the Beyonder still standing at the end of the ritual is the victor.","s":{"twilightgiant":3,"chained":2}}
    ]},
   {"id":74,"s":"Worldview","w":3,
-   "q":"What gives something meaning?",
+   "q":"What gives a Beyonder life meaning?",
    "opts":[
-     {"t":"The effort invested in it.","s":{"paragon":3,"twilightgiant":2}},
-     {"t":"The impact it has on others.","s":{"sun":3,"mother":2}},
-     {"t":"The fact that it ends — mortality creates value.","s":{"death":3,"hangedman":2}},
-     {"t":"What it reveals about how reality actually works.","s":{"whitetower":3,"hermit":2}}
+     {"t":"The effort invested — the cost of the ritual is inseparable from the value of the result.","s":{"paragon":3,"twilightgiant":2}},
+     {"t":"The impact on others — meaning is relational, not Sequence-dependent.","s":{"sun":3,"mother":2}},
+     {"t":"The fact that it ends — mortality creates the urgency that makes Beyonder advancement possible.","s":{"death":3,"hangedman":2}},
+     {"t":"What it reveals about how the Foggy World actually operates beneath its surface.","s":{"whitetower":3,"hermit":2}}
    ]},
   {"id":75,"s":"Worldview","w":1,
-   "q":"Fire is a symbol of...",
+   "q":"The Red Priest's flame — fire in the Beyonder context — is a symbol of...",
    "opts":[
-     {"t":"Purification — burning away what does not belong.","s":{"sun":3,"redpriest":2}},
-     {"t":"Revelation — illuminating what darkness hides.","s":{"whitetower":3,"fool":2}},
-     {"t":"Destruction — sometimes necessary, always costly.","s":{"demoness":3,"twilightgiant":2}},
-     {"t":"Warmth — the center around which people gather.","s":{"mother":3,"tyrant":2}}
+     {"t":"Purification — burning away every characteristic that does not belong.","s":{"sun":3,"redpriest":2}},
+     {"t":"Revelation — illuminating what the Foggy World was designed to conceal.","s":{"whitetower":3,"fool":2}},
+     {"t":"Destruction — sometimes necessary, always permanent, always costly.","s":{"demoness":3,"twilightgiant":2}},
+     {"t":"Warmth — the center around which Beyonders gather against the cold of higher Sequences.","s":{"mother":3,"tyrant":2}}
    ]},
   {"id":76,"s":"Worldview","w":2,
-   "q":"What is transformation?",
+   "q":"What is Sequence transformation?",
    "opts":[
-     {"t":"Willingness to sacrifice who you were for who you must become.","s":{"moon":3,"hangedman":2}},
-     {"t":"The goal — I want to become something entirely different.","s":{"abyss":3,"door":2}},
-     {"t":"A risk that must be managed carefully.","s":{"chained":3,"whitetower":2}},
-     {"t":"Natural — everything transforms; resistance is the only choice.","s":{"death":3,"wheeloffortune":2}}
+     {"t":"Willingness to sacrifice who you were for who the pathway requires you to become.","s":{"moon":3,"hangedman":2}},
+     {"t":"The goal itself — I want to become something the current me cannot imagine.","s":{"abyss":3,"door":2}},
+     {"t":"A risk that must be managed with extreme care and adequate preparation.","s":{"chained":3,"whitetower":2}},
+     {"t":"Natural — everything in the Beyonder world transforms; resistance is the only true choice.","s":{"death":3,"wheeloffortune":2}}
    ]},
   {"id":77,"s":"Worldview","w":3,
-   "q":"If you could know one fundamental truth about reality, what would you ask?",
+   "q":"If you could offer one prayer to Mr. Fool and receive a genuine answer, what would you ask?",
    "opts":[
-     {"t":"What are the actual rules — not the stated ones, but the operating ones?","s":{"whitetower":3,"hermit":2}},
-     {"t":"What is the nature of consciousness — mine, others', the universe's?","s":{"visionary":3,"fool":2}},
-     {"t":"Is justice built into reality, or do we impose it ourselves?","s":{"justiciar":3,"death":2}},
-     {"t":"What happens when everything ends?","s":{"death":3,"hangedman":2}}
+     {"t":"What are the actual operating rules of the Beyonder world — not the stated ones, but the ones that actually govern?","s":{"whitetower":3,"hermit":2}},
+     {"t":"What is the true nature of consciousness — mine, others', the Foggy World's?","s":{"visionary":3,"fool":2}},
+     {"t":"Is justice built into the Sequence system, or do we impose it ourselves against the current?","s":{"justiciar":3,"death":2}},
+     {"t":"What happens when the Sequence system itself ends?","s":{"death":3,"hangedman":2}}
    ]},
 
   {"id":78,"s":"Power & Ambition","w":3,
-   "q":"How do you feel about accumulating power?",
+   "q":"How do you feel about accumulating Beyonder power?",
    "opts":[
-     {"t":"Necessary. Without it, everything I value is vulnerable.","s":{"blackemperor":3,"tyrant":2}},
-     {"t":"Complicated — power changes you whether you want it to or not.","s":{"hangedman":3,"chained":2}},
-     {"t":"Fascinating — what does it reveal about how the world actually works?","s":{"whitetower":3,"fool":2}},
-     {"t":"It's not what I'm after. I want capability; power is a side effect.","s":{"paragon":3,"hermit":2}}
+     {"t":"Necessary. Without sufficient Sequence, everything I care about is vulnerable to the next higher Sequence.","s":{"blackemperor":3,"tyrant":2}},
+     {"t":"Complicated — power in the Beyonder world changes you whether you consent to the change or not.","s":{"hangedman":3,"chained":2}},
+     {"t":"Fascinating — each new Sequence reveals more about how the Foggy World actually operates.","s":{"whitetower":3,"fool":2}},
+     {"t":"Not what I'm after. I want capability. Power is the byproduct, not the purpose.","s":{"paragon":3,"hermit":2}}
    ]},
   {"id":79,"s":"Power & Ambition","w":2,
-   "q":"What kind of power do you actually want?",
+   "q":"What kind of Beyonder power do you actually want?",
    "opts":[
-     {"t":"The power to understand — to know what others don't.","s":{"whitetower":3,"visionary":2}},
-     {"t":"The power to protect — to make those I care about genuinely safe.","s":{"darkness":3,"mother":2}},
-     {"t":"The power to create — to make things that couldn't exist without me.","s":{"paragon":3,"sun":2}},
-     {"t":"The power to command — to move through the world on my terms.","s":{"blackemperor":3,"abyss":2}}
+     {"t":"The power to understand — to know what other Sequences cannot perceive.","s":{"whitetower":3,"visionary":2}},
+     {"t":"The power to protect — to make everyone I care about genuinely safe from higher Sequences.","s":{"darkness":3,"mother":2}},
+     {"t":"The power to create — to bring into existence things that could not exist without my pathway.","s":{"paragon":3,"sun":2}},
+     {"t":"The power to command — to move through Backlund and beyond entirely on my own terms.","s":{"blackemperor":3,"abyss":2}}
    ]},
   {"id":80,"s":"Power & Ambition","w":3,
-   "q":"What is the cost of ambition?",
+   "q":"What is the true cost of Beyonder ambition?",
    "opts":[
-     {"t":"What you become in pursuit of it. And I have made my peace with that.","s":{"abyss":3,"demoness":2}},
-     {"t":"What you lose — time, relationships, simplicity. Worth it.","s":{"blackemperor":3,"redpriest":2}},
-     {"t":"Nothing, if you're careful. Ambition is only destructive if you're reckless.","s":{"fool":3,"whitetower":2}},
-     {"t":"The self you started with. There is always a sacrifice.","s":{"hangedman":3,"moon":2}}
+     {"t":"What you become in pursuit of it. I have made my peace with that transformation.","s":{"abyss":3,"demoness":2}},
+     {"t":"What you lose — time, connection, simplicity. Worth it.","s":{"blackemperor":3,"redpriest":2}},
+     {"t":"Nothing, if you advance carefully. Ambition is only destructive if you are reckless about contamination.","s":{"fool":3,"whitetower":2}},
+     {"t":"The self you started with. There is always a sacrifice, and it is always the same one.","s":{"hangedman":3,"moon":2}}
    ]},
   {"id":81,"s":"Power & Ambition","w":2,
-   "q":"You discover that what you want requires becoming something you currently aren't.",
+   "q":"You discover that the next Sequence advancement requires becoming something fundamentally different from what you currently are.",
    "sub":"How do you feel?",
    "opts":[
-     {"t":"Excited. Growth is the point.","s":{"moon":3,"door":2}},
-     {"t":"Conflicted. I need to decide if it's worth it.","s":{"chained":3,"hangedman":2}},
-     {"t":"Calculating. What exactly must change, and can it be controlled?","s":{"whitetower":3,"blackemperor":2}},
-     {"t":"Resistant. I refuse to compromise what I am for what I want.","s":{"fool":3,"twilightgiant":2}}
+     {"t":"Excited. The transformation is the point of the pathway.","s":{"moon":3,"door":2}},
+     {"t":"Conflicted. I need to determine whether what I am becoming is worth what I am losing.","s":{"chained":3,"hangedman":2}},
+     {"t":"Calculating. What exactly changes, and can the transformation be controlled with adequate ritual?","s":{"whitetower":3,"blackemperor":2}},
+     {"t":"Resistant. I refuse to compromise what I am for what I could become.","s":{"fool":3,"twilightgiant":2}}
    ]},
   {"id":82,"s":"Power & Ambition","w":3,
-   "q":"You can have everything you want — but it will take thirty years.",
+   "q":"You can reach Sequence 1. But the pathway takes thirty years, and you will not be recognizable at the end.",
    "opts":[
-     {"t":"Yes. Time is just another resource.","s":{"death":3,"blackemperor":2}},
-     {"t":"No. Thirty years changes the person who made the plan.","s":{"moon":3,"wheeloffortune":2}},
-     {"t":"Negotiate. Something meaningful sooner, the rest later.","s":{"fool":3,"error":2}},
-     {"t":"Yes — and I'll spend thirty years becoming capable of holding it.","s":{"paragon":3,"hermit":2}}
+     {"t":"Yes. Time is a resource like any other, and I have no shortage of will.","s":{"death":3,"blackemperor":2}},
+     {"t":"No. Thirty years changes the Beyonder who made the original decision.","s":{"moon":3,"wheeloffortune":2}},
+     {"t":"Negotiate — something meaningful at year ten, the rest built carefully from there.","s":{"fool":3,"error":2}},
+     {"t":"Yes — and I will spend thirty years becoming the Beyonder capable of holding what Sequence 1 demands.","s":{"paragon":3,"hermit":2}}
    ]},
   {"id":83,"s":"Power & Ambition","w":1,
-   "q":"Competition makes you feel...",
+   "q":"Competition between Beyonder factions makes you feel...",
    "opts":[
-     {"t":"Alive. Finally something worth doing.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"Focused. Clear parameters, clear opposition.","s":{"blackemperor":3,"justiciar":2}},
-     {"t":"Uninterested unless the stakes are actually meaningful.","s":{"death":3,"hermit":2}},
-     {"t":"Strategic. Where are the edges of the competitive space?","s":{"visionary":3,"fool":2}}
+     {"t":"Alive. Finally something that demands everything I have.","s":{"twilightgiant":3,"redpriest":2}},
+     {"t":"Focused. Clear stakes, clear opposition, clear pathway forward.","s":{"blackemperor":3,"justiciar":2}},
+     {"t":"Uninterested unless the Sequence differential actually matters.","s":{"death":3,"hermit":2}},
+     {"t":"Strategic. Where exactly are the edges of this competitive space I can exploit?","s":{"visionary":3,"fool":2}}
    ]},
   {"id":84,"s":"Power & Ambition","w":2,
-   "q":"What would you sacrifice to achieve your ambition?",
+   "q":"What would you sacrifice to advance your pathway?",
    "opts":[
-     {"t":"Comfort, time, safety. Not people.","s":{"mother":3,"sun":2}},
-     {"t":"Whatever is necessary. The outcome determines the legitimacy of the cost.","s":{"blackemperor":3,"abyss":2}},
-     {"t":"My past self — but I would keep my principles.","s":{"sun":3,"chained":2}},
-     {"t":"Nothing I haven't already surrendered.","s":{"hangedman":3,"death":2}}
+     {"t":"Comfort, safety, ordinary life. Not people I care about.","s":{"mother":3,"sun":2}},
+     {"t":"Whatever is necessary. The Sequence determines the legitimacy of the cost.","s":{"blackemperor":3,"abyss":2}},
+     {"t":"My past self — but I would keep my principles intact through the transformation.","s":{"sun":3,"chained":2}},
+     {"t":"Nothing I haven't already surrendered on this pathway. The tally is already long.","s":{"hangedman":3,"death":2}}
    ]},
   {"id":85,"s":"Power & Ambition","w":3,
-   "q":"What does it mean to win?",
+   "q":"What does it mean to win as a Beyonder?",
    "opts":[
-     {"t":"To achieve what you set out to achieve, fully and completely.","s":{"paragon":3,"blackemperor":2}},
-     {"t":"To not lose what matters while gaining what you want.","s":{"mother":3,"fool":2}},
-     {"t":"To have made the rules by which the game was played.","s":{"blackemperor":3,"visionary":2}},
-     {"t":"To still be standing when everyone who tried to stop you isn't.","s":{"twilightgiant":3,"chained":2}}
+     {"t":"To achieve what you set out to achieve, fully and completely, through the final Sequence.","s":{"paragon":3,"blackemperor":2}},
+     {"t":"To not lose what matters while gaining what the pathway requires.","s":{"mother":3,"fool":2}},
+     {"t":"To have made the rituals and rules by which the game was played.","s":{"blackemperor":3,"visionary":2}},
+     {"t":"To still be advancing when every Beyonder who tried to stop you has stopped.","s":{"twilightgiant":3,"chained":2}}
    ]},
   {"id":86,"s":"Power & Ambition","w":2,
-   "q":"You are told you will never reach the top of your field.",
+   "q":"A higher Sequence Beyonder tells you that you will never reach the upper Sequences of your pathway.",
    "sub":"Your response?",
    "opts":[
      {"t":"Watch me.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"I define success. I don't inherit the definition.","s":{"fool":3,"demoness":2}},
-     {"t":"Perhaps. But I'm not building toward that — I'm building toward something else.","s":{"paragon":3,"hermit":2}},
-     {"t":"Probably right. I'm building something different than they think I am.","s":{"blackemperor":3,"visionary":2}}
+     {"t":"I define what advancement means on this pathway. I don't inherit their ceiling.","s":{"fool":3,"demoness":2}},
+     {"t":"Perhaps. But I'm not building toward their definition of the top.","s":{"paragon":3,"hermit":2}},
+     {"t":"Probably right about what they think I'm building. They don't know what I'm actually building.","s":{"blackemperor":3,"visionary":2}}
    ]},
   {"id":87,"s":"Power & Ambition","w":3,
-   "q":"What separates someone who achieves from someone who doesn't?",
+   "q":"What separates a Beyonder who reaches the upper Sequences from one who stalls?",
    "opts":[
-     {"t":"Willingness to pay the actual cost, not the imagined one.","s":{"abyss":3,"blackemperor":2}},
-     {"t":"Clarity about what they actually want, not what they say they want.","s":{"visionary":3,"whitetower":2}},
-     {"t":"Endurance — most people give up before understanding what they're capable of.","s":{"twilightgiant":3,"chained":2}},
-     {"t":"Strategy — execution without a real plan is just action.","s":{"blackemperor":3,"fool":2}}
+     {"t":"Willingness to pay the actual cost of advancement — not the imagined, sanitized version.","s":{"abyss":3,"blackemperor":2}},
+     {"t":"Clarity about what they actually want from the pathway versus what they perform wanting.","s":{"visionary":3,"whitetower":2}},
+     {"t":"Endurance — most Beyonders stop before they understand what they are capable of containing.","s":{"twilightgiant":3,"chained":2}},
+     {"t":"Strategy — every ritual without a genuine plan is just effort without direction.","s":{"blackemperor":3,"fool":2}}
    ]},
   {"id":88,"s":"Power & Ambition","w":1,
-   "q":"Your relationship with failure is...",
+   "q":"Your relationship with ritual failure is...",
    "opts":[
-     {"t":"Data. Failed experiments are how you locate the truth.","s":{"whitetower":3,"paragon":2}},
-     {"t":"Fuel. Being told it cannot be done makes me want it more.","s":{"twilightgiant":3,"redpriest":2}},
-     {"t":"Uncomfortable but manageable. I have been here before.","s":{"chained":3,"death":2}},
-     {"t":"Information about the gap between who I am and who I need to be.","s":{"fool":3,"hermit":2}}
+     {"t":"Data. Failed rituals locate the truth faster than successful ones.","s":{"whitetower":3,"paragon":2}},
+     {"t":"Fuel. Being told a Sequence cannot be reached makes me want it more.","s":{"twilightgiant":3,"redpriest":2}},
+     {"t":"Uncomfortable but manageable. This Beyonder has failed before.","s":{"chained":3,"death":2}},
+     {"t":"Information — the gap between who I currently am and who I need to become.","s":{"fool":3,"hermit":2}}
    ]},
 
   {"id":89,"s":"The Shadow Self","w":3,
-   "q":"What is your relationship with your own dark side?",
+   "q":"What is your honest relationship with the darker aspects of your own Beyonder characteristics?",
    "opts":[
-     {"t":"I know exactly what it is. I keep it in a cage.","s":{"chained":3,"darkness":2}},
-     {"t":"I have integrated it. Darkness isn't the enemy — denial is.","s":{"moon":3,"hangedman":2}},
-     {"t":"It is useful. The question is when to deploy it.","s":{"abyss":3,"blackemperor":2}},
-     {"t":"I don't trust my own self-assessment of it. That's the point.","s":{"fool":3,"visionary":2}}
+     {"t":"I know exactly what they are. I keep them confined through ritual and will.","s":{"chained":3,"darkness":2}},
+     {"t":"I have integrated them. The shadow is not the enemy — denial is what causes contamination.","s":{"moon":3,"hangedman":2}},
+     {"t":"They are useful. The only question is when to deploy them and at what Sequence cost.","s":{"abyss":3,"blackemperor":2}},
+     {"t":"I don't trust my own self-assessment of them. That is precisely the point — and the danger.","s":{"fool":3,"visionary":2}}
    ]},
   {"id":90,"s":"The Shadow Self","w":2,
-   "q":"What tempts you most?",
+   "q":"In the Beyonder world, what tempts you most?",
    "opts":[
-     {"t":"Power I'm not supposed to have.","s":{"abyss":3,"error":2}},
-     {"t":"Knowledge I'm not supposed to know.","s":{"hermit":3,"whitetower":2}},
-     {"t":"Freedom I'm not supposed to take.","s":{"door":3,"demoness":2}},
-     {"t":"Control I'm not supposed to exercise.","s":{"blackemperor":3,"visionary":2}}
+     {"t":"Sequence power I am not yet permitted to hold.","s":{"abyss":3,"error":2}},
+     {"t":"Knowledge about the Foggy World that I am not supposed to possess.","s":{"hermit":3,"whitetower":2}},
+     {"t":"Freedom I am not supposed to claim from the pathway's structure.","s":{"door":3,"demoness":2}},
+     {"t":"Control over rituals and people that I am not supposed to exercise at this Sequence.","s":{"blackemperor":3,"visionary":2}}
    ]},
   {"id":91,"s":"The Shadow Self","w":3,
-   "q":"If you could do one thing with zero consequences, what category would it be in?",
+   "q":"If you could perform one act in the Beyonder world with zero consequences, what category of act would it be?",
    "opts":[
-     {"t":"Understand something completely that has been kept from me.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Take something that was denied to me.","s":{"error":3,"abyss":2}},
-     {"t":"Destroy something that has caused harm for too long.","s":{"demoness":3,"redpriest":2}},
-     {"t":"Disappear entirely and become someone else.","s":{"door":3,"moon":2}}
+     {"t":"Understand something about the Sequence system that has been deliberately concealed from everyone.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Take something from a higher Sequence that was denied to me without justification.","s":{"error":3,"abyss":2}},
+     {"t":"Destroy something that has been causing harm in the Beyonder world for too long.","s":{"demoness":3,"redpriest":2}},
+     {"t":"Disappear from every Beyonder's awareness entirely and become someone else somewhere else.","s":{"door":3,"moon":2}}
    ]},
   {"id":92,"s":"The Shadow Self","w":2,
-   "q":"What do you do with a desire you know you shouldn't act on?",
+   "q":"Your characteristics generate a desire you know you should not act on. What do you do?",
    "opts":[
-     {"t":"Understand it first. Why do I want this?","s":{"hangedman":3,"visionary":2}},
-     {"t":"Redirect the energy toward something constructive.","s":{"paragon":3,"sun":2}},
+     {"t":"Understand it first — what does this desire reveal about the characteristics I have integrated?","s":{"hangedman":3,"visionary":2}},
+     {"t":"Redirect the energy toward ritual work. The desire is fuel; the direction is mine to choose.","s":{"paragon":3,"sun":2}},
      {"t":"Deny it publicly, negotiate with it privately.","s":{"error":3,"blackemperor":2}},
-     {"t":"Act on it when the cost is acceptable.","s":{"abyss":3,"demoness":2}}
+     {"t":"Act on it when the Sequence cost is acceptable.","s":{"abyss":3,"demoness":2}}
    ]},
   {"id":93,"s":"The Shadow Self","w":3,
-   "q":"What is the thing inside you that most frightens you?",
+   "q":"The thing inside your Beyonder characteristics that most frightens you is...",
    "opts":[
-     {"t":"The capacity for cruelty I don't usually show.","s":{"abyss":3,"visionary":2}},
-     {"t":"The possibility that I am more alone than I believe.","s":{"chained":3,"darkness":2}},
-     {"t":"The part of me that doesn't care about consequences.","s":{"moon":3,"redpriest":2}},
-     {"t":"The part that could accept anything if it served understanding.","s":{"whitetower":3,"hermit":2}}
+     {"t":"The capacity for cruelty that the Sequence generates and that I usually suppress.","s":{"abyss":3,"visionary":2}},
+     {"t":"The possibility that the isolation the Beyonder world demands has worked — and I am more alone than I acknowledge.","s":{"chained":3,"darkness":2}},
+     {"t":"The part of my spiritual body that does not care about consequences at higher contamination levels.","s":{"moon":3,"redpriest":2}},
+     {"t":"The part of me that would accept anything — any cost, any transformation — if it served understanding.","s":{"whitetower":3,"hermit":2}}
    ]},
   {"id":94,"s":"The Shadow Self","w":2,
-   "q":"You've done something you cannot undo. It was wrong. How do you live with it?",
+   "q":"You have performed a ritual that cannot be undone. It was wrong. The damage is permanent. How do you live with it?",
    "opts":[
-     {"t":"By making it mean something through what comes after.","s":{"hangedman":3,"death":2}},
-     {"t":"By being rigorous about not repeating it.","s":{"justiciar":3,"sun":2}},
-     {"t":"By accepting it was the best available option at the time.","s":{"blackemperor":3,"fool":2}},
-     {"t":"Badly, for a while. Then I put it down.","s":{"mother":3,"twilightgiant":2}}
+     {"t":"By making it mean something through everything I do after.","s":{"hangedman":3,"death":2}},
+     {"t":"By being rigorous — in every subsequent ritual — about never repeating it.","s":{"justiciar":3,"sun":2}},
+     {"t":"By accepting it was the best available option at the time given what I knew.","s":{"blackemperor":3,"fool":2}},
+     {"t":"Badly, for a long time. Then I set it down and advance anyway.","s":{"mother":3,"twilightgiant":2}}
    ]},
   {"id":95,"s":"The Shadow Self","w":3,
-   "q":"Every Beyonder risks contamination — losing their humanity to power. Where is your real risk?",
+   "q":"Every Beyonder risks contamination — the slow loss of humanity to accumulated Sequence power. Where is your genuine risk?",
    "opts":[
-     {"t":"Accumulating too much — power I cannot fully integrate.","s":{"abyss":3,"moon":2}},
-     {"t":"Becoming too cold — losing the warmth that made me who I am.","s":{"whitetower":3,"darkness":2}},
-     {"t":"The path to what I want most has costs I haven't fully acknowledged.","s":{"hangedman":3,"chained":2}},
-     {"t":"Certainty — the moment I stop questioning myself.","s":{"fool":3,"justiciar":2}}
+     {"t":"Accumulating characteristics I cannot fully integrate — power that begins to use me rather than the reverse.","s":{"abyss":3,"moon":2}},
+     {"t":"Becoming too cold — losing the warmth and connection that made me who I was before the pathway.","s":{"whitetower":3,"darkness":2}},
+     {"t":"The path toward what I want most has costs I have not fully acknowledged to myself yet.","s":{"hangedman":3,"chained":2}},
+     {"t":"Certainty — the moment I stop questioning my own spiritual readings is the moment I contaminate.","s":{"fool":3,"justiciar":2}}
    ]},
   {"id":96,"s":"The Shadow Self","w":2,
-   "q":"When have you most frightened yourself?",
+   "q":"When have you most frightened yourself as a Beyonder?",
    "opts":[
-     {"t":"When I realized I was capable of hurting someone and didn't stop.","s":{"abyss":3,"moon":2}},
-     {"t":"When I found myself thinking several moves ahead of everyone and feeling nothing.","s":{"visionary":3,"blackemperor":2}},
-     {"t":"When I didn't know what I wanted anymore.","s":{"chained":3,"door":2}},
-     {"t":"When I realized I'd been living someone else's idea of who I should be.","s":{"fool":3,"demoness":2}}
+     {"t":"When I realized I was capable of harming someone through my characteristics and felt the pull to continue.","s":{"abyss":3,"moon":2}},
+     {"t":"When I found myself calculating several ritual steps ahead of everyone and feeling absolutely nothing.","s":{"visionary":3,"blackemperor":2}},
+     {"t":"When the contamination threshold blurred and I stopped knowing what I wanted from the Sequence.","s":{"chained":3,"door":2}},
+     {"t":"When I realized I had been performing someone else's idea of who a Beyonder on this pathway should be.","s":{"fool":3,"demoness":2}}
    ]},
   {"id":97,"s":"The Shadow Self","w":1,
-   "q":"The monster you could become is...",
+   "q":"The contaminated version of yourself — the thing you could become if you fail the pathway — is...",
    "opts":[
-     {"t":"Something that sees others only as resources.","s":{"abyss":3,"visionary":2}},
-     {"t":"Something that destroys what it cannot control.","s":{"tyrant":3,"redpriest":2}},
-     {"t":"Something that collects knowledge without wisdom.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Something that loses itself entirely in another self.","s":{"moon":3,"error":2}}
+     {"t":"Something that processes other Beyonders only as resources to be consumed or discarded.","s":{"abyss":3,"visionary":2}},
+     {"t":"Something that destroys what it cannot control and cannot stop destroying.","s":{"tyrant":3,"redpriest":2}},
+     {"t":"Something that accumulates Sequence knowledge without the wisdom to know what to do with it.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Something that loses the original self entirely inside an adopted persona that becomes its own thing.","s":{"moon":3,"error":2}}
    ]},
   {"id":98,"s":"The Shadow Self","w":3,
-   "q":"What would push you past your ethical limits?",
+   "q":"What would push you past your ethical limits as a Beyonder?",
    "opts":[
-     {"t":"Threat to everyone I care about. Absolutely everyone.","s":{"mother":3,"tyrant":2}},
-     {"t":"Being shown that my ethics were constructed by someone else's interests.","s":{"demoness":3,"error":2}},
-     {"t":"A cause large enough. Most people's ethical limits are parochial.","s":{"blackemperor":3,"redpriest":2}},
-     {"t":"Nothing. That's what limits mean.","s":{"justiciar":3,"sun":2}}
+     {"t":"A credible, imminent threat to everyone I care about — absolutely everyone, simultaneously.","s":{"mother":3,"tyrant":2}},
+     {"t":"Evidence that my ethics were constructed to serve someone else's Sequence interests, not my own.","s":{"demoness":3,"error":2}},
+     {"t":"A cause large enough. Most Beyonders' ethical limits are parochial relative to what the Sequence system actually demands.","s":{"blackemperor":3,"redpriest":2}},
+     {"t":"Nothing. That is what the word 'limits' means. The pathway does not change that.","s":{"justiciar":3,"sun":2}}
    ]},
   {"id":99,"s":"The Shadow Self","w":2,
-   "q":"What do you do at 3am when you cannot sleep?",
+   "q":"It is the dead hour — the Beyonder world presses closest. You cannot sleep. What occupies you?",
    "opts":[
-     {"t":"Think. The quiet is when the real work happens.","s":{"whitetower":3,"hermit":2}},
-     {"t":"Feel things I suppress during daylight. Then put them away.","s":{"darkness":3,"hangedman":2}},
-     {"t":"Plan. What's next, and how, and why.","s":{"blackemperor":3,"paragon":2}},
-     {"t":"Nothing useful — but I stopped fighting it.","s":{"moon":3,"chained":2}}
+     {"t":"Ritual analysis. The quiet hours are when the real pattern-recognition happens.","s":{"whitetower":3,"hermit":2}},
+     {"t":"Things I suppress during the light — I allow them for the night and put them away before dawn.","s":{"darkness":3,"hangedman":2}},
+     {"t":"Planning. What the next Sequence requires, and how, and at what cost.","s":{"blackemperor":3,"paragon":2}},
+     {"t":"Nothing useful — but I stopped fighting the Foggy World's schedule long ago.","s":{"moon":3,"chained":2}}
    ]},
 
   {"id":100,"s":"Identity & Transformation","w":3,
-   "q":"Who are you when no role is required of you?",
+   "q":"Who are you when no Sequence role is required and no Beyonder is watching?",
    "opts":[
-     {"t":"The same person I am when roles are required. I don't compartmentalize.","s":{"justiciar":3,"sun":2}},
-     {"t":"Someone quieter and older than the version I present.","s":{"darkness":3,"death":2}},
-     {"t":"I genuinely don't know. The roles have been there so long.","s":{"error":3,"chained":2}},
-     {"t":"More curious. More honest. Slightly more afraid.","s":{"fool":3,"hermit":2}}
+     {"t":"The same person I am when every role is required. I do not compartmentalize.","s":{"justiciar":3,"sun":2}},
+     {"t":"Someone quieter and older than the version I present to the Tarot Club.","s":{"darkness":3,"death":2}},
+     {"t":"I genuinely do not know. The Beyonder roles have been present long enough to blur the original.","s":{"error":3,"chained":2}},
+     {"t":"More curious. More honest. Slightly more afraid of what the pathway is making me.","s":{"fool":3,"hermit":2}}
    ]},
   {"id":101,"s":"Identity & Transformation","w":2,
-   "q":"The idea of becoming something unrecognizable to your past self is...",
+   "q":"The idea of becoming unrecognizable to the Beyonder you were at Sequence 9 is...",
    "opts":[
-     {"t":"The point. Growth is rupture, not continuity.","s":{"moon":3,"abyss":2}},
-     {"t":"Acceptable if what I become is better.","s":{"sun":3,"paragon":2}},
-     {"t":"Worrying — I need some thread back to who I started as.","s":{"chained":3,"fool":2}},
-     {"t":"Neutral. Who I started as was a starting point, not a destination.","s":{"death":3,"door":2}}
+     {"t":"The point. Pathway advancement is rupture, not continuity.","s":{"moon":3,"abyss":2}},
+     {"t":"Acceptable if what I become serves the purpose I began with.","s":{"sun":3,"paragon":2}},
+     {"t":"Worrying — I need some thread back to who I was before the first ritual.","s":{"chained":3,"fool":2}},
+     {"t":"Neutral. The Sequence 9 version was a starting point, not a destination.","s":{"death":3,"door":2}}
    ]},
   {"id":102,"s":"Identity & Transformation","w":3,
-   "q":"If you could remove one aspect of yourself entirely, what type of thing would it be?",
+   "q":"If you could permanently excise one aspect of what the pathway has made you, what category would it be?",
    "opts":[
-     {"t":"A limitation — something that constrains my capacity.","s":{"abyss":3,"twilightgiant":2}},
-     {"t":"A fear — something that stops me from going where I should go.","s":{"door":3,"moon":2}},
-     {"t":"A wound — something that costs me energy to carry.","s":{"chained":3,"hangedman":2}},
-     {"t":"Nothing. Each part serves a function.","s":{"fool":3,"death":2}}
+     {"t":"A Sequence limitation — something the pathway imposes that constrains my capacity.","s":{"abyss":3,"twilightgiant":2}},
+     {"t":"A fear the characteristics generate that prevents me from going where I need to go.","s":{"door":3,"moon":2}},
+     {"t":"A wound the pathway opened that costs energy to carry every day.","s":{"chained":3,"hangedman":2}},
+     {"t":"Nothing. Every characteristic serves a function, even the ones that hurt.","s":{"fool":3,"death":2}}
    ]},
   {"id":103,"s":"Identity & Transformation","w":2,
-   "q":"Your identity is most fundamentally...",
+   "q":"Your identity as a Beyonder is most fundamentally...",
    "opts":[
-     {"t":"What I've built and accomplished.","s":{"paragon":3,"blackemperor":2}},
-     {"t":"What I believe and how I act on it.","s":{"justiciar":3,"sun":2}},
-     {"t":"What I understand and what I seek to understand.","s":{"whitetower":3,"hermit":2}},
-     {"t":"In flux. A current state, not a fixed thing.","s":{"moon":3,"door":2}}
+     {"t":"What I have built and accomplished within the Sequence system.","s":{"paragon":3,"blackemperor":2}},
+     {"t":"What I believe about the Beyonder world and how I act on those beliefs under pressure.","s":{"justiciar":3,"sun":2}},
+     {"t":"What I understand and what the pathway is slowly revealing to me.","s":{"whitetower":3,"hermit":2}},
+     {"t":"In flux — a current Sequence state, not a fixed identity.","s":{"moon":3,"door":2}}
    ]},
   {"id":104,"s":"Identity & Transformation","w":3,
-   "q":"You are offered the chance to become a completely different person — same values, different history, body, and relationships. All your problems reset.",
+   "q":"A ritual offers to give you a completely different existence — same values, different history, different pathway, different Sequence, all consequences erased.",
    "opts":[
-     {"t":"No. I am the sum of what I've survived.","s":{"chained":3,"death":2}},
-     {"t":"Interesting. What counts as 'same values' in a different life?","s":{"fool":3,"door":2}},
-     {"t":"No — my bonds and my history are who I am, not limitations.","s":{"mother":3,"tyrant":2}},
-     {"t":"Possibly. What is the new person capable of that I'm not?","s":{"moon":3,"abyss":2}}
+     {"t":"No. I am the sum of everything this pathway has required me to survive.","s":{"chained":3,"death":2}},
+     {"t":"Interesting. What does 'same values' mean when the pathway has shaped every value I hold?","s":{"fool":3,"door":2}},
+     {"t":"No — my Tarot Club bonds and my ritual history are who I am, not constraints on who I could be.","s":{"mother":3,"tyrant":2}},
+     {"t":"Possibly. What can the new existence do that I cannot do from this Sequence?","s":{"moon":3,"abyss":2}}
    ]},
   {"id":105,"s":"Identity & Transformation","w":2,
-   "q":"Which transformation appeals most to you?",
+   "q":"Which transformation through the Beyonder pathway appeals to you most?",
    "opts":[
-     {"t":"Physical — stronger, faster, beyond human limits.","s":{"twilightgiant":3,"moon":2}},
-     {"t":"Mental — sharper, calmer, capable of understanding more.","s":{"whitetower":3,"visionary":2}},
-     {"t":"Social — known, trusted, capable of moving others.","s":{"blackemperor":3,"sun":2}},
-     {"t":"Essential — becoming something categorically different.","s":{"abyss":3,"demoness":2}}
+     {"t":"Physical — stronger, faster, beyond the limits of ordinary human flesh.","s":{"twilightgiant":3,"moon":2}},
+     {"t":"Cognitive — sharper, calmer, capable of reading the Foggy World's patterns.","s":{"whitetower":3,"visionary":2}},
+     {"t":"Social — known throughout Backlund, trusted across factions, capable of moving Beyonders.","s":{"blackemperor":3,"sun":2}},
+     {"t":"Essential — becoming something the current Sequence system has no category for.","s":{"abyss":3,"demoness":2}}
    ]},
   {"id":106,"s":"Identity & Transformation","w":3,
-   "q":"What does it mean to 'lose yourself'?",
+   "q":"What does it mean to lose yourself in the Beyonder world?",
    "opts":[
-     {"t":"Losing what you believe. Everything else is recoverable.","s":{"sun":3,"justiciar":2}},
-     {"t":"Losing the capacity to make genuine choices.","s":{"chained":3,"fool":2}},
-     {"t":"Losing the things and people that gave your actions meaning.","s":{"mother":3,"tyrant":2}},
-     {"t":"Becoming an instrument of something else's will.","s":{"error":3,"abyss":2}}
+     {"t":"Losing what you believe under contamination pressure. Everything else is recoverable from backup rituals.","s":{"sun":3,"justiciar":2}},
+     {"t":"Losing the capacity to make genuine choices — being driven by the characteristics rather than driving them.","s":{"chained":3,"fool":2}},
+     {"t":"Losing the people and bonds that gave your Sequence advancement its original meaning.","s":{"mother":3,"tyrant":2}},
+     {"t":"Becoming an instrument of your own characteristics' will rather than your own.","s":{"error":3,"abyss":2}}
    ]},
   {"id":107,"s":"Identity & Transformation","w":2,
-   "q":"The mask you wear most often...",
+   "q":"The persona you most often wear in the Beyonder world...",
    "opts":[
-     {"t":"Is no different from my face. I am what I present.","s":{"justiciar":3,"sun":2}},
-     {"t":"Conceals how much I see and understand.","s":{"visionary":3,"darkness":2}},
-     {"t":"Conceals how much I don't care.","s":{"death":3,"whitetower":2}},
-     {"t":"Conceals how much I still care, underneath everything.","s":{"fool":3,"chained":2}}
+     {"t":"Is no different from my face. I am what I present — no performance, no gap.","s":{"justiciar":3,"sun":2}},
+     {"t":"Conceals how much I observe and understand about what is happening in this room.","s":{"visionary":3,"darkness":2}},
+     {"t":"Conceals how little the outcome of this particular interaction matters to me.","s":{"death":3,"whitetower":2}},
+     {"t":"Conceals how much I still care — underneath everything the pathway has taken — about the people in it.","s":{"fool":3,"chained":2}}
    ]},
   {"id":108,"s":"Identity & Transformation","w":3,
-   "q":"How do you know when you've changed?",
+   "q":"How do you know when the pathway has genuinely changed you?",
    "opts":[
-     {"t":"Something that used to cost me nothing now costs something.","s":{"hangedman":3,"death":2}},
-     {"t":"I respond differently to the same situation I've faced before.","s":{"paragon":3,"fool":2}},
-     {"t":"I want something different.","s":{"moon":3,"abyss":2}},
-     {"t":"I trust a judgment I previously would have questioned.","s":{"blackemperor":3,"sun":2}}
+     {"t":"Something that used to cost me nothing in ritual now costs something I notice.","s":{"hangedman":3,"death":2}},
+     {"t":"I respond differently to a Beyonder situation I have faced in a previous Sequence.","s":{"paragon":3,"fool":2}},
+     {"t":"I want something different from the pathway than I wanted before the last advancement.","s":{"moon":3,"abyss":2}},
+     {"t":"I trust a spiritual judgment I would previously have interrogated from every angle.","s":{"blackemperor":3,"sun":2}}
    ]},
   {"id":109,"s":"Identity & Transformation","w":2,
-   "q":"The most dangerous thing about transformation is...",
+   "q":"The most dangerous thing about Sequence transformation is...",
    "opts":[
-     {"t":"That you can't always see it happening until it's too late.","s":{"moon":3,"chained":2}},
-     {"t":"That other people see it before you do.","s":{"visionary":3,"fool":2}},
-     {"t":"That you might lose something essential in the process.","s":{"chained":3,"hangedman":2}},
-     {"t":"Nothing. Transformation is how you survive.","s":{"twilightgiant":3,"door":2}}
+     {"t":"That you cannot always perceive it occurring until the contamination is already integrated.","s":{"moon":3,"chained":2}},
+     {"t":"That other Beyonders in your Tarot Club see it before you do — and say nothing.","s":{"visionary":3,"fool":2}},
+     {"t":"That you may lose something essential — something the higher Sequence cannot replace.","s":{"chained":3,"hangedman":2}},
+     {"t":"Nothing. Transformation is how you survive what the Beyonder world throws at you.","s":{"twilightgiant":3,"door":2}}
    ]},
   {"id":110,"s":"Identity & Transformation","w":3,
-   "q":"If you were to advance along a Beyonder Pathway, what price would you pay?",
+   "q":"The Tarot card turns. The next Sequence awaits. What price are you truly prepared to pay?",
    "opts":[
-     {"t":"Parts of my ordinary humanity — but I've already priced it in.","s":{"abyss":3,"moon":2}},
-     {"t":"My solitude and the peace it gives me — power requires visibility.","s":{"hermit":3,"darkness":2}},
-     {"t":"My certainty — I would never be sure again what I am or what I'm becoming.","s":{"fool":3,"chained":2}},
-     {"t":"Nothing I would choose freely. That is the point of sacrifice.","s":{"hangedman":3,"death":2}}
+     {"t":"Parts of my ordinary humanity — but I have already priced that in and made my peace.","s":{"abyss":3,"moon":2}},
+     {"t":"My solitude and the safety it provided — higher Sequences require visibility, and visibility is danger.","s":{"hermit":3,"darkness":2}},
+     {"t":"My certainty about what I am — I would never be entirely sure again what the pathway has made me.","s":{"fool":3,"chained":2}},
+     {"t":"Nothing I would choose to pay freely. That is the nature of sacrifice. That is why it is called a price.","s":{"hangedman":3,"death":2}}
    ]}
 ]
