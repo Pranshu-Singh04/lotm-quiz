@@ -441,18 +441,16 @@ const DECOR_ITEMS = [
   // Top corners
   { x:  1, y:  2, type: 'sigil',   size: 30,  delay: 1.6,  opacity: 0.12 },
   { x: 95, y:  3, type: 'cross',   size: 28,  delay: 0.4,  opacity: 0.12 },
-  // Bloodied eyes — scattered around
-  { x: 17, y: 20, type: 'blood-eye', size: 24, delay: 0.7,  blinkInterval: 7,  opacity: 0.62 },
-  { x: 82, y: 17, type: 'blood-eye', size: 20, delay: 2.5,  blinkInterval: 5,  opacity: 0.55 },
-  { x:  6, y: 48, type: 'blood-eye', size: 28, delay: 1.3,  blinkInterval: 9,  opacity: 0.65 },
-  { x: 91, y: 55, type: 'blood-eye', size: 22, delay: 3.8,  blinkInterval: 6,  opacity: 0.58 },
-  { x: 46, y:  4, type: 'blood-eye', size: 16, delay: 0.9,  blinkInterval: 8,  opacity: 0.45 },
-  { x: 22, y: 78, type: 'blood-eye', size: 18, delay: 4.2,  blinkInterval: 11, opacity: 0.40 },
-  { x: 76, y: 80, type: 'blood-eye', size: 20, delay: 1.9,  blinkInterval: 7,  opacity: 0.42 },
-  // Eerie doors — sides and corners
+  // Bloodied eyes — far margins only (x < 18 or x > 78), avoid center content
+  { x: 10, y: 18, type: 'blood-eye', size: 24, delay: 0.7,  blinkInterval: 7,  opacity: 0.62 },
+  { x: 87, y: 16, type: 'blood-eye', size: 20, delay: 2.5,  blinkInterval: 5,  opacity: 0.55 },
+  { x:  5, y: 50, type: 'blood-eye', size: 28, delay: 1.3,  blinkInterval: 9,  opacity: 0.65 },
+  { x: 93, y: 54, type: 'blood-eye', size: 22, delay: 3.8,  blinkInterval: 6,  opacity: 0.58 },
+  { x: 15, y: 75, type: 'blood-eye', size: 18, delay: 4.2,  blinkInterval: 11, opacity: 0.40 },
+  { x: 82, y: 78, type: 'blood-eye', size: 20, delay: 1.9,  blinkInterval: 7,  opacity: 0.42 },
+  // Eerie doors — screen edges only
   { x:  0, y: 44, type: 'door', size: 54, delay: 0,   opacity: 0.32 },
   { x: 97, y: 40, type: 'door', size: 48, delay: 2.1, opacity: 0.28 },
-  { x: 18, y: 96, type: 'door', size: 38, delay: 1.0, opacity: 0.22 },
 ]
 
 const BLOOD = 'rgba(140,15,15,VAL)'
