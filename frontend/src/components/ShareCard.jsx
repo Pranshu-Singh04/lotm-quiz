@@ -91,8 +91,12 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 async function drawCard(pathwayKey, pathway, scores) {
-  console.log('[ShareCard] drawing for', pathwayKey, pathway)
+  console.log('[ShareCard] key:', pathwayKey)
+  console.log('[ShareCard] pathway:', pathway)
+  console.log('[ShareCard] PATHWAYS import:', typeof PATHWAYS, Object.keys(PATHWAYS || {}).length, 'keys')
+  console.log('[ShareCard] scores keys:', Object.keys(scores || {}))
   if (!pathway) throw new Error('pathway is undefined — key: ' + pathwayKey)
+  if (!PATHWAYS) throw new Error('PATHWAYS import is undefined')
   await document.fonts.ready
 
   const W = 1200, H = 630
